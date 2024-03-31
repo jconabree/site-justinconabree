@@ -1,0 +1,6 @@
+.marqueeText {
+    composes: text-9xl from global;
+    composes: font-bold from global;
+    composes: font-header from global;
+    composes: px-6 from global;
+}

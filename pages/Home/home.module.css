@@ -1,0 +1,4 @@
+.section {
+    composes: w-full from global;
+    composes: min-h-screen from global;
+}

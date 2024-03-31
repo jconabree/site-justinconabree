@@ -1,0 +1,31 @@
+.root {
+
+}
+
+.open {
+    composes: root;
+    composes: fixed from global;
+    composes: bottom-0 from global;
+    composes: left-0 from global;
+    composes: w-full from global;
+    composes: py-6 from global;
+    composes: px-8 from global;
+    composes: bg-black from global;
+    composes: z-max from global;
+}
+
+.closed {
+    composes: root;
+    composes: hidden from global;
+}
+
+.content {
+    composes: flex from global;
+    composes: justify-between from global;
+    composes: items-center from global;
+}
+
+.actions {
+    composes: flex from global;
+    composes: gap-6 from global;
+}

@@ -4,30 +4,181 @@
 
 :root {
   --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background: white;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+@layer base {
+  .textAnaglyph {
+    @apply text-clip;
+    @apply tracking-widest;
+    text-shadow: -2px 0 1px rgb(30,242,241), 2px 0 1px rgb(246,5,10);
+  }
+
+  .emphasis {
+    @apply textAnaglyph;
+    @apply tracking-wide;
+  }
+
+  .emphasis-wide {
+    @apply emphasis;
+    text-shadow: -4px 0 3px rgb(30,242,241), 4px 0 3px rgb(246,5,10);
+  }
+
+  .emphasis-secondary {
+    @apply emphasis;
+    text-shadow: -2px 0 1px rgb(30,242,241), 2px 0 1px rgb(255, 248, 42);
+  }
+
+  .emphasis-secondary-wide {
+    @apply emphasis;
+    text-shadow: -4px 0 3px rgb(30,242,241), 4px 0 3px rgb(255, 248, 42);
+  }
+
+  .titleAnaglyph {
+    @apply font-header;
+    @apply textAnaglyph;
+  }
+
+  .title-hero {
+    @apply titleAnaglyph;
+    @apply text-3xl;
+    @apply md_text-5xl;
+    @apply lg_text-6xl;
+    @apply xl_text-7xl;
+    @apply 2xl_text-8xl;
+  }
+
+  h1, .title-h1 {
+    @apply titleAnaglyph;
+    @apply text-3xl;
+    @apply xl_text-5xl;
+  }
+  
+  h2, .title-h2 {
+    @apply titleAnaglyph;
+    @apply text-2xl;
+    @apply xl_text-3xl;
+  }
+  
+  h3, .title-h3 {
+    @apply titleAnaglyph;
+    @apply text-xl;
+    @apply xl_text-2xl;
+  }
+  
+  h4, .title-h4 {
+    @apply titleAnaglyph;
+    @apply text-lg;
+    @apply xl_text-xl;
+  }
+  
+  h5, .title-h5 {
+    @apply titleAnaglyph;
+    @apply xl_text-lg;
+  }
+
+  .interactiveAnaglyph {
+    @apply textAnaglyph;
+    transition: all 150ms !important;
+  }
+
+  .interactiveAnaglyph:hover {
+    text-shadow: 0px 0px 0px rgb(30,242,241), 0px 0px 0px rgb(246,5,10);
+  }
+
+  .anchor {
+    @apply interactiveAnaglyph;
+    @apply underline;
+    @apply underline-offset-3;
+    @apply hover_no-underline;
+    @apply hover_cursor-pointer;
+  }
+
+  .buttonAnaglyph {
+    @apply interactiveAnaglyph;
+    @apply relative;
+    @apply border-2;
+  }
+
+  .buttonAnaglyph::before {
+    position: absolute;
+    content: "";
+    left: 0px;
+    top: 0.2px;
+    width: 103%;
+    height: 107%;
+    background: transparent;
+    opacity: 0.8;
+    transition: all 150ms;
+    z-index: -1;
+  }
+
+  .buttonAnaglyph::after {
+    position: absolute;
+    content: "";
+    left: -4px;
+    top: -1.7px;
+    width: 104%;
+    height: 106%;
+    background: transparent;
+    opacity: 0.8;
+    transition: all 150ms;
+    z-index: -1;
+  }
+
+  .buttonAnaglyph:hover::before,
+  .buttonAnaglyph:focus::before {
+    border-width: 0;
+  }
+
+  .buttonAnaglyph:hover::after,
+  .buttonAnaglyph:focus::after {
+    border-width: 0;
+  }
+
+  .button-primary {
+    @apply buttonAnaglyph;
+    @apply border-black;
+  }
+
+  .button-primary::before {
+    border: 3px solid #00dcff;
+  }
+
+  .button-primary::after {
+    border: 3px solid #ff0000;
+  }
+
+  .button-secondary {
+    @apply buttonAnaglyph;
+  }
+
+  .button-secondary::before {
+    border: 3px solid #00dcff;
+  }
+
+  .button-secondary::after {
+    border: 3px solid #ff0000;
+  }
+
+  .button-tertiary {
+    @apply buttonAnaglyph;
+  }
+
+  .button-tertiary::before {
+    border: 3px solid #00dcff;
+  }
+
+  .button-tertiary::after {
+    border: 3px solid rgb(255, 248, 42);
   }
 }

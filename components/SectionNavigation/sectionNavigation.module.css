@@ -1,0 +1,79 @@
+.root {
+    composes: fixed from global;
+    composes: right-24 from global;
+    composes: top-1/2 from global;
+    composes: -translate-y-1/2 from global;
+    composes: z-rightNav from global;
+}
+
+.item {
+    composes: relative from global;
+    composes: block from global;
+    composes: mb-6 from global;
+    composes: last_mb-0 from global;
+    composes: leading-0 from global;
+    composes: w-8 from global;
+    composes: h-8 from global;
+    composes: p-3 from global;
+    clip-path: inset( -100vw 0 -100vw -100vw );
+}
+
+.currentItem {
+    composes: item;
+    @apply p-1.5;
+}
+
+.circle {
+    composes: w-full from global;
+    composes: h-full from global;
+    composes: rounded-full from global;
+    composes: bg-black from global;
+    composes: border-black from global;
+    composes: border from global;
+    composes: transition-all from global;
+    composes: duration-200 from global;
+
+    composes: before_absolute from global;
+    composes: before_top-0 from global;
+    composes: before_left-0 from global;
+    composes: before_w-full from global;
+    composes: before_h-full from global;
+    composes: before_border from global;
+    composes: before_rounded-full from global;
+    composes: before_border-transparent from global;
+    composes: before_transition-all from global;
+    composes: before_duration-200 from global;
+}
+
+.item:hover .circle {
+    @apply bg-transparent;
+    @apply border-transparent;
+    @apply before_border-black;
+}
+
+.currentItem:hover .circle {
+    @apply bg-black;
+    @apply border-black;
+    @apply before_border-transparent;
+}
+
+.label {
+     composes: translate-x-0 from global;
+     composes: opacity-0 from global;
+     composes: absolute from global;
+     composes: left-0 from global;
+     composes: top-1/2 from global;
+     composes: -translate-y-1/2 from global;
+     composes: transition-all from global;
+     composes: pr-8 from global;
+     composes: text-lg from global;
+     composes: w-max from global;
+     composes: duration-200 from global;
+     composes: emphasis-secondary from global;
+}
+
+.item:hover .label {
+    @apply -translate-x-full;
+    @apply opacity-100;
+    @apply delay-700;
+}

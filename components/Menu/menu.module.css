@@ -1,0 +1,108 @@
+.menuButton {
+    composes: p-4 from global;
+    composes: leading-0 from global;
+    composes: text-0 from global;
+    composes: relative from global;
+    composes: z-1 from global;
+}
+
+.menuButtonClose {
+    composes: menuButton;
+    composes: mr-4 from global;
+}
+
+.menuButtonIcon {
+    composes: relative from global;
+    composes: w-[40px] from global;
+    composes: h-[20px] from global;
+}
+
+.burgerLine {
+    composes: absolute from global;
+    composes: right-0 from global;
+    composes: block from global;
+    composes: border-black from global;
+    composes: border-b from global;
+    composes: transition-all from global;
+    composes: duration-200 from global;
+    composes: origin-center from global;
+}
+
+.burgerTop {
+    composes: burgerLine;
+    composes: top-0 from global;
+    width: 80%;
+}
+
+.menuButtonClose .burgerTop {
+    transform: rotate(45deg);
+    top: 50%;
+    width: 100%;
+}
+
+.burgerMiddle {
+    composes: burgerLine;
+    composes: top-1/2 from global;
+    composes: w-full from global;
+}
+
+.menuButtonClose .burgerMiddle {
+    transform: rotate(-45deg);
+}
+
+.burgerBottom {
+    composes: burgerLine;
+    composes: bottom-0 from global;
+    width: 80%;
+}
+
+.menuButtonClose .burgerBottom {
+    transform: rotate(45deg);
+    top: 50%;
+    bottom: auto;
+    width: 100%;
+}
+
+.menuButton:hover .burgerLine {
+    width: 100%;
+}
+
+.baseMenu {
+    composes: fixed from global;
+    composes: top-0 from global;
+    composes: left-0 from global;
+    composes: w-full from global;
+    composes: h-full from global;
+    composes: bg-white from global;
+    composes: transition-all from global;
+    composes: duration-200 from global;
+}
+
+.menu {
+    composes: baseMenu;
+    composes: pointer-events-none from global;
+    composes: opacity-0 from global;
+}
+
+.menuOpen {
+    composes: baseMenu;
+    @apply opacity-100;
+}
+
+.navList {
+    composes: mt-32 from global;
+    composes: w-full from global;
+    composes: text-right from global;
+    composes: text-6xl from global;
+    composes: font-bold from global;
+    composes: pr-16 from global;
+    composes: font-header from global;
+}
+
+.link {
+    composes: anchor from global;
+}
+
+.activeLink {
+    composes: emphasis-secondary-wide from global;
+}

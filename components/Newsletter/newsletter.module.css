@@ -1,0 +1,9 @@
+.root {
+    composes: w-full from global;
+}
+
+.newsletterTitle {
+    composes: text-lg from global;
+    composes: font-bold from global;
+    composes: mb-2 from global;
+}

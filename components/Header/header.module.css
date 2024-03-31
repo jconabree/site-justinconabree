@@ -1,0 +1,29 @@
+.header {
+    composes: fixed from global;
+    composes: top-0 from global;
+    composes: left-0 from global;
+    composes: w-full from global;
+    composes: z-header from global;
+    composes: py-4 from global;
+    composes: px-0 from global;
+    composes: xl_px-10 from global;
+    composes: flex from global;
+    composes: justify-between from global;
+    composes: items-center from global;
+    composes: transition-colors from global;
+    composes: duration-500 from global;
+}
+
+.headerScrolled {
+    composes: header;
+    composes: bg-white from global;
+}
+
+.logo {
+    composes: px-4 from global;
+    composes: z-1 from global;
+}
+
+.actions {
+    composes: px-6 from global;
+}

@@ -1,0 +1,11 @@
+.header {
+    composes: text-8xl from global;
+    composes: relative from global;
+    composes: mb-8 from global;
+    composes: text-left from global;
+    composes: w-full from global;
+}
+
+.textItem {
+    padding-left: var(--index);
+}

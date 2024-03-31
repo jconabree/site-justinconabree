@@ -1,0 +1,21 @@
+.label {
+    composes: pl-8 from global;
+    composes: relative from global;
+    composes: py-6 from global;
+    composes: block from global
+}
+
+.label input {
+    @apply absolute;
+    @apply left-0;
+    @apply top-1/2;
+    transform: translateY(-50%);
+}
+
+.labelText {
+    composes: block from global;
+}
+
+.labelText p {
+    @apply mb-0;
+}

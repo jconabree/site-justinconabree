@@ -1,0 +1,34 @@
+.root {
+    composes: block from global;
+    composes: py-3 from global;
+    composes: px-6 from global;
+    composes: font-bold from global;
+    composes: transition-colors from global;
+}
+
+.primary {
+    composes: root;
+
+    composes: button-primary from global;
+}
+
+.secondary {
+    composes: root;
+    
+    composes: button-secondary from global;
+}
+
+.tertiary {
+    composes: root;
+    
+    composes: button-tertiary from global;
+}
+
+.danger {
+    composes: root;
+    composes: border-2 from global;
+    composes: border-red-600 from global;
+    composes: text-red-600 from global;
+    composes: hover_bg-red-600 from global;
+    composes: hover_text-white from global;
+}

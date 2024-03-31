@@ -1,0 +1,96 @@
+.field {
+    composes: relative from global;
+    composes: w-full from global;
+}
+
+.field [aria-invalid='true'] {
+    @apply border-red-300;
+}
+
+.label {
+    composes: block from global;
+    composes: absolute from global;
+    composes: top-1/2 from global;
+    composes: -translate-y-1/2 from global;
+    composes: left-0 from global;
+    composes: transition-all from global;
+}
+
+.field:has(textarea) label {
+    @apply top-8;
+    @apply left-4;
+}
+
+.field input {
+    @apply bg-transparent;
+    @apply border-b;
+    @apply text-lg;
+    @apply w-full;
+
+    @apply focus_outline-0;
+    @apply focus_border-0;
+    @apply focus_border-b;
+}
+
+.field:has(input) {
+    @apply mt-4;
+    @apply mb-8;
+}
+
+.field textarea {
+    @apply bg-transparent;
+    @apply border;
+    @apply text-lg;
+    @apply p-4;
+    @apply w-full;
+
+    @apply focus_outline-0;
+}
+
+.field:has(textarea) {
+    @apply mt-6;
+    @apply mb-8;
+}
+
+.field input:autofill, .field textarea:autofill {
+    box-shadow: 0px 0px 0px 30px black inset !important;
+    -webkit-text-fill-color: white !important;
+}
+
+.field:has(input:focus) label,
+.field:has(input:autofill) label,
+.field:has(input:not(:placeholder-shown)) label,
+.field:has(textarea:focus) label,
+.field:has(textarea:autofill) label,
+.field:has(textarea:not(:placeholder-shown)) label {
+    @apply top-0;
+    @apply left-0;
+    @apply text-xs;
+    @apply -translate-y-full;
+}
+
+.field [role='alert'] {
+    @apply block;
+    @apply absolute;
+    @apply bottom-0;
+    @apply left-0;
+    @apply py-2;
+    @apply text-red-300;
+    @apply translate-y-full;
+}
+
+.fieldWithAfter {
+    composes: field;
+}
+
+.fieldWithAfter input {
+    @apply pr-16;
+}
+
+.fieldWithAfter .after {
+    @apply absolute;
+    @apply top-1/2;
+    @apply -translate-y-1/2;
+    @apply right-0;
+    @apply leading-0;
+}
