@@ -18,15 +18,14 @@ export default function Section({ id, title, children, addToNav = true, ...secti
     const element = useRef();
 
     useEffect(() => {
-      if (initialized) {
+      if (initialized && addToNav) {
         addSection(id, title, element.current);
       }
-    }, [initialized]);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [initialized, id, title, addToNav]);
 
     useEffect(() => {
-      if (addToNav) {
-        setInitialized(true);
-      }
+      setInitialized(true);
     }, []);
 
   return (

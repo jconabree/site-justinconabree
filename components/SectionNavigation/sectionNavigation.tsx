@@ -8,10 +8,6 @@ import classes from './sectionNavigation.module.css';
 export default function SectionNavigation() {
     const { sections, currentSection } = useSectionContext();
 
-    const handlePreviousClick = useCallback(() => {
-
-    }, [sections, currentSection]);
-
     if (!sections || !Object.keys(sections).length) {
         return null;
     }
