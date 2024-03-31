@@ -114,8 +114,8 @@ body {
     content: "";
     left: 0px;
     top: 0.2px;
-    width: 103%;
-    height: 107%;
+    width: calc(100% + 5px);
+    height: calc(100% + 3.35px);
     background: transparent;
     opacity: 0.8;
     transition: all 150ms;
@@ -127,8 +127,8 @@ body {
     content: "";
     left: -4px;
     top: -1.7px;
-    width: 104%;
-    height: 106%;
+    width: calc(100% + 6.25px);
+    height: calc(100% + 2.8px);
     background: transparent;
     opacity: 0.8;
     transition: all 150ms;
@@ -180,5 +180,17 @@ body {
 
   .button-tertiary::after {
     border: 3px solid rgb(255, 248, 42);
+  }
+
+  .pill {
+    @apply button-secondary;
+    @apply rounded-full;
+    @apply before_rounded-full;
+    @apply after_rounded-full;
+    @apply px-8;
+    @apply py-0.5;
+    @apply border-white;
+    @apply pointer-events-none;
+    text-shadow: none;
   }
 }
