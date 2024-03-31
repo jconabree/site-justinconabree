@@ -1,9 +1,6 @@
 import Link from 'next/link';
 
 import Logo from '@/components/Logo';
-import Marquee from '@/components/Marquee';
-import Newsletter from '@/components/Newsletter';
-import RichContent from '@/components/RichContent';
 
 import classes from './footer.module.css';
 

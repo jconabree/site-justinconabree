@@ -6,7 +6,13 @@ import { useCallback, useEffect, useState } from 'react';
 import classes from './menu.module.css';
 import Link from './link';
 
-export default function Menu(props) {
+interface MenuProps {
+    links: {
+        url: string;
+        text: string;
+    }[]
+}
+export default function Menu(props: MenuProps) {
     const { links } = props;
     const [isOpen, setIsOpen] = useState(false);
 

@@ -2,11 +2,15 @@
 
 import React, { createContext, useContext } from 'react';
 
-import useSectionProvider from '@/hooks/SectionProvider/useSectionProvider';
+import useSectionProvider, { ISectionContext } from '@/hooks/SectionProvider/useSectionProvider';
 
-const SectionContext = createContext();
+const SectionContext = createContext<ISectionContext>({} as ISectionContext);
 
-const SectionProvider = (props) => {
+interface SectionProviderProps {
+    children: React.ReactNode;
+}
+
+const SectionProvider = (props: SectionProviderProps) => {
     const { children } = props;
 
     const contextValues = useSectionProvider();

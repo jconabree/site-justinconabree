@@ -3,14 +3,20 @@
 import React, { createContext, useContext } from 'react';
 import Script from 'next/script';
 
-import useGoogleRecaptchaProvider from '@/hooks/GoogleRecaptchaProvider/useGoogleRecaptchaProvider';
+import useGoogleRecaptchaProvider, { IGoogleRecaptchaContext } from '@/hooks/GoogleRecaptchaProvider/useGoogleRecaptchaProvider';
 
-const GoogleRecaptchaContext = createContext();
+const GoogleRecaptchaContext = createContext<IGoogleRecaptchaContext>({} as IGoogleRecaptchaContext);
 
-const GoogleRecaptchaProvider = (props) => {
+interface GoogleRecaptchaProviderProps  {
+    children: React.ReactNode;
+    recaptchaKey?: string;
+}
+
+const GoogleRecaptchaProvider = (props: GoogleRecaptchaProviderProps) => {
     const { children, recaptchaKey } = props;
 
-    const { scriptUrl, ...contextValues } = useGoogleRecaptchaProvider({ recaptchaKey });
+    const contextValues = useGoogleRecaptchaProvider({ recaptchaKey });
+    const { scriptUrl } = contextValues;
 
     return (
         <GoogleRecaptchaContext.Provider value={contextValues}>

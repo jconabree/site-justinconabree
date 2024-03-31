@@ -2,11 +2,15 @@
 
 import React, { createContext, useContext } from 'react';
 
-import { useCookieConsentProvider } from '@/hooks/CookieConsentProvider/useCookieConsentProvider';
+import { useCookieConsentProvider, ICookieConsentContext } from '@/hooks/CookieConsentProvider/useCookieConsentProvider';
 
-const CookieConsentContext = createContext();
+const CookieConsentContext = createContext<ICookieConsentContext>({} as ICookieConsentContext);
 
-const CookieConsentProvider = (props) => {
+interface CookieConsentProviderProps {
+    children: React.ReactNode;
+}
+
+const CookieConsentProvider = (props: CookieConsentProviderProps) => {
     const { children } = props;
 
     const contextValues = useCookieConsentProvider();

@@ -2,11 +2,27 @@
 
 import { useCallback, useEffect, useState } from 'react';
 
-export default (props) => {
+interface GoogleRecaptchaProviderProps {
+    recaptchaKey?: string;
+}
+
+export interface IGoogleRecaptchaContext {
+    scriptUrl: string;
+    getRecaptchaData: (formId: string) => Promise<string>
+}
+
+declare global {
+    var recaptchaLoadCallback: () => void;
+    var grecaptcha: {
+        execute: (key: string|undefined, form : { action: string }) => Promise<string>
+    }
+}
+
+export default (props: GoogleRecaptchaProviderProps): IGoogleRecaptchaContext => {
     const { recaptchaKey } = props;
 
-    const [isLoaded, setIsLoaded] = useState(false);
-    const [queue, setQueue] = useState([]);
+    const [isLoaded, setIsLoaded] = useState<boolean>(false);
+    const [queue, setQueue] = useState<(() => void)[]>([]);
 
     useEffect(() => {
         globalThis.recaptchaLoadCallback = () => {
@@ -24,9 +40,9 @@ export default (props) => {
 
     const scriptUrl = `https://www.google.com/recaptcha/api.js?render=${recaptchaKey}&onload=recaptchaLoadCallback`;
 
-    const getRecaptchaData = useCallback(async (formId) => {
-        return new Promise(async (resolve) => {
-            const generateToken = async () => {
+    const getRecaptchaData = useCallback(async (formId: string) => {
+        return new Promise<string>(async (resolve) => {
+            const generateToken = async (): Promise<string> => {
                 const token = await globalThis.grecaptcha.execute(
                     recaptchaKey,
                     {

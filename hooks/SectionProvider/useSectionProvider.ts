@@ -2,11 +2,26 @@
 
 import { useCallback, useState } from 'react';
 
-export default () => {
-    const [sections, setSections] = useState({});
-    const [currentSection, setCurrentSection] = useState(null);
+interface Section {
+    title: string;
+    element: HTMLElement;
+}
 
-    const addSection = useCallback((sectionId, title, element) => {
+interface SectionList {
+    [key: string]: Section;
+}
+
+export interface ISectionContext {
+    sections: SectionList,
+    currentSection: string|null
+    addSection: (sectionId: string, title: string, element: HTMLElement) => () => void;
+}
+
+export default () => {
+    const [sections, setSections] = useState<SectionList>({});
+    const [currentSection, setCurrentSection] = useState<string|null>(null);
+
+    const addSection = useCallback((sectionId: string, title: string, element: HTMLElement): () => void => {
         // TODO change to an array so we can easily track order
         setSections(currentSections => ({
             ...currentSections,

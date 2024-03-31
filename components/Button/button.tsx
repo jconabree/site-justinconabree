@@ -29,7 +29,7 @@ const Button = (props: ButtonProps) => {
         }
     }, [onPress, onClick]);
 
-    const handleKeyDown = useCallback((event) => {
+    const handleKeyDown = useCallback((event: React.KeyboardEvent<HTMLButtonElement>) => {
         if (event.key === 'Enter') {
             handleClick();
         }

@@ -4,10 +4,18 @@ import { useEffect, useRef } from 'react';
 
 import { useCookieConsentContext } from '@/providers/CookieConsentProvider';
 
-const GoogleAnalytics = (props) => {
+interface GoogleAnalyticsProps {
+    analyticsId?: string|null;
+}
+
+declare global {
+    var dataLayer: [{ [key: string]: any }?];
+}
+
+const GoogleAnalytics = (props: GoogleAnalyticsProps) => {
     const { analyticsId } = props;
 
-    const initialized = useRef();
+    const initialized = useRef<boolean>();
 
     const { consent } = useCookieConsentContext();
 
