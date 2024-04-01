@@ -1,3 +1,5 @@
+import contentful from '@/api/contentful';
+
 import Marquee from '@/components/Marquee';
 import AdobeLogo from '@/components/Logos/Adobe';
 import HMLogo from '@/components/Logos/HM';
@@ -6,7 +8,17 @@ import SailLogo from '@/components/Logos/Sail';
 import StructubeLogo from '@/components/Logos/Structube';
 import StokesLogo from '@/components/Logos/Stokes';
 
-export default function Work() {
+import { getAssetQuery } from '@/graphql/assets.gql';
+
+export default async function Work() {
+    const { data } = await contentful.query({
+        query: getAssetQuery,
+        variables: {
+            filename: 'Justin_Conabree_Resume.pdf'
+        }
+    });
+    const resumeLink = data.assetCollection?.items?.[0]?.url;
+
     return (
         <div className="h-full w-full">
             <div className="bg-gray-100 w-full py-24 flex flex-wrap items-center justify-center">
@@ -75,15 +87,17 @@ export default function Work() {
                         Github (W)
                     </a>
                 </div>
-                <div className="w-full text-center py-16">
-                    <a
-                        href="/Justin_Conabree_Resume.pdf"
-                        target="_blank"
-                        className="button-primary py-4 px-8 text-lg anchor"
-                    >
-                        Resume
-                    </a>
-                </div>
+                {resumeLink && (
+                    <div className="w-full text-center py-16">
+                        <a
+                            href={resumeLink}
+                            target="_blank"
+                            className="button-primary py-4 px-8 text-lg anchor"
+                        >
+                            Resume
+                        </a>
+                    </div>
+                )}
             </div>
         </div>
     )

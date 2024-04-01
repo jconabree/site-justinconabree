@@ -23,12 +23,12 @@ export default function About() {
             </div>
             <div className="flex flex-wrap justify-center items-center w-full px-10 py-20">
                 <div className="w-full lg_w-1/2">
-                    <div className="imageAnaglyphWrapper">
+                    <div className="imageAnaglyphWrapper max-w-full">
                         <Image src="/justinconabree_profile.jpg" width={869} height={1405} className="imageAnaglyph w-full" alt="A portrait of me (Justin Conabree)" />
                     </div>
                 </div>
                 <div className="w-full lg_w-1/3">
-                    <div className="text-6xl text-right font-header font-bold emphasis-secondary-wide leading-none">Some Cool Tag Line About Me</div>
+                    <div className="text-2xl md_text-6xl text-right font-header font-bold emphasis-secondary-wide leading-none">Some Cool Tag Line About Me</div>
                     <div className="text-lg text-right mt-6">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint, quidem! Delectus alias reiciendis esse accusamus sed ad, voluptates nesciunt voluptate cupiditate quibusdam fugit ea totam optio, assumenda distinctio obcaecati amet?</div>
                 </div>
             </div>
