@@ -23,6 +23,12 @@ body {
     text-shadow: -2px 0 1px rgb(30,242,241), 2px 0 1px rgb(246,5,10);
   }
 
+  .textAnaglyphSecondary {
+    @apply text-clip;
+    @apply tracking-widest;
+    text-shadow: -2px 0 1px rgb(30,242,241), 2px 0 1px rgb(255, 248, 42);
+  }
+
   .emphasis {
     @apply textAnaglyph;
     @apply tracking-wide;
@@ -34,31 +40,41 @@ body {
   }
 
   .emphasis-secondary {
-    @apply emphasis;
-    text-shadow: -2px 0 1px rgb(30,242,241), 2px 0 1px rgb(255, 248, 42);
+    @apply textAnaglyphSecondary;
+    @apply tracking-wide;
   }
 
   .emphasis-secondary-wide {
-    @apply emphasis;
+    @apply emphasis-secondary;
     text-shadow: -4px 0 3px rgb(30,242,241), 4px 0 3px rgb(255, 248, 42);
   }
 
   .titleAnaglyph {
     @apply font-header;
+    @apply font-bold;
     @apply textAnaglyph;
+  }
+
+  .titleAnaglyphSecondary {
+    @apply font-header;
+    @apply font-bold;
+    @apply textAnaglyphSecondary;
   }
 
   .title-hero {
     @apply titleAnaglyph;
     @apply text-3xl;
+    @apply leading-none;
     @apply md_text-5xl;
     @apply lg_text-6xl;
     @apply xl_text-7xl;
     @apply 2xl_text-8xl;
+    @apply xl_leading-over-loose;
   }
 
   h1, .title-h1 {
     @apply titleAnaglyph;
+    @apply leading-tight;
     @apply text-3xl;
     @apply xl_text-5xl;
   }
@@ -191,6 +207,30 @@ body {
     @apply py-0.5;
     @apply border-white;
     @apply pointer-events-none;
+    @apply text-center;
     text-shadow: none;
+  }
+
+
+  .imageAnaglyphWrapper {
+    width: max-content;
+    height: max-content;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .imageAnaglyphWrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 2px solid white;
+  }
+
+  .imageAnaglyph {
+    filter: saturate(0.6) url(#rgb-split);
+    transform: translateZ(0);
   }
 }

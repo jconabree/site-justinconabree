@@ -1,4 +1,5 @@
 .marqueeText {
+    composes: flex from global;
     composes: text-9xl from global;
     composes: font-bold from global;
     composes: font-header from global;

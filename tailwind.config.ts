@@ -11,6 +11,9 @@ const config: Config = {
   theme: {
     extend: {
       screens: {
+        '-sm': {
+          max: '639px'
+        },
         '3xl': '1700px'
       },
       backgroundImage: {
@@ -40,7 +43,8 @@ const config: Config = {
         widest: '5px',
       },
       lineHeight: {
-        '0': '0'
+        '0': '0',
+        'over-loose': '0.9'
       },
       textUnderlineOffset: {
         3: '3px',

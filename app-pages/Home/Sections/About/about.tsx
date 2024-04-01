@@ -1,8 +1,9 @@
+import Image from 'next/image';
 import classes from './about.module.css';
 
 export default function About() {
     return (
-        <div className="h-full w-full flex items-center justify-center py-24">
+        <div className="h-full w-full flex flex-wrap items-center justify-center py-24">
             <div className="flex flex-wrap gap-4 max-w-7xl px-10 items-center justify-center">
                 <div className={classes.attributeItem}>Full-stack Developer</div>
                 <div className={classes.attributeItem}>Problem Solver</div>
@@ -19,6 +20,17 @@ export default function About() {
                 <div className={classes.attributeItem}>Agile Project Management</div>
                 <div className={classes.attributeItem}>Cross Functional Team Management</div>
                 <div className={classes.attributeItem}>Stakeholder Communications</div>
+            </div>
+            <div className="flex flex-wrap justify-center items-center w-full px-10 py-20">
+                <div className="w-full lg_w-1/2">
+                    <div className="imageAnaglyphWrapper">
+                        <Image src="/justinconabree_profile.jpg" width={869} height={1405} className="imageAnaglyph w-full" alt="A portrait of me (Justin Conabree)" />
+                    </div>
+                </div>
+                <div className="w-full lg_w-1/3">
+                    <div className="text-6xl text-right font-header font-bold emphasis-secondary-wide leading-none">Some Cool Tag Line About Me</div>
+                    <div className="text-lg text-right mt-6">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint, quidem! Delectus alias reiciendis esse accusamus sed ad, voluptates nesciunt voluptate cupiditate quibusdam fugit ea totam optio, assumenda distinctio obcaecati amet?</div>
+                </div>
             </div>
         </div>
     );

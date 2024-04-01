@@ -20,10 +20,20 @@
 }
 
 .logo {
+    composes: -sm_flex-grow from global;
+    composes: -sm_pl-32 from global;
+    composes: -sm_text-center from global;
     composes: px-4 from global;
     composes: z-1 from global;
 }
 
 .actions {
     composes: px-6 from global;
+}
+
+.contact {
+    composes: hidden from global;
+    composes: pl-4 from global;
+    composes: xl_pl-0 from global;
+    composes: sm_block from global;
 }
