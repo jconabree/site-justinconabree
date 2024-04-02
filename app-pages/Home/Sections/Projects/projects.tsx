@@ -11,8 +11,8 @@ export default async function Projects() {
     const featuredProjects = data?.portfolioItemCollection?.items;
 
     return (
-        <div className="w-full p-24">
-            <div>
+        <div className="w-full p-10 xl_p-24">
+            <div className="max-w-full flex flex-wrap items-baseline">
                 <span className="title-h1 mr-16">Projects</span>
                 <Link href="/projects" className="anchor-clear">See All</Link>
             </div>
