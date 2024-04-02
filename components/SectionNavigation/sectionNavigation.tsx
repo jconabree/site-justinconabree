@@ -18,9 +18,7 @@ export default function SectionNavigation() {
                 {Object.entries(sections).map(([sectionId, data]) => {
                     const itemClass = currentSection === sectionId ? classes.currentItem : classes.item;
                     const handleClick = () => {
-                        window.scrollTo({
-                            left: 0,
-                            top: data.element.getBoundingClientRect().top,
+                        data.element.scrollIntoView({
                             behavior: 'smooth'
                         });
                     }

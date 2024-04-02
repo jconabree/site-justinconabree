@@ -8,6 +8,7 @@ export const getFeaturedPortfolioQuery = gql`
             items {
                 id
                 title
+                urlKey
                 isFeatured
                 highlightedTech
                 tech
@@ -17,6 +18,33 @@ export const getFeaturedPortfolioQuery = gql`
                 imagesCollection {
                     items {
                         url
+                        width
+                        height
+                    }
+                }
+            }
+        }
+    }
+`
+
+export const getPortfolioItemsQuery = gql`
+    query GetPortfolioItems {
+        portfolioItemCollection {
+            items {
+                id
+                title
+                urlKey
+                isFeatured
+                highlightedTech
+                tech
+                content {
+                    json
+                }
+                imagesCollection {
+                    items {
+                        url
+                        width
+                        height
                     }
                 }
             }

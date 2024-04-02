@@ -28,7 +28,7 @@ export default async function Work() {
                         <div className="font-bold pl-1">Valtech: Senior Practice Expertise Developer</div>
                     </div>
                     <div className="w-full md_w-1/2 px-10 xl_pl-24">
-                        <div className="w-full text-xl font-bold mb-6">Responisbilities</div>
+                        <div className="w-full text-xl font-bold mb-6">Responsabilities</div>
                         <ul>
                             <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
                             <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
@@ -47,10 +47,10 @@ export default async function Work() {
                 <div className="w-full text-center px-10 font-header text-2xl font-black pb-8">Major Brands I've Worked With</div>
                 <Marquee autoFill speed={100} gradient>
                     <span className="flex items-center px-16">
-                        <NestleLogo width={200} height={204.6} />
+                        <NestleLogo className="h-auto" width={200} height={204.6} />
                     </span>
                     <span className="flex items-center px-16">
-                        <AdobeLogo width={350} height={111.66} />
+                        <AdobeLogo className="h-auto" width={350} height={111.66} />
                     </span>
                     <span className="flex items-center px-16">
                         <HMLogo height={100} />
@@ -62,7 +62,7 @@ export default async function Work() {
                         <StructubeLogo width={350} />
                     </span>
                     <span className="flex items-center px-16">
-                        <StokesLogo width={300} height={89.5} />
+                        <StokesLogo className="h-auto" width={300} height={89.5} />
                     </span>
                 </Marquee>
             </div>

@@ -4,7 +4,7 @@
     composes: top-1/2 from global;
     composes: -translate-y-1/2 from global;
     composes: z-rightNav from global;
-    composes: md_right-24 from global;
+    composes: md_right-12 from global;
 }
 
 .item {
