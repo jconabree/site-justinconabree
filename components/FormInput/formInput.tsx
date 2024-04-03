@@ -30,6 +30,7 @@ export default function FormInput(props: InputProps) {
         if (pending) {
             setFormInputDirty(name, false);
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [pending]);
 
     switch(type) {
