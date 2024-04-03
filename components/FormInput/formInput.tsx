@@ -24,7 +24,7 @@ export default function FormInput(props: InputProps) {
         if (typeof onChange === 'function') {
             onChange(event);
         }
-    }, [onChange])
+    }, [onChange, name, setFormInputDirty])
 
     useEffect(() => {
         if (pending) {

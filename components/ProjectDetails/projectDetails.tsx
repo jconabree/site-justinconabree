@@ -32,8 +32,20 @@ export default function ProjectDetails(props: ProjectDetailsProps) {
                     </ImageSlider>
                 </div>
             )}
-            {details.content && <RichContent content={details.content} />}
-            <div className="h-screen bg-gray-200 w-full"></div>
+            <div className="grid grid-cols-3 gap-3 lg_gap-12">
+                <div className="col-span-3 md_col-span-2">
+                    {details.content && <RichContent content={details.content} />}
+                    <div className="h-screen bg-gray-200 w-full"></div>
+                </div>
+                <div className="col-span-3 md_col-span-1 pr-3">
+                    <div className="font-header text-2xl font-bold mb-6">Technology / Skills</div>
+                    <div className="flex flex-wrap gap-x-5 gap-y-3">
+                        {details.tech.map((tech) => {
+                            return <span key={tech} className="pill">{tech}</span>
+                        })}
+                    </div>
+                </div>
+            </div>
         </>
     )
 }
