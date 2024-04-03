@@ -17,16 +17,47 @@ body {
   }
 }
 @layer base {
+  :root {
+    --tw-anaglyph-color1: rgb(30,242,241);
+    --tw-anaglyph-color2: rgb(246,5,10);
+    --tw-anaglyph-text-ofx1: -2px;
+    --tw-anaglyph-text-ofx2: 2px;
+    --tw-anaglyph-text-ofy1: 0;
+    --tw-anaglyph-text-ofy2: 0;
+    --tw-anaglyph-text-blur: 1px;
+  }
+
+  .ah-secondary {
+    --tw-anaglyph-color1: rgb(30,242,241);
+    --tw-anaglyph-color2: rgb(255, 248, 42);
+  }
+
+  .ah-wide {
+    --tw-anaglyph-text-ofx1: -4px;
+    --tw-anaglyph-text-ofx2: 4px;
+    --tw-anaglyph-text-blur: 3px;
+  }
+
+  .ah-hidden {
+    --tw-anaglyph-text-ofx1: 0;
+    --tw-anaglyph-text-ofx2: 0;
+    --tw-anaglyph-text-blur: 0;
+  }
+
+  .text-shadow-ah {
+    text-shadow: var(--tw-anaglyph-text-ofx1) var(--tw-anaglyph-text-ofy1) var(--tw-anaglyph-text-blur) var(--tw-anaglyph-color1), var(--tw-anaglyph-text-ofx2) var(--tw-anaglyph-text-ofy2) var(--tw-anaglyph-text-blur) var(--tw-anaglyph-color2);
+  }
+
+
   .textAnaglyph {
     @apply text-clip;
     @apply tracking-widest;
-    text-shadow: -2px 0 1px rgb(30,242,241), 2px 0 1px rgb(246,5,10);
+    @apply text-shadow-ah;
   }
 
   .textAnaglyphSecondary {
-    @apply text-clip;
-    @apply tracking-widest;
-    text-shadow: -2px 0 1px rgb(30,242,241), 2px 0 1px rgb(255, 248, 42);
+    @apply textAnaglyph;
+    @apply ah-secondary;
   }
 
   .emphasis {
@@ -36,17 +67,18 @@ body {
 
   .emphasis-wide {
     @apply emphasis;
-    text-shadow: -4px 0 3px rgb(30,242,241), 4px 0 3px rgb(246,5,10);
+    @apply ah-wide;
   }
 
   .emphasis-secondary {
-    @apply textAnaglyphSecondary;
-    @apply tracking-wide;
+    @apply emphasis;
+    @apply ah-secondary;
   }
 
   .emphasis-secondary-wide {
-    @apply emphasis-secondary;
-    text-shadow: -4px 0 3px rgb(30,242,241), 4px 0 3px rgb(255, 248, 42);
+    @apply emphasis;
+    @apply ah-secondary;
+    @apply ah-wide;
   }
 
   .titleAnaglyph {
@@ -108,7 +140,7 @@ body {
   }
 
   .interactiveAnaglyph:hover {
-    text-shadow: 0px 0px 0px rgb(30,242,241), 0px 0px 0px rgb(246,5,10);
+    @apply ah-hidden;
   }
 
   .anchor-clear {
@@ -141,6 +173,7 @@ body {
     opacity: 0.8;
     transition: all 150ms;
     z-index: -1;
+    border: 3px solid var(--tw-anaglyph-color1);
   }
 
   .buttonAnaglyph::after {
@@ -154,6 +187,7 @@ body {
     opacity: 0.8;
     transition: all 150ms;
     z-index: -1;
+    border: 3px solid var(--tw-anaglyph-color2);
   }
 
   .buttonAnaglyph:hover::before,
@@ -171,25 +205,9 @@ body {
     @apply border-black;
   }
 
-  .button-primary::before {
-    border: 3px solid #00dcff;
-  }
-
-  .button-primary::after {
-    border: 3px solid #ff0000;
-  }
-
   .button-secondary {
     @apply buttonAnaglyph;
     @apply border-white;
-  }
-
-  .button-secondary::before {
-    border: 3px solid #00dcff;
-  }
-
-  .button-secondary::after {
-    border: 3px solid #ff0000;
   }
 
   .button-tertiary {
@@ -197,12 +215,9 @@ body {
     @apply border-white;
   }
 
-  .button-tertiary::before {
-    border: 3px solid #00dcff;
-  }
-
+  .button-tertiary::before,
   .button-tertiary::after {
-    border: 3px solid rgb(255, 248, 42);
+    @apply ah-secondary;
   }
 
   .pill {

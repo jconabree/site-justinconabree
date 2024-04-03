@@ -65,7 +65,7 @@ export default function StyleGuide() {
                     </div>
                     <div className="flex-grow w-full">
                         <div className="font-semibold text-sm mb-3">Link</div>
-                        <div>The quick brown fox <span className="link">jumps</span> over the lazy dog</div>
+                        <div>The quick brown fox <span className="anchor">jumps</span> over the lazy dog</div>
                     </div>
                 </div>
             </div>

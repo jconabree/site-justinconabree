@@ -1,55 +1,48 @@
 import { gql } from '@apollo/client';
 
+const PortfolioItemFragment = gql`
+    fragment PortfolioItemFragment on PortfolioItem {
+        id
+        title
+        urlKey
+        workType
+        highlightedTech
+        tech
+        content {
+            json
+        }
+        imagesCollection {
+            items {
+                url
+                width
+                height
+            }
+        }
+    }
+`
+
 export const getFeaturedPortfolioQuery = gql`
     query GetFeaturedPortfolioItems {
         portfolioItemCollection (
             where: { isFeatured: true }
         ) {
             items {
-                id
-                title
-                urlKey
-                isFeatured
-                highlightedTech
-                tech
-                content {
-                    json
-                }
-                imagesCollection {
-                    items {
-                        url
-                        width
-                        height
-                    }
-                }
+                ...PortfolioItemFragment
             }
         }
     }
+    ${PortfolioItemFragment}
 `;
 
 export const getPortfolioItemsQuery = gql`
     query GetPortfolioItems {
         portfolioItemCollection {
             items {
-                id
-                title
-                urlKey
-                isFeatured
-                highlightedTech
-                tech
-                content {
-                    json
-                }
-                imagesCollection {
-                    items {
-                        url
-                        width
-                        height
-                    }
-                }
+                ...PortfolioItemFragment
             }
         }
     }
+    ${PortfolioItemFragment}
 `;
 
 export const getAllItemUrls = gql`
@@ -71,23 +64,9 @@ export const getPortfolioDetailsQuery = gql`
             }
         ) {
             items {
-                id
-                title
-                urlKey
-                isFeatured
-                highlightedTech
-                tech
-                content {
-                    json
-                }
-                imagesCollection {
-                    items {
-                        url
-                        width
-                        height
-                    }
-                }
+                ...PortfolioItemFragment
             }
         }
     }
+    ${PortfolioItemFragment}
 `;

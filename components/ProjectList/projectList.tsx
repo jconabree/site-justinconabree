@@ -13,6 +13,7 @@ export interface IPortfolioItem {
     id: string;
     urlKey: string;
     title: string;
+    workType: string;
     isFeatured: boolean;
     highlightedTech: string[];
     tech: string[];
@@ -62,13 +63,14 @@ export default function ProjectList(props: ProjectListProps) {
 
     return (
         <div>
+            <div className="py-8 w-full text-left text-sm">Personal (P) &bull; Work (W)</div>
             {items?.map((portfolioItem: IPortfolioItem) => {
                 const contentClass = activeItems.includes(portfolioItem.id) ? 'max-h-[9999px]' : 'max-h-0';
                 return (
                     <div className="pb-6" key={portfolioItem.id}>
                         <button className="w-full" onClick={getClickHandler(portfolioItem)}>
                             <div className="w-full flex justify-between">
-                                <div>{portfolioItem.title}</div>
+                                <div>{portfolioItem.title} <span className="text-sm">({portfolioItem.workType[0].toUpperCase()})</span></div>
                                 <div className="text-sm">
                                     {portfolioItem.highlightedTech.map((tech) => {
                                         return `(${tech})`
