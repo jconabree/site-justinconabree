@@ -25,7 +25,7 @@ export const getFeaturedPortfolioQuery = gql`
             }
         }
     }
-`
+`;
 
 export const getPortfolioItemsQuery = gql`
     query GetPortfolioItems {
@@ -50,4 +50,44 @@ export const getPortfolioItemsQuery = gql`
             }
         }
     }
-`
+`;
+
+export const getAllItemUrls = gql`
+    query GetAllPortfolioUrls {
+        portfolioItemCollection {
+            items {
+                id
+                urlKey
+            }
+        }
+    }
+`;
+
+export const getPortfolioDetailsQuery = gql`
+    query GetPortfolioItems($urlKey: String!) {
+        portfolioItemCollection(
+            where: {
+                urlKey: $urlKey
+            }
+        ) {
+            items {
+                id
+                title
+                urlKey
+                isFeatured
+                highlightedTech
+                tech
+                content {
+                    json
+                }
+                imagesCollection {
+                    items {
+                        url
+                        width
+                        height
+                    }
+                }
+            }
+        }
+    }
+`;

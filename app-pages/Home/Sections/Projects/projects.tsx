@@ -1,7 +1,7 @@
 import Link from "next/link";
 import contentful from '@/api/contentful';
 import { getFeaturedPortfolioQuery } from '@/graphql/portfolio.gql';
-import PortfolioList from '@/components/PortfolioList';
+import ProjectList from '@/components/ProjectList';
 
 export default async function Projects() {
     const { data } = await contentful.query({
@@ -17,7 +17,7 @@ export default async function Projects() {
                 <Link href="/projects" className="anchor-clear">See All</Link>
             </div>
             <div className="py-16">
-                <PortfolioList items={featuredProjects} />
+                <ProjectList items={featuredProjects} />
             </div>
         </div>
     )

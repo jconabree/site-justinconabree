@@ -1,6 +1,12 @@
+import type { Metadata } from "next";
+
 import contentful from '@/api/contentful';
 import { getPortfolioItemsQuery } from '@/graphql/portfolio.gql';
-import PortfolioList from '@/components/PortfolioList';
+import ProjectList from '@/components/ProjectList';
+
+export const metadata: Metadata = {
+	title: "Projects | Justin Conabree"
+};
 
 export default async function Projects() {
     const { data } = await contentful.query({
@@ -13,7 +19,7 @@ export default async function Projects() {
         <main className="flex min-h-screen flex-col p-24">
             <div className="title-h1 w-full mb-8">Projects</div>
             <div className="mb-16 w-full">Browse projects I&apos;ve worked on</div>
-            <PortfolioList items={items} navigateOnClick />
+            <ProjectList items={items} navigateOnClick />
         </main>
     )
 }

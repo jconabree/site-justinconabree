@@ -2,10 +2,12 @@
 
 import { Document } from '@contentful/rich-text-types';
 import { useRouter } from 'next/navigation'
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useCallback, useState } from 'react';
-
-import RichContent from '@/components/RichContent';
+const ProjectDetails = dynamic(() => import('@/components/ProjectDetails'), {
+    loading: () => null
+});
 
 export interface IPortfolioItem {
     id: string;
@@ -26,12 +28,12 @@ export interface IPortfolioItem {
     }
 }
 
-interface PortfolioListProps {
+interface ProjectListProps {
     items?: IPortfolioItem[],
     navigateOnClick?: boolean;
 }
 
-export default function PortfolioList(props: PortfolioListProps) {
+export default function ProjectList(props: ProjectListProps) {
     const { items, navigateOnClick } = props;
     const router = useRouter()
 
@@ -91,12 +93,13 @@ export default function PortfolioList(props: PortfolioListProps) {
                                 </div>
                             </div>
                         </button>
-                        <div className={`${contentClass} overflow-y-hidden transition-all duration-500`}>
-                            <div className="py-10">
-                                {portfolioItem.content && <RichContent content={portfolioItem.content} />}
-                                <div className="h-screen bg-gray-200 w-full"></div>
+                        {!navigateOnClick && (
+                            <div className={`${contentClass} overflow-y-hidden transition-all duration-500`}>
+                                <div className="py-10">
+                                    <ProjectDetails details={portfolioItem} />
+                                </div>
                             </div>
-                        </div>
+                        )}
                     </div>
                 )
             })}
