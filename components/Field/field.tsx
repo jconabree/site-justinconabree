@@ -1,23 +1,30 @@
 import classes from './field.module.css';
 
-const Field = (props) => {
+interface FieldProps {
+    children: React.ReactNode;
+    inputId?: string;
+    label?: string;
+    after?: React.ReactNode;
+}
+
+const Field = (props: FieldProps) => {
     const { children, inputId, label, after } = props;
 
     const rootClass = after ? classes.fieldWithAfter : classes.field;
 
     return (
         <div className={rootClass}>
-            {label ? (
+            {label && (
                 <label className={classes.label} htmlFor={inputId}>
                     <span>{label}</span>
                 </label>
-            ) : null}
+            )}
             {children}
-            {after ? (
+            {after && (
                 <div className={classes.after}>
                     {after}
                 </div>
-            ) : null}
+            )}
         </div>
     );
 }

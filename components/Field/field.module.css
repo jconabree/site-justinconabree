@@ -24,7 +24,7 @@
 .field input {
     @apply bg-transparent;
     @apply border-b;
-    @apply text-lg;
+    @apply text-base;
     @apply w-full;
 
     @apply focus_outline-0;
@@ -40,7 +40,7 @@
 .field textarea {
     @apply bg-transparent;
     @apply border;
-    @apply text-lg;
+    @apply text-base;
     @apply p-4;
     @apply w-full;
 
@@ -53,8 +53,8 @@
 }
 
 .field input:autofill, .field textarea:autofill {
-    box-shadow: 0px 0px 0px 30px black inset !important;
-    -webkit-text-fill-color: white !important;
+    box-shadow: 0px 0px 0px 30px white inset !important;
+    -webkit-text-fill-color: black !important;
 }
 
 .field:has(input:focus) label,

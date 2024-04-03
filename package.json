@@ -13,10 +13,12 @@
     "@contentful/rich-text-react-renderer": "^15.19.6",
     "@splinetool/runtime": "^1.0.91",
     "framer-motion": "^11.0.24",
+    "googleapis": "^134.0.0",
     "graphql": "^16.8.1",
     "gsap": "^3.12.5",
     "informed": "^4.57.0",
     "next": "14.1.4",
+    "nodemailer": "^6.9.13",
     "react": "^18",
     "react-dom": "^18",
     "react-fast-marquee": "^1.6.4"
@@ -24,6 +26,7 @@
   "devDependencies": {
     "@types/gtag.js": "^0.0.19",
     "@types/node": "^20",
+    "@types/nodemailer": "^6.4.14",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
