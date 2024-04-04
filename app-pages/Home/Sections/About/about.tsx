@@ -1,7 +1,19 @@
 import Image from 'next/image';
+
+import contentful from '@/api/contentful';
+import { getAssetByTitleQuery } from '@/graphql/assets.gql';
+    
 import classes from './about.module.css';
 
-export default function About() {
+export default async function About() {
+    const { data } = await contentful.query({
+        query: getAssetByTitleQuery,
+        variables: {
+            title: 'Me'
+        }
+    });
+    const profilePicture = data.assetCollection?.items?.[0]?.url;
+
     return (
         <div className="h-full w-full flex flex-wrap items-center justify-center py-24">
             <div className="flex flex-wrap gap-4 max-w-7xl px-10 items-center justify-center">
@@ -24,7 +36,7 @@ export default function About() {
             <div className="flex flex-wrap justify-center items-center w-full px-10 py-20">
                 <div className="w-full lg_w-1/2">
                     <div className="imageAnaglyphWrapper max-w-full">
-                        <Image src="/justinconabree_profile.jpg" width={869} height={1405} className="imageAnaglyph w-full" alt="A portrait of me (Justin Conabree)" />
+                        <Image src={profilePicture} width={869} height={1405} className="imageAnaglyph w-full" alt="A portrait of me (Justin Conabree)" />
                     </div>
                 </div>
                 <div className="w-full lg_w-1/3">

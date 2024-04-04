@@ -1,6 +1,7 @@
 'use server';
 
 import { sendMail } from '@/api/email';
+import recaptcha from '@/api/recaptcha';
 
 export default async function submitForm(initialState: any, formData: FormData): Promise<{ [key: string]: string; }> {
     const fromEmail = formData.get('senderEmail') as string;
@@ -22,6 +23,15 @@ export default async function submitForm(initialState: any, formData: FormData):
     if (!bodyText) {
         return {
             error: 'Please enter a message'
+        };
+    }
+
+    const recaptchaToken = formData.get('recaptchaToken');
+
+    const isRecaptchaValid = await recaptcha.isValid(recaptchaToken);
+    if (!isRecaptchaValid) {
+        return {
+            error: 'We were unable to validate ReCAPTCHA. Please try again or reach out on socials.'
         };
     }
 

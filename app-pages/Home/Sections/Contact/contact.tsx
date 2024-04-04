@@ -23,6 +23,7 @@ export default function Contact() {
                         initialState={initialState}
                         inputStates={inputStates}
                         className="w-full"
+                        id="contact-form"
                     >
                         <Field inputId="contact-email" label="Email Address">
                             <FormInput
@@ -52,7 +53,7 @@ export default function Contact() {
                                 rows={6}
                             />
                         </Field>
-                        <SubmitButton>Send</SubmitButton>
+                        <SubmitButton recaptchaFormId="contact-form">Send</SubmitButton>
                     </Form>
                 </div>
                 <div className="">

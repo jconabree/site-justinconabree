@@ -8,11 +8,11 @@ import SailLogo from '@/components/Logos/Sail';
 import StructubeLogo from '@/components/Logos/Structube';
 import StokesLogo from '@/components/Logos/Stokes';
 
-import { getAssetQuery } from '@/graphql/assets.gql';
+import { getAssetByFileNameQuery } from '@/graphql/assets.gql';
 
 export default async function Work() {
     const { data } = await contentful.query({
-        query: getAssetQuery,
+        query: getAssetByFileNameQuery,
         variables: {
             filename: 'Justin_Conabree_Resume.pdf'
         }
