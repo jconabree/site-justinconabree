@@ -157,7 +157,7 @@ body {
   }
 
   .buttonAnaglyph {
-    @apply interactiveAnaglyph;
+    /* @apply interactiveAnaglyph; */
     @apply relative;
     @apply border-2;
   }

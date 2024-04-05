@@ -9,11 +9,12 @@ interface ButtonProps {
     children: React.ReactNode;
     onPress?: () => void;
     onClick?: () => void;
+    additionalClasses?: string;
     [key: string]: unknown;
 }
 
 const Button = (props: ButtonProps) => {
-    const { priority = 'primary', children, onPress, onClick, ...rest } = props;
+    const { priority = 'primary', additionalClasses, children, onPress, onClick, ...rest } = props;
 
     const handleClick = useCallback(() => {
         if (typeof onPress === 'function') {
@@ -35,9 +36,14 @@ const Button = (props: ButtonProps) => {
         }
     }, [handleClick]);
 
+    const classList = [
+        classes[priority],
+        additionalClasses ?? null
+    ].filter(Boolean).join(' ');
+
     return (
         <button
-            className={classes[priority]}
+            className={classList}
             onClick={handleClick}
             onKeyDown={handleKeyDown}
             {...rest}

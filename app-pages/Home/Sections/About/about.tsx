@@ -15,7 +15,7 @@ export default async function About() {
     const profilePicture = data.assetCollection?.items?.[0]?.url;
 
     return (
-        <div className="h-full w-full flex flex-wrap items-center justify-center py-24">
+        <div className="h-full w-full flex flex-wrap items-center justify-center pt-36 pb-24">
             <div className="flex flex-wrap gap-4 max-w-7xl px-10 items-center justify-center">
                 <div className={classes.attributeItem}>Full-stack Developer</div>
                 <div className={classes.attributeItem}>Problem Solver</div>
@@ -28,7 +28,7 @@ export default async function About() {
                 <div className={classes.attributeItem}>Performance Analysis</div>
                 <div className={classes.attributeItem}>Code Optimization</div>
                 <div className={classes.attributeItem}>Team Player</div>
-                <div className={classes.attributeItem}>Leadership</div>
+                <div className={classes.attributeItem}>Leader and Coach</div>
                 <div className={classes.attributeItem}>Agile Project Management</div>
                 <div className={classes.attributeItem}>Cross Functional Team Management</div>
                 <div className={classes.attributeItem}>Stakeholder Communications</div>

@@ -71,7 +71,7 @@ export default async function Work() {
                     <a
                         href="https://github.com/jconabree"
                         target="_blank"
-                        className="button-primary py-4 px-8 text-lg anchor"
+                        className="button-primary py-4 px-8 text-lg anchor-clear"
                         title="Personal Github"
                     >
                         Github (P)
@@ -81,7 +81,7 @@ export default async function Work() {
                     <a
                         href="https://github.com/justinconabree"
                         target="_blank"
-                        className="button-primary py-4 px-8 text-lg anchor"
+                        className="button-primary py-4 px-8 text-lg anchor-clear"
                         title="Work Github"
                     >
                         Github (W)
@@ -92,7 +92,7 @@ export default async function Work() {
                         <a
                             href={resumeLink}
                             target="_blank"
-                            className="button-primary py-4 px-8 text-lg anchor"
+                            className="button-primary py-4 px-8 text-lg anchor-clear"
                         >
                             Resume
                         </a>

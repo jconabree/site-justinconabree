@@ -43,7 +43,7 @@ const Header = () => {
     return (
         <header className={isScrolled ? classes.headerScrolled : classes.header}>
             <div className={classes.contact}>
-                <Button>Contact</Button>
+                <Button additionalClasses="bg-white">Contact</Button>
             </div>
             <div className={classes.logo}>
                 <Link href="/">
