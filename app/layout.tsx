@@ -9,7 +9,6 @@ import GoogleRecaptchaProvider from '@/providers/GoogleRecaptchaProvider';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import SplineProvider from '@/providers/SplineProvider';
 import SectionProvider from '@/providers/SectionProvider';
 
 const inter = Inter({
@@ -42,11 +41,9 @@ export default function RootLayout({
                     <GoogleRecaptchaProvider recaptchaKey={process.env.RECAPTCHA_SITE_KEY}>
                         <Header />
                         <GsapProvider>
-                            <SplineProvider>
-                                <SectionProvider>
-                                    {children}
-                                </SectionProvider>
-                            </SplineProvider>
+                            <SectionProvider>
+                                {children}
+                            </SectionProvider>
                         </GsapProvider>
                         <Footer />
                     </GoogleRecaptchaProvider>

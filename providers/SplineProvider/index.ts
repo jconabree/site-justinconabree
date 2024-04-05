@@ -1,1 +1,0 @@
-export { default, useSplineContext } from './splineProvider';

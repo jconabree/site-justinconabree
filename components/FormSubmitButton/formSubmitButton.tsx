@@ -43,7 +43,7 @@ export default function FormSubmitButton(props: InputProps) {
             type: 'button',
             onPress: handleSubmit
         }
-    }, [recaptchaFormId])
+    }, [recaptchaFormId, getRecaptchaData])
 
     return (
         <>
