@@ -8,7 +8,7 @@ interface SplineSceneProps {
 }
 
 export default function SplineScene(props: SplineSceneProps) {
-  const { sceneUrl, ...rest } = props;
+  const { sceneUrl, removeBaseStyles, ...rest } = props;
 
   return (
     <Spline

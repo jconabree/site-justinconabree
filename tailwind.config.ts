@@ -14,6 +14,15 @@ const config: Config = {
         '-sm': {
           max: '639px'
         },
+        '-md': {
+          max: '767px'
+        },
+        '-lg': {
+          max: '1023px'
+        },
+        '-xl': {
+          max: '1279px'
+        },
         '3xl': '1700px'
       },
       backgroundImage: {
@@ -30,8 +39,10 @@ const config: Config = {
         lg: '1.25rem',
         xl: '2rem',
         '2xl': '2.25rem',
-        '3xl': '4rem',
-        '4xl': '5rem',
+        '3xl': '3rem',
+        '3.5xl': '3.5rem',
+        '4xl': '4rem',
+        '4.5xl': '5rem',
         '5xl': '8rem',
         '6xl': '9rem',
         '7xl': '12rem',
@@ -66,7 +77,7 @@ const config: Config = {
       zIndex: {
         '1': '1',
         rightNav: '30',
-        header: '35',
+        header: '500',
         max: '1000'
       },
       spacing: {

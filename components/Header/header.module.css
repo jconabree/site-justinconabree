@@ -21,7 +21,6 @@
 
 .logo {
     composes: -sm_flex-grow from global;
-    composes: -sm_pl-32 from global;
     composes: -sm_text-center from global;
     composes: px-4 from global;
     composes: z-1 from global;
@@ -29,6 +28,8 @@
 
 .actions {
     composes: px-6 from global;
+    composes: -sm_absolute from global;
+    composes: -sm_right-0 from global;
 }
 
 .contact {

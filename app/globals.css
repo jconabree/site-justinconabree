@@ -95,7 +95,7 @@ body {
 
   .title-hero {
     @apply titleAnaglyph;
-    @apply text-3xl;
+    @apply text-3.5xl;
     @apply leading-none;
     @apply md_text-5xl;
     @apply lg_text-6xl;
@@ -114,7 +114,7 @@ body {
   h2, .title-h2 {
     @apply titleAnaglyph;
     @apply text-2xl;
-    @apply xl_text-3xl;
+    @apply xl_text-4.5xl;
   }
   
   h3, .title-h3 {

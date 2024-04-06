@@ -43,7 +43,7 @@ export default async function Work() {
                     </div>
                 </div>
             </div>
-            <div className="py-16 w-full">
+            <div className="pt-36 pb-16 w-full">
                 <div className="w-full text-center px-10 font-header text-2xl font-black pb-8">Major Brands I've Worked With</div>
                 <Marquee autoFill speed={100} gradient>
                     <span className="flex items-center px-16">
