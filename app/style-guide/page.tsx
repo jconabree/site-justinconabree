@@ -2,7 +2,7 @@ import Button from '@/components/Button';
 
 export default function StyleGuide() {
     return (
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
+        <main className="flex min-h-screen flex-col items-center justify-between py-24 px-10 xl_px-24">
         <div className="py-24 px-10">
             <div className="text-3xl font-semibold mb-12">Style Guide</div>
             <div className="py-12">
