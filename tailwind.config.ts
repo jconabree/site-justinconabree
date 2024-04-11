@@ -50,8 +50,8 @@ const config: Config = {
         '9xl': '18rem',
       },
       letterSpacing: {
-        wide: '3px',
-        widest: '5px',
+        wide: '0.17em',
+        widest: '0.19em',
       },
       lineHeight: {
         '0': '0',

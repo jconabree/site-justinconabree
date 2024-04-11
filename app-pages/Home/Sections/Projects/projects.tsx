@@ -1,6 +1,7 @@
 import Link from "next/link";
 import contentful from '@/api/contentful';
 import { getFeaturedPortfolioQuery } from '@/graphql/portfolio.gql';
+import Anaglyph from '@/components/Anaglyph';
 import ProjectList from '@/components/ProjectList';
 
 export default async function Projects() {
@@ -13,7 +14,7 @@ export default async function Projects() {
     return (
         <div className="w-full p-10 xl_p-24">
             <div className="max-w-full flex flex-wrap items-baseline">
-                <span className="title-h1 mr-16">Projects</span>
+                <Anaglyph component="span" className="title-h1 mr-16">Projects</Anaglyph>
                 <Link href="/projects" className="anchor-clear">See All</Link>
             </div>
             <div className="py-16">

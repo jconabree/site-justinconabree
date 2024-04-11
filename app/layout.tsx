@@ -52,10 +52,10 @@ export default function RootLayout({
                 <svg width="0" height="0">
                     <filter id="rgb-split">
                         <feOffset in="SourceGraphic" dx="2" dy="2" result="layer-one" />
-                        <feComponentTransfer in="layer-one" result="red">
+                        <feComponentTransfer in="layer-one" result="magenta">
                             <feFuncR type="identity" />
                             <feFuncG type="discrete" tableValues="0" />
-                            <feFuncB type="discrete" tableValues="0" />
+                            <feFuncB type="identity" />
                         </feComponentTransfer>
 
                         <feOffset in="SourceGraphic" dx="-2" dy="-2" result="layer-two" />
@@ -65,7 +65,7 @@ export default function RootLayout({
                             <feFuncB type="identity" />
                         </feComponentTransfer>
 
-                        <feBlend in="red" in2="cyan" mode="screen" result="color-split" />
+                        <feBlend in="magenta" in2="cyan" mode="screen" result="color-split" />
                     </filter>
                 </svg>
 			</body>

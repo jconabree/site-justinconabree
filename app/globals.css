@@ -19,12 +19,13 @@ body {
 @layer base {
   :root {
     --tw-anaglyph-color1: rgb(30,242,241);
-    --tw-anaglyph-color2: rgb(246,5,10);
+    --tw-anaglyph-color2: rgb(247, 0, 255);
     --tw-anaglyph-text-ofx1: -2px;
     --tw-anaglyph-text-ofx2: 2px;
     --tw-anaglyph-text-ofy1: 0;
     --tw-anaglyph-text-ofy2: 0;
-    --tw-anaglyph-text-blur: 1px;
+    --tw-anaglyph-text-blur: 0;
+    --tw-anaglyph-shadow-blur: 1px;
   }
 
   .ah-secondary {
@@ -35,7 +36,8 @@ body {
   .ah-wide {
     --tw-anaglyph-text-ofx1: -4px;
     --tw-anaglyph-text-ofx2: 4px;
-    --tw-anaglyph-text-blur: 3px;
+    --tw-anaglyph-text-blur: 0;
+    --tw-anaglyph-shadow-blur: 3px;
   }
 
   .ah-hidden {
@@ -45,9 +47,8 @@ body {
   }
 
   .text-shadow-ah {
-    text-shadow: var(--tw-anaglyph-text-ofx1) var(--tw-anaglyph-text-ofy1) var(--tw-anaglyph-text-blur) var(--tw-anaglyph-color1), var(--tw-anaglyph-text-ofx2) var(--tw-anaglyph-text-ofy2) var(--tw-anaglyph-text-blur) var(--tw-anaglyph-color2);
+    text-shadow: 0 0 var(--tw-anaglyph-text-blur) currentColor, var(--tw-anaglyph-text-ofx1) var(--tw-anaglyph-text-ofy1) var(--tw-anaglyph-shadow-blur) var(--tw-anaglyph-color1), var(--tw-anaglyph-text-ofx2) var(--tw-anaglyph-text-ofy2) var(--tw-anaglyph-shadow-blur) var(--tw-anaglyph-color2);
   }
-
 
   .textAnaglyph {
     @apply text-clip;
@@ -254,5 +255,32 @@ body {
   .imageAnaglyph {
     filter: saturate(0.6) url(#rgb-split);
     transform: translateZ(0);
+  }
+
+
+
+  .halftone {
+    position: relative;
+    background: white;
+    filter: contrast(50);
+  }
+  
+  .halftone::before {
+    --bgSize: 1.4rem;
+    --bgPosition: calc(var(--bgSize) / 2);
+    --stop1: 3%;
+    --stop2: 45%;
+    
+    content: '';
+    position: absolute;
+    width: 20%;
+    height: 10%;
+    top: 0;
+    right: 0;
+    background-repeat: round;
+    background-position: center;
+    background-image: radial-gradient(circle at center, black var(--stop1), transparent var(--stop2)), radial-gradient(circle at center, black var(--stop1), transparent var(--stop2));
+    background-size: var(--bgSize) var(--bgSize);
+    background-position: 0 0, var(--bgPosition) var(--bgPosition);
   }
 }

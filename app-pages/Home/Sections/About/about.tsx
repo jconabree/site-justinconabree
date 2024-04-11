@@ -1,6 +1,7 @@
 import Image from 'next/image';
 
 import contentful from '@/api/contentful';
+import Anaglyph from '@/components/Anaglyph';
 import { getAssetByTitleQuery } from '@/graphql/assets.gql';
     
 import classes from './about.module.css';
@@ -35,12 +36,15 @@ export default async function About() {
             </div>
             <div className="flex flex-wrap justify-center items-center w-full px-10 py-20">
                 <div className="w-full lg_w-1/2">
-                    <div className="imageAnaglyphWrapper max-w-full">
-                        <Image src={profilePicture} width={869} height={1405} className="imageAnaglyph w-full" alt="A portrait of me (Justin Conabree)" />
+                    <div className="max-w-full">
+                        <Image src={profilePicture} width={869} height={1405} className="w-full" alt="A portrait of me (Justin Conabree)" />
                     </div>
                 </div>
                 <div className="w-full lg_w-1/3">
-                    <div className="text-2xl md_text-6xl text-right font-header font-bold emphasis-secondary-wide leading-none">Some Cool Tag Line About Me</div>
+                    <Anaglyph wide component="div" className="text-2xl md_text-6xl text-right font-header font-bold emphasis-secondary-wide leading-none">
+                        {/* <div className="halftone" /> */}
+                        Some Cool Tag Line About Me
+                    </Anaglyph>
                     <div className="text-lg text-right mt-6">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint, quidem! Delectus alias reiciendis esse accusamus sed ad, voluptates nesciunt voluptate cupiditate quibusdam fugit ea totam optio, assumenda distinctio obcaecati amet?</div>
                 </div>
             </div>

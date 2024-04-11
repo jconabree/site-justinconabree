@@ -1,5 +1,6 @@
 import contentful from '@/api/contentful';
 
+import Anaglyph from '@/components/Anaglyph';
 import Marquee from '@/components/Marquee';
 import AdobeLogo from '@/components/Logos/Adobe';
 import HMLogo from '@/components/Logos/HM';
@@ -24,7 +25,7 @@ export default async function Work() {
             <div className="bg-gray-100 w-full py-24 flex flex-wrap items-center justify-center">
                 <div className="w-full flex flex-wrap xl_max-w-1/2">
                     <div className="w-full md_w-1/2 px-10 flex flex-col justify-center">
-                        <div className="title-h2 titleAnaglyph">Currently:</div>
+                        <Anaglyph component="div" className="title-h2 titleAnaglyph">Currently:</Anaglyph>
                         <div className="font-bold pl-1">Valtech: Senior Practice Expertise Developer</div>
                     </div>
                     <div className="w-full md_w-1/2 px-10 xl_pl-24">

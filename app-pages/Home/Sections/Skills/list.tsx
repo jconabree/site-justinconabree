@@ -71,6 +71,7 @@ export default function List(props: ListProps) {
                     {skills.map((area) => {
                         return (
                             <Button
+                                key={area.title}
                                 additionalClasses={activeArea?.title === area.title ? 'bg-black text-white' : ''}
                                 onPress={() => {
                                     setActiveArea(area);
@@ -88,24 +89,26 @@ export default function List(props: ListProps) {
                     <div className={`flex flex-wrap items-center content-center justify-center gap-x-6 gap-y-4 transition-all duration-300 pt-16 pb-4 px-10 lg_absolute lg_z-20 lg_top-0 ${infoPanelPosition}`}>
                         {activeArea.skills.map((skill) => {
                             return (
-                                <div className="pill py-2">{skill}</div>
+                                <div key={skill} className="pill py-2">{skill}</div>
                             )
                         })}
                     </div>
                 )}
-                <div className="-lg_!h-half w-full lg_h-screen">
-                    <SplineScene
-                        // sceneUrl="https://prod.spline.design/TPSBPXDN11-pbNdR/scene.splinecode"
-                        removeBaseStyles
-                        sceneUrl="https://prod.spline.design/KTvduh6qmWNEDzah/scene.splinecode"
-                        onLoad={(spline: SplineApplication) => {
-                            if (!spline) {
-                                return;
-                            }
+                <div className="w-full imageAnaglyphWrapper">
+                    <div className="-lg_!h-half w-full lg_h-screen imageAnaglyph">
+                        <SplineScene
+                            // sceneUrl="https://prod.spline.design/TPSBPXDN11-pbNdR/scene.splinecode"
+                            removeBaseStyles
+                            sceneUrl="https://prod.spline.design/KTvduh6qmWNEDzah/scene.splinecode"
+                            onLoad={(spline: SplineApplication) => {
+                                if (!spline) {
+                                    return;
+                                }
 
-                            setSpline(spline);
-                        }}
-                    />
+                                setSpline(spline);
+                            }}
+                        />
+                    </div>
                 </div>
             </div>
         </>
