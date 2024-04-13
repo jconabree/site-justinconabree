@@ -18,26 +18,35 @@ body {
 }
 @layer base {
   :root {
-    --tw-anaglyph-color1: rgb(30,242,241);
-    --tw-anaglyph-color2: rgb(247, 0, 255);
-    --tw-anaglyph-text-ofx1: -2px;
-    --tw-anaglyph-text-ofx2: 2px;
+    --tw-anaglyph-color1: rgb(68, 68, 68);
+    --tw-anaglyph-color2: theme(colors.sun.DEFAULT);
+    --tw-anaglyph-text-ofx1: 0;
+    --tw-anaglyph-text-ofx2: 0;
     --tw-anaglyph-text-ofy1: 0;
     --tw-anaglyph-text-ofy2: 0;
     --tw-anaglyph-text-blur: 0;
-    --tw-anaglyph-shadow-blur: 1px;
+    --tw-anaglyph-shadow-blur: 0;
+    --tw-anaglyph-bs-color1: rgba(68, 68, 68, 0.2);
+    --tw-anaglyph-bs-color2: theme(colors.sun.DEFAULT);
   }
 
   .ah-secondary {
-    --tw-anaglyph-color1: rgb(30,242,241);
-    --tw-anaglyph-color2: rgb(255, 248, 42);
+    --tw-anaglyph-color1: rgb(49, 49, 49);
+    --tw-anaglyph-color2: rgb(81, 81, 81);
+  }
+
+  .ah-normal {
+    --tw-anaglyph-text-ofx1: -2px;
+    --tw-anaglyph-text-ofx2: 2px;
+    --tw-anaglyph-text-blur: 0;
+    --tw-anaglyph-shadow-blur: 3px;
   }
 
   .ah-wide {
-    --tw-anaglyph-text-ofx1: -4px;
-    --tw-anaglyph-text-ofx2: 4px;
+    --tw-anaglyph-text-ofx1: 0;
+    --tw-anaglyph-text-ofx2: 0;
     --tw-anaglyph-text-blur: 0;
-    --tw-anaglyph-shadow-blur: 3px;
+    --tw-anaglyph-shadow-blur: 0;
   }
 
   .ah-hidden {
@@ -48,6 +57,10 @@ body {
 
   .text-shadow-ah {
     text-shadow: 0 0 var(--tw-anaglyph-text-blur) currentColor, var(--tw-anaglyph-text-ofx1) var(--tw-anaglyph-text-ofy1) var(--tw-anaglyph-shadow-blur) var(--tw-anaglyph-color1), var(--tw-anaglyph-text-ofx2) var(--tw-anaglyph-text-ofy2) var(--tw-anaglyph-shadow-blur) var(--tw-anaglyph-color2);
+  }
+
+  .box-shadow-ah {
+    box-shadow: var(--tw-anaglyph-text-ofx1) var(--tw-anaglyph-text-ofy1) var(--tw-anaglyph-shadow-blur) var(--tw-anaglyph-bs-color1), var(--tw-anaglyph-text-ofx2) var(--tw-anaglyph-text-ofy2) var(--tw-anaglyph-shadow-blur) var(--tw-anaglyph-bs-color2)
   }
 
   .textAnaglyph {
@@ -158,7 +171,6 @@ body {
   }
 
   .buttonAnaglyph {
-    /* @apply interactiveAnaglyph; */
     @apply relative;
     @apply border-2;
   }
@@ -201,18 +213,25 @@ body {
     border-width: 0;
   }
 
+  .button-base {
+    @apply relative;
+    @apply border-2;
+  }
+
   .button-primary {
-    @apply buttonAnaglyph;
+    @apply button-base;
+    @apply rounded-full;
     @apply border-black;
   }
 
   .button-secondary {
-    @apply buttonAnaglyph;
+    @apply button-base;
+    @apply rounded-full;
     @apply border-white;
   }
 
   .button-tertiary {
-    @apply buttonAnaglyph;
+    @apply button-base;
     @apply border-white;
   }
 
@@ -222,16 +241,14 @@ body {
   }
 
   .pill {
-    @apply button-secondary;
-    @apply rounded-full;
-    @apply before_rounded-full;
-    @apply after_rounded-full;
+    @apply button-primary;
     @apply px-8;
     @apply py-0.5;
-    @apply border-white;
+    @apply border-black;
     @apply pointer-events-none;
     @apply text-center;
-    text-shadow: none;
+    @apply transition-all;
+    @apply box-shadow-ah;
   }
 
 

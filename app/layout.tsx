@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Inter, Ubuntu } from "next/font/google";
+import { Inter, Ubuntu, Montserrat } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
 import CookieConsentOverlay from '@/components/CookieConsentOverlay';
@@ -11,17 +12,39 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import SectionProvider from '@/providers/SectionProvider';
 
-const inter = Inter({
+const bodyFont = Montserrat({
     subsets: ["latin"],
-    variable: '--font-inter',
+    variable: '--font-body',
     display: 'swap'
 });
-const ubuntu = Ubuntu({
-    subsets: ["latin"],
-    weight: ['400', '500', '700'],
-    variable: '--font-ubuntu',
-    display: 'swap'
-});
+
+// const headerFont = localFont({
+//     src: '../fonts/BabaPro-Bold.woff2',
+//     display: 'swap',
+//     variable: '--font-header'
+// })
+
+const headerFont = localFont({
+    src: [
+        {
+            path: '../fonts/earthorbiter.woff2',
+            weight: '400',
+            style: 'normal'
+        },
+        {
+            path: '../fonts/earthorbiterbold.woff2',
+            weight: '600',
+            style: 'normal'
+        },
+        {
+            path: '../fonts/earthorbiterxtrabold.woff2',
+            weight: '700',
+            style: 'normal'
+        },
+    ],
+    display: 'swap',
+    variable: '--font-header'
+})
 
 export const metadata: Metadata = {
 	title: "Justin Conabree",
@@ -35,7 +58,7 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en">
-			<body className={`font-sans ${inter.variable} ${ubuntu.variable}`}>
+			<body className={`font-sans ${bodyFont.variable} ${headerFont.variable}`}>
 				<CookieConsentProvider>
                     <GoogleAnalytics analyticsId={process.env.GOOGLE_ANALYTICS_ID} />
                     <GoogleRecaptchaProvider recaptchaKey={process.env.RECAPTCHA_SITE_KEY}>

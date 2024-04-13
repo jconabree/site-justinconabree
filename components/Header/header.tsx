@@ -47,7 +47,7 @@ const Header = () => {
             </div>
             <div className={classes.logo}>
                 <Link href="/">
-                    <Logo width={200} />
+                    <Logo width={200} className={`text-lg font-semibold font-header tracking-wide transition-colors ${!isScrolled ? 'text-white' : ''}`} />
                 </Link>
             </div>
             <div className={classes.actions}>

@@ -17,7 +17,7 @@ export default async function About() {
 
     return (
         <div className="h-full w-full flex flex-wrap items-center justify-center pt-36 pb-24">
-            <div className="flex flex-wrap gap-4 max-w-7xl px-10 items-center justify-center">
+            <Anaglyph component="div" className="flex flex-wrap gap-4 max-w-7xl px-10 items-center justify-center">
                 <div className={classes.attributeItem}>Full-stack Developer</div>
                 <div className={classes.attributeItem}>Problem Solver</div>
                 <div className={classes.attributeItem}>Highly Adaptive</div>
@@ -33,7 +33,7 @@ export default async function About() {
                 <div className={classes.attributeItem}>Agile Project Management</div>
                 <div className={classes.attributeItem}>Cross Functional Team Management</div>
                 <div className={classes.attributeItem}>Stakeholder Communications</div>
-            </div>
+            </Anaglyph>
             <div className="flex flex-wrap justify-center items-center w-full px-10 py-20">
                 <div className="w-full lg_w-1/2">
                     <div className="max-w-full">

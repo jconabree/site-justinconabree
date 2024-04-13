@@ -10,6 +10,11 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      colors: {
+        sun: {
+          DEFAULT: '#dfc18a'
+        }
+      },
       screens: {
         '-sm': {
           max: '639px'
@@ -31,8 +36,8 @@ const config: Config = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       fontFamily: {
-        sans: ['var(--font-inter)', ...defaultTheme.fontFamily.sans],
-        header: ['var(--font-ubuntu)', ...defaultTheme.fontFamily.serif],
+        sans: ['var(--font-body)', ...defaultTheme.fontFamily.sans],
+        header: ['var(--font-header)', ...defaultTheme.fontFamily.serif],
       },
       fontSize: {
         '0': '0',
@@ -81,7 +86,14 @@ const config: Config = {
         max: '1000'
       },
       spacing: {
-        full: '100%'
+        full: '100%',
+        screen: '100vh'
+      },
+      aspectRatio: {
+        '4/3': '4 / 3'
+      },
+      borderRadius: {
+        '1/3': '33.3333%'
       }
     },
   },

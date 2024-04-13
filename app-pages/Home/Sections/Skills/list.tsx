@@ -23,41 +23,7 @@ interface ListProps {
 
 export default function List(props: ListProps) {
     const { skills } = props;
-    const [spline, setSpline] = useState<SplineApplication>();
     const [activeArea, setActiveArea] = useState<TechSkill>();
-
-    useEffect(() => {
-        if (!spline) {
-            return;
-        }
-
-        const handleResize = () => {
-            const isDesktop = window.innerWidth >= 1024;
-
-            spline.setVariable('isDesktop', isDesktop);
-        }
-
-        window.addEventListener('resize', handleResize);
-        handleResize();
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        }
-    }, [spline]);
-
-    useEffect(() => {
-        if (!spline) {
-            return;
-        }
-
-        spline.setVariables(
-            Object.fromEntries(
-                Object.values(CortexTypes).map((type) => {
-                    return [`${type}Active`, activeArea?.activeCortex === 'both' || activeArea?.activeCortex === type];
-                })
-            )
-        );
-    }, [activeArea]);
 
     const infoPanelPosition = !activeArea || activeArea.activeCortex === 'both' ?
         'lg_left-0 lg_w-full lg_h-half' :
@@ -66,13 +32,14 @@ export default function List(props: ListProps) {
 
     return (
         <>
-            <div className="bg-white py-2 px-10 -lg_sticky -lg_z-50 top-14 md_top-20 lg_top-auto">
+            <div className="py-2 px-10 -lg_sticky -lg_z-50 top-14 md_top-20 lg_top-auto">
                 <div className="w-full relative flex flex-wrap justify-center align-center gap-x-8 gap-y-3">
                     {skills.map((area) => {
                         return (
                             <Button
+                                priority="secondary"
                                 key={area.title}
-                                additionalClasses={activeArea?.title === area.title ? 'bg-black text-white' : ''}
+                                additionalClasses={activeArea?.title === area.title ? 'bg-white text-black' : ''}
                                 onPress={() => {
                                     setActiveArea(area);
                                 }}
@@ -84,7 +51,7 @@ export default function List(props: ListProps) {
                 </div>
             </div>
             
-            <div className="w-full relative">
+            <div className="w-full relative min-h-screen">
                 {activeArea && (
                     <div className={`flex flex-wrap items-center content-center justify-center gap-x-6 gap-y-4 transition-all duration-300 pt-16 pb-4 px-10 lg_absolute lg_z-20 lg_top-0 ${infoPanelPosition}`}>
                         {activeArea.skills.map((skill) => {
@@ -94,22 +61,6 @@ export default function List(props: ListProps) {
                         })}
                     </div>
                 )}
-                <div className="w-full imageAnaglyphWrapper">
-                    <div className="-lg_!h-half w-full lg_h-screen imageAnaglyph">
-                        <SplineScene
-                            // sceneUrl="https://prod.spline.design/TPSBPXDN11-pbNdR/scene.splinecode"
-                            removeBaseStyles
-                            sceneUrl="https://prod.spline.design/KTvduh6qmWNEDzah/scene.splinecode"
-                            onLoad={(spline: SplineApplication) => {
-                                if (!spline) {
-                                    return;
-                                }
-
-                                setSpline(spline);
-                            }}
-                        />
-                    </div>
-                </div>
             </div>
         </>
     )
