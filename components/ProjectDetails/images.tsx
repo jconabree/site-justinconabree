@@ -9,10 +9,6 @@ import Image from 'next/image';
 import { IPortfolioItem } from '@/components/ProjectList/projectList';
 import Modal from '@/components/Modal';
 
-interface Carousel {
-    slickGoTo: (index: number) => void;
-}
-
 interface ImagesProps {
     images: IPortfolioItem['imagesCollection']['items']
     title: string;
@@ -20,8 +16,8 @@ interface ImagesProps {
 
 export default function Images(props: ImagesProps) {
 	const { images, title } = props;
-    const [smallCarousel, setSmallCarousel] = useState<Carousel|null>(null);
-    const [fullCarousel, setFullCarousel] = useState<Carousel|null>(null);
+    const [smallCarousel, setSmallCarousel] = useState<Slick|null>(null);
+    const [fullCarousel, setFullCarousel] = useState<Slick|null>(null);
     const [isFullOpen, setFullOpen] = useState<boolean>(false);
 
     const onFullClose = () => {
@@ -45,7 +41,7 @@ export default function Images(props: ImagesProps) {
 		<>
             <div className="py-10">
                 <Slick
-                    ref={(carousel: Carousel) => {
+                    ref={(carousel: Slick) => {
                         setSmallCarousel(carousel);
                     }}
                     infinite
@@ -81,7 +77,7 @@ export default function Images(props: ImagesProps) {
                 size="full"
             >
                 <Slick
-                    ref={(carousel: Carousel) => {
+                    ref={(carousel: Slick) => {
                         setFullCarousel(carousel);
                     }}
                     infinite
