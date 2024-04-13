@@ -8,7 +8,7 @@
 
 .menuButtonClose {
     composes: menuButton;
-    composes: mr-4 from global;
+    composes: lg_mr-4 from global;
 }
 
 .menuButtonIcon {

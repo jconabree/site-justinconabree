@@ -1,14 +1,14 @@
 "use client";
 
-import { useCallback } from 'react';
+import { KeyboardEventHandler, MouseEventHandler, useCallback } from 'react';
 
 import classes from './button.module.css';
 
 interface ButtonProps {
     priority?: 'primary'|'secondary'|'tertiary'|'danger';
     children: React.ReactNode;
-    onPress?: () => void;
-    onClick?: () => void;
+    onPress?: (() => void)|MouseEventHandler<HTMLButtonElement>|KeyboardEventHandler<HTMLButtonElement>;
+    onClick?: (() => void)|MouseEventHandler<HTMLButtonElement>|KeyboardEventHandler<HTMLButtonElement>;
     additionalClasses?: string;
     [key: string]: unknown;
 }
@@ -16,15 +16,17 @@ interface ButtonProps {
 const Button = (props: ButtonProps) => {
     const { priority = 'primary', additionalClasses, children, onPress, onClick, ...rest } = props;
 
-    const handleClick = useCallback(() => {
+    const handleClick = useCallback((event: React.MouseEvent<HTMLButtonElement>|React.KeyboardEvent<HTMLButtonElement>) => {
         if (typeof onPress === 'function') {
-            onPress();
+            // @ts-ignore
+            onPress(event);
 
             return;
         }
 
         if (typeof onClick === 'function') {
-            onClick();
+            // @ts-ignore
+            onClick(event);
 
             return;
         }
@@ -32,7 +34,7 @@ const Button = (props: ButtonProps) => {
 
     const handleKeyDown = useCallback((event: React.KeyboardEvent<HTMLButtonElement>) => {
         if (event.key === 'Enter') {
-            handleClick();
+            handleClick(event);
         }
     }, [handleClick]);
 

@@ -109,31 +109,35 @@ body {
 
   .title-hero {
     @apply titleAnaglyph;
-    @apply text-3.5xl;
+    @apply text-2xl;
+    @apply sm_text-3.5xl;
     @apply leading-none;
-    @apply md_text-5xl;
-    @apply lg_text-6xl;
-    @apply xl_text-7xl;
-    @apply 2xl_text-8xl;
+    @apply md_text-4xl;
+    @apply lg_text-5xl;
+    @apply xl_text-6xl;
+    @apply 2xl_text-7xl;
     @apply xl_leading-over-loose;
   }
 
   h1, .title-h1 {
     @apply titleAnaglyph;
     @apply leading-tight;
-    @apply text-3xl;
+    @apply text-xl;
+    @apply sm_text-3xl;
     @apply xl_text-5xl;
   }
   
   h2, .title-h2 {
     @apply titleAnaglyph;
-    @apply text-2xl;
+    @apply text-lg;
+    @apply sm_text-2xl;
     @apply xl_text-4.5xl;
   }
   
   h3, .title-h3 {
     @apply titleAnaglyph;
-    @apply text-xl;
+    @apply text-lg;
+    @apply sm_text-xl;
     @apply xl_text-2xl;
   }
   
@@ -249,6 +253,11 @@ body {
     @apply text-center;
     @apply transition-all;
     @apply box-shadow-ah;
+  }
+
+  .pill-secondary {
+    @apply pill;
+    @apply button-secondary;
   }
 
 

@@ -1,10 +1,15 @@
 "use client";
 
-import { Document } from '@contentful/rich-text-types';
+import { useCallback, useState } from 'react';
 import { useRouter } from 'next/navigation'
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import { useCallback, useState } from 'react';
+
+import { Document } from '@contentful/rich-text-types';
+
+import Modal from '@/components/Modal';
+
+
 const ProjectDetails = dynamic(() => import('@/components/ProjectDetails'), {
     loading: () => null
 });

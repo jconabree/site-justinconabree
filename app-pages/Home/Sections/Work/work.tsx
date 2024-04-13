@@ -22,26 +22,26 @@ export default async function Work() {
 
     return (
         <div className="h-full w-full">
-            <div className="bg-gray-100 w-full py-24 flex flex-wrap items-center justify-center">
-                <div className="w-full flex flex-wrap xl_max-w-1/2">
-                    <div className="w-full md_w-1/2 px-10 flex flex-col justify-center">
+            <div className="bg-gray-100 w-full py-24 grid grid-cols-1 md_grid-cols-2 gap-x-8 gap-y-12 items-center justify-center">
+                <div className="px-10 flex flex-col justify-center items-end">
+                    <div>
                         <Anaglyph component="div" className="title-h2 titleAnaglyph">Currently:</Anaglyph>
-                        <div className="font-bold pl-1">Valtech: Senior Practice Expertise Developer</div>
+                        <div className="font-semibold text-lg text-center pr-1">Senior Practice Expertise Developer (Adobe) @ Valtech</div>
                     </div>
-                    <div className="w-full md_w-1/2 px-10 xl_pl-24">
-                        <div className="w-full text-xl font-bold mb-6">Responsabilities</div>
-                        <ul>
-                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                            <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
-                        </ul>
-                    </div>
+                </div>
+                <div className="px-10 xl_pl-24">
+                    <div className="w-full title-h4 pb-3">Responsabilities</div>
+                    <ul>
+                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+                        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit.</li>
+                    </ul>
                 </div>
             </div>
             <div className="pt-36 pb-16 w-full">
@@ -68,11 +68,12 @@ export default async function Work() {
                 </Marquee>
             </div>
             <div className="flex flex-wrap w-full xl_max-w-2/3 mx-auto py-16 px-10">
+            <div className="w-full text-center px-10 font-header text-2xl font-black">Links</div>
                 <div className="w-full sm_w-1/2 text-center py-16">
                     <a
                         href="https://github.com/jconabree"
                         target="_blank"
-                        className="button-primary py-4 px-8 text-lg anchor-clear"
+                        className="button-primary py-3 px-8 text-lg anchor-clear"
                         title="Personal Github"
                     >
                         Github (P)
@@ -82,7 +83,7 @@ export default async function Work() {
                     <a
                         href="https://github.com/justinconabree"
                         target="_blank"
-                        className="button-primary py-4 px-8 text-lg anchor-clear"
+                        className="button-primary py-3 px-8 text-lg anchor-clear"
                         title="Work Github"
                     >
                         Github (W)
@@ -93,7 +94,7 @@ export default async function Work() {
                         <a
                             href={resumeLink}
                             target="_blank"
-                            className="button-primary py-4 px-8 text-lg anchor-clear"
+                            className="button-primary py-3 px-8 text-lg anchor-clear"
                         >
                             Resume
                         </a>

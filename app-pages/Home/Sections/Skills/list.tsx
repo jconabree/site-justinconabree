@@ -1,14 +1,8 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { Application as SplineApplication } from '@splinetool/runtime';
-import SplineScene from '@/components/SplineScene';
+import { useEffect, useMemo, useState } from 'react';
 import Button from '@/components/Button';
-
-enum CortexTypes {
-    left = 'left',
-    right = 'right'
-}
+import classes from './list.module.css';
 
 interface TechSkill {
     title: string;
@@ -23,40 +17,84 @@ interface ListProps {
 
 export default function List(props: ListProps) {
     const { skills } = props;
-    const [activeArea, setActiveArea] = useState<TechSkill>();
+    const [activeArea, setActiveArea] = useState<string>();
+    const [loadingAnimation, setLoadingAnimation] = useState<boolean>();
+    const [delayRender, setDelayRender] = useState<boolean>();
 
-    const infoPanelPosition = !activeArea || activeArea.activeCortex === 'both' ?
-        'lg_left-0 lg_w-full lg_h-half' :
-        activeArea.activeCortex === CortexTypes.right ? 'lg_left-full lg_-translate-x-full lg_w-1/2 2xl_w-1/3 lg_h-full' :
-        'lg_left-0 lg_w-1/2 2xl_w-1/3 lg_h-full';
+    useEffect(() => {
+        setTimeout(() => {
+            setDelayRender(false);
+        }, 1000);
+        setTimeout(() => {
+            setLoadingAnimation(false);
+        }, 2100);
+    }, [activeArea]);
+
+    const activeSkills = useMemo<string[]|null>(() => {
+        if (!activeArea) {
+            return null;
+        }
+
+        if (activeArea === 'all') {
+            return skills.reduce((skillList: string[], area: TechSkill) => {
+                area.skills.forEach((skill) => {
+                    if (!skillList.includes(skill)) {
+                        skillList.push(skill);
+                    }
+                });
+
+                return skillList;
+            }, []);
+        }
+
+        return skills.find((area) => area.title === activeArea)!.skills;
+    }, [activeArea])
 
     return (
         <>
-            <div className="py-2 px-10 -lg_sticky -lg_z-50 top-14 md_top-20 lg_top-auto">
+            <div className="py-6 px-10 -lg_sticky -lg_z-50 top-14 md_top-20 lg_top-auto">
                 <div className="w-full relative flex flex-wrap justify-center align-center gap-x-8 gap-y-3">
                     {skills.map((area) => {
                         return (
                             <Button
                                 priority="secondary"
                                 key={area.title}
-                                additionalClasses={activeArea?.title === area.title ? 'bg-white text-black' : ''}
+                                additionalClasses={activeArea === area.title ? 'bg-white text-black' : ''}
                                 onPress={() => {
-                                    setActiveArea(area);
+                                    setLoadingAnimation(true);
+                                    setDelayRender(true);
+                                    setActiveArea(area.title);
                                 }}
+                                disabled={loadingAnimation || activeArea === area.title}
                             >
                                 {area.title}
                             </Button>
                         )
                     })}
+                    <Button
+                        priority="secondary"
+                        additionalClasses={activeArea === 'all' ? 'bg-white text-black' : ''}
+                        onPress={() => {
+                            setLoadingAnimation(true);
+                            setDelayRender(true);
+                            setActiveArea('all');
+                        }}
+                        disabled={loadingAnimation || activeArea === 'all'}
+                    >
+                        View All
+                    </Button>
                 </div>
             </div>
             
             <div className="w-full relative min-h-screen">
-                {activeArea && (
-                    <div className={`flex flex-wrap items-center content-center justify-center gap-x-6 gap-y-4 transition-all duration-300 pt-16 pb-4 px-10 lg_absolute lg_z-20 lg_top-0 ${infoPanelPosition}`}>
-                        {activeArea.skills.map((skill) => {
+                {loadingAnimation && (
+                    <div className={classes.loadingOverlay} />
+                )}
+                {!delayRender && activeArea && activeSkills && (
+                    <div className={`grid grid-cols-1 md_grid-cols-${Math.min(2, activeSkills.length)} lg_grid-cols-${Math.min(4, activeSkills.length)} gap-x-6 gap-y-4 pt-10 pb-4 px-10 3xl_max-w-2/3 mx-auto`}>
+                        {activeSkills.map((skill) => {
                             return (
-                                <div key={skill} className="pill py-2">{skill}</div>
+                                <div key={skill} className="border-b py-2">{skill}</div>
                             )
                         })}
                     </div>

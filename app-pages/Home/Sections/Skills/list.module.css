@@ -1,0 +1,96 @@
+.loadingOverlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    animation-name: fadeOut;
+    animation-delay: 1600ms;
+    animation-duration: 400ms;
+    animation-fill-mode: forwards;
+}
+
+.loadingOverlay::before {
+    content: '';
+    position: absolute;
+    z-index: 10;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    transform: translateY(0);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    animation-name: loadingBubbleWhite;
+    animation-duration: 600ms;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0;
+    animation-fill-mode: forwards;
+}
+
+.loadingOverlay::after {
+    content: '';
+    position: absolute;
+    z-index: 15;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    top: 0;
+    left: 0;
+    transform: translateY(-100%);
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    animation-name: loadingBubbleBlack;
+    animation-duration: 600ms;
+    animation-timing-function: ease-in-out;
+    animation-delay: 900ms;
+    animation-fill-mode: forwards;
+}
+
+@keyframes loadingBubbleWhite {
+    0% {
+        transform: translateY(100%);
+        border-top-left-radius: 50%;
+        border-top-right-radius: 50%;
+    }
+
+    75% {
+        border-top-left-radius: 50%;
+        border-top-right-radius: 50%;
+    }
+
+    100% {
+        transform: translateY(0);
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+}
+
+@keyframes loadingBubbleBlack {
+    0% {
+        transform: translateY(-100%);
+        border-bottom-left-radius: 50%;
+        border-bottom-right-radius: 50%;
+    }
+
+    75% {
+        border-bottom-left-radius: 50%;
+        border-bottom-right-radius: 50%;
+    }
+
+    100% {
+        transform: translateY(0);
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}

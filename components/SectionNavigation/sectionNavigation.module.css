@@ -67,8 +67,7 @@
      composes: top-1/2 from global;
      composes: -translate-y-1/2 from global;
      composes: transition-all from global;
-     composes: pr-8 from global;
-     composes: text-lg from global;
+     composes: pr-6 from global;
      composes: w-max from global;
      composes: duration-200 from global;
      composes: emphasis-secondary from global;

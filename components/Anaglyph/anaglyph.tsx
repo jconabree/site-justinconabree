@@ -49,12 +49,14 @@ export default function Anaglyph(props: AnaglyphProps) {
                 threshold: Array.from({ length: 9 }).map((_, index) => index === 0 ? 0 : 1/8 * index)
             });
 
-            observer.observe(element.current!);
+            const currentElement = element.current!;
+            observer.observe(currentElement);
 
             return () => {
-                observer.unobserve(element.current!);
+                observer.unobserve(currentElement);
             }
         }
+        // eslint-ignore-next-line react-hooks/exhaustive-deps
     }, [ready]);
 
     return (
