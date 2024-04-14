@@ -28,7 +28,8 @@ const config: Config = {
         '-xl': {
           max: '1279px'
         },
-        '3xl': '1700px'
+        '3xl': '1700px',
+        '4xl': '1900px'
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
@@ -77,7 +78,8 @@ const config: Config = {
       maxWidth: {
         '1/2': '50%',
         '1/3': '33.33337%',
-        '2/3': '66.66667%'
+        '2/3': '66.66667%',
+        'screen': '100vw'
       },
       zIndex: {
         '1': '1',

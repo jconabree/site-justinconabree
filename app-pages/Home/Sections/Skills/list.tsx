@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from 'react';
 import Button from '@/components/Button';
+import CornerRightUpIcon from '@/icons/CornerRightUp';
 import classes from './list.module.css';
 
 interface TechSkill {
@@ -87,6 +88,11 @@ export default function List(props: ListProps) {
             </div>
             
             <div className="w-full relative min-h-screen">
+                {!activeArea && (
+                    <div className="flex text-2xl items-end justify-start pl-80 pt-16 gap-4">
+                        Select a filter <CornerRightUpIcon width={80} height={80} className={`inline ${classes.showArrow}`} />
+                    </div>
+                )}
                 {loadingAnimation && (
                     <div className={classes.loadingOverlay} />
                 )}

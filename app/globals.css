@@ -11,6 +11,12 @@ body {
   background: white;
 }
 
+body.modalOpen {
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -95,6 +101,11 @@ body {
     @apply ah-wide;
   }
 
+  .title {
+    @apply max-w-screen;
+    @apply overflow-hidden;
+  }
+
   .titleAnaglyph {
     @apply font-header;
     @apply font-bold;
@@ -108,6 +119,7 @@ body {
   }
 
   .title-hero {
+    @apply title;
     @apply titleAnaglyph;
     @apply text-2xl;
     @apply sm_text-3.5xl;
@@ -120,14 +132,18 @@ body {
   }
 
   h1, .title-h1 {
+    @apply title;
     @apply titleAnaglyph;
     @apply leading-tight;
     @apply text-xl;
-    @apply sm_text-3xl;
-    @apply xl_text-5xl;
+    @apply sm_text-2xl;
+    @apply lg_text-3xl;
+    @apply 2xl_text-4xl;
+    @apply 4xl_text-5xl;
   }
   
   h2, .title-h2 {
+    @apply title;
     @apply titleAnaglyph;
     @apply text-lg;
     @apply sm_text-2xl;
@@ -135,6 +151,7 @@ body {
   }
   
   h3, .title-h3 {
+    @apply title;
     @apply titleAnaglyph;
     @apply text-lg;
     @apply sm_text-xl;
@@ -142,12 +159,14 @@ body {
   }
   
   h4, .title-h4 {
+    @apply title;
     @apply titleAnaglyph;
     @apply text-lg;
     @apply xl_text-xl;
   }
   
   h5, .title-h5 {
+    @apply title;
     @apply titleAnaglyph;
     @apply xl_text-lg;
   }

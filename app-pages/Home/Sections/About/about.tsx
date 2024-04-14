@@ -34,14 +34,14 @@ export default async function About() {
                 <div className={classes.attributeItem}>Cross Functional Team Management</div>
                 <div className={classes.attributeItem}>Stakeholder Communications</div>
             </div>
-            <div className="grid grid-cols-1 xl_grid-cols-2 justify-center items-center w-full px-10 py-20">
+            <div className="grid grid-cols-1 xl_grid-cols-2 gap-x-4 gap-y-12 justify-center items-center w-full px-10 2xl_px-24 py-20">
                 <div className="w-full">
                     <div className="max-w-full">
                         <Image src={profilePicture} width={869} height={1405} className="w-full" alt="A portrait of me (Justin Conabree)" />
                     </div>
                 </div>
                 <div className="w-full">
-                    <Anaglyph wide component="div" className="text-2xl md_text-6xl text-right font-header font-bold emphasis-secondary-wide leading-none">
+                    <Anaglyph wide component="div" className="text-2xl sm_text-4xl lg_text-6xl text-right font-header font-bold emphasis-secondary-wide leading-none">
                         Some Cool Tag Line About Me
                     </Anaglyph>
                     <div className="text-lg text-right mt-6">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint, quidem! Delectus alias reiciendis esse accusamus sed ad, voluptates nesciunt voluptate cupiditate quibusdam fugit ea totam optio, assumenda distinctio obcaecati amet?</div>

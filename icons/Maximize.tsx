@@ -1,6 +1,6 @@
 import { SVGAttributes } from "react";
 
-export default function XIcon(props: SVGAttributes<SVGElement>) {
+export default function MaximizeIcon(props: SVGAttributes<SVGElement>) {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -14,8 +14,10 @@ export default function XIcon(props: SVGAttributes<SVGElement>) {
             strokeLinejoin="round"
             {...props}
         >
-            <line x1="18" y1="6" x2="6" y2="18"/>
-            <line x1="6" y1="6" x2="18" y2="18"/>
+            <polyline points="15 3 21 3 21 9"/>
+            <polyline points="9 21 3 21 3 15"/>
+            <line x1="21" y1="3" x2="14" y2="10"/>
+            <line x1="3" y1="21" x2="10" y2="14"/>
         </svg>
-    );
+    )
 }

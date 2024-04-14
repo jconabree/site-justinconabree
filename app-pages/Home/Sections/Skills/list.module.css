@@ -48,6 +48,10 @@
     animation-fill-mode: forwards;
 }
 
+.showArrow {
+    animation: 1400ms ease-in-out moveArrow infinite alternate;
+}
+
 @keyframes loadingBubbleWhite {
     0% {
         transform: translateY(100%);
@@ -92,5 +96,15 @@
     }
     100% {
         opacity: 0;
+    }
+}
+
+@keyframes moveArrow {
+    0% {
+        transform: translateY(-10%);
+    }
+
+    100% {
+        transform: translateY(5%);
     }
 }

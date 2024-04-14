@@ -1,13 +1,13 @@
 "use client";
 
 import Link from 'next/link';
+import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react';
 
 import Logo from '../Logo';
 import Menu from '../Menu';
 
 import classes from './header.module.css';
-import Button from '../Button';
 
 const menuLinks = [{
     url: '/',
@@ -22,6 +22,9 @@ const menuLinks = [{
 
 const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
+    const pathname = usePathname();
+    const isHome = pathname === '/';
+
     useEffect(() => {
         if (!globalThis?.document?.addEventListener) {
             return;
@@ -43,11 +46,11 @@ const Header = () => {
     return (
         <header className={isScrolled ? classes.headerScrolled : classes.header}>
             <div className={classes.contact}>
-                <Button additionalClasses="bg-white">Contact</Button>
+                <Link className="button-primary block py-2 px-6 font-bold transition-colors bg-white" href="/contact">Contact</Link>
             </div>
             <div className={classes.logo}>
                 <Link href="/">
-                    <Logo width={200} className={`text-lg font-semibold font-header tracking-wide transition-colors ${!isScrolled ? 'text-white' : ''}`} />
+                    <Logo width={200} className={`text-lg font-semibold font-header tracking-wide transition-colors ${isHome && !isScrolled ? 'text-white' : ''}`} />
                 </Link>
             </div>
             <div className={classes.actions}>

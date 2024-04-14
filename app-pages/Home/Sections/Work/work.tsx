@@ -23,7 +23,7 @@ export default async function Work() {
     return (
         <div className="h-full w-full">
             <div className="bg-gray-100 w-full py-24 grid grid-cols-1 md_grid-cols-2 gap-x-8 gap-y-12 items-center justify-center">
-                <div className="px-10 flex flex-col justify-center items-end">
+                <div className="px-10 flex flex-col justify-center items-start md_items-end">
                     <div>
                         <Anaglyph component="div" className="title-h2 titleAnaglyph">Currently:</Anaglyph>
                         <div className="font-semibold text-lg text-center pr-1">Senior Practice Expertise Developer (Adobe) @ Valtech</div>

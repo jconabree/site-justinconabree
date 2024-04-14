@@ -56,7 +56,7 @@ export default function Anaglyph(props: AnaglyphProps) {
                 observer.unobserve(currentElement);
             }
         }
-        // eslint-ignore-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [ready]);
 
     return (

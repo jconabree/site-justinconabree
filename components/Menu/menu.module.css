@@ -93,7 +93,9 @@
     composes: mt-32 from global;
     composes: w-full from global;
     composes: text-right from global;
-    composes: text-6xl from global;
+    composes: text-3xl from global;
+    composes: lg_text-5xl from global;
+    composes: xl_text-6xl from global;
     composes: font-bold from global;
     composes: pr-16 from global;
     composes: font-header from global;
