@@ -36,7 +36,7 @@ export default async function About() {
             </div>
             <div className="grid grid-cols-1 xl_grid-cols-2 gap-x-4 gap-y-12 justify-center items-center w-full px-10 2xl_px-24 py-20">
                 <div className="w-full">
-                    <div className="max-w-full">
+                    <div className="max-w-full rounded-3xl overflow-hidden">
                         <Image src={profilePicture} width={869} height={1405} className="w-full" alt="A portrait of me (Justin Conabree)" />
                     </div>
                 </div>
