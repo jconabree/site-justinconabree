@@ -79,7 +79,9 @@ const config: Config = {
         '1/2': '50%',
         '1/3': '33.33337%',
         '2/3': '66.66667%',
-        'screen': '100vw'
+        'screen': '100vw',
+        'screen-sm': '640px',
+        'screen-md': '768px'
       },
       zIndex: {
         '1': '1',
