@@ -10,7 +10,7 @@ export default function Hero() {
                     sceneUrl="https://prod.spline.design/V3aWT7tFTf9IuUM2/scene.splinecode"
                 />
                 <div className="absolute top-screen -translate-y-full left-0 px-10 w-full pb-10">
-                    <Anaglyph component="h1" className="title-hero text-white">Web Developer</Anaglyph>
+                    <Anaglyph component="h1" className="title-hero text-white">Full-Stack Developer</Anaglyph>
                 </div>
             </div>
         </>
