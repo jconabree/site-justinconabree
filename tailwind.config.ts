@@ -54,6 +54,7 @@ const config: Config = {
         '7xl': '12rem',
         '8xl': '14rem',
         '9xl': '18rem',
+        'dmax': '11lvw'
       },
       letterSpacing: {
         wide: '0.17em',

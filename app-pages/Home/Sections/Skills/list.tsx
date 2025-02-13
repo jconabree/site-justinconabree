@@ -25,10 +25,10 @@ export default function List(props: ListProps) {
     useEffect(() => {
         setTimeout(() => {
             setDelayRender(false);
-        }, 1000);
+        }, 750);
         setTimeout(() => {
             setLoadingAnimation(false);
-        }, 2100);
+        }, 1650);
     }, [activeArea]);
 
     const activeSkills = useMemo<string[]|null>(() => {

@@ -4,7 +4,7 @@
     height: 100%;
     overflow: hidden;
     animation-name: fadeOut;
-    animation-delay: 1600ms;
+    animation-delay: 1200ms;
     animation-duration: 400ms;
     animation-fill-mode: forwards;
 }
@@ -23,7 +23,7 @@
     border-top-left-radius: 0;
     border-top-right-radius: 0;
     animation-name: loadingBubbleWhite;
-    animation-duration: 600ms;
+    animation-duration: 400ms;
     animation-timing-function: ease-in-out;
     animation-delay: 0;
     animation-fill-mode: forwards;
@@ -42,14 +42,14 @@
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     animation-name: loadingBubbleBlack;
-    animation-duration: 600ms;
+    animation-duration: 400ms;
     animation-timing-function: ease-in-out;
-    animation-delay: 900ms;
+    animation-delay: 700ms;
     animation-fill-mode: forwards;
 }
 
 .showArrow {
-    animation: 1400ms ease-in-out moveArrow infinite alternate;
+    animation: 1100ms ease-in-out moveArrow infinite alternate;
 }
 
 @keyframes loadingBubbleWhite {
