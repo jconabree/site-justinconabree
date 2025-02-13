@@ -12,7 +12,7 @@ type DynamicVideoProps = VideoHTMLAttributes<HTMLVideoElement> & {
     mediaSources: VideoMediaSource[]
 };
 
-export default ({
+const DynamicVideo = ({
     defaultSrc,
     mediaSources,
     ...videoProps
@@ -68,7 +68,7 @@ export default ({
                 clearTimeout(delayedChangeTimeout);
             }
         }
-    }, []);
+    }, [defaultSrc, mediaSources]);
 
     if (!currentSrc) {
         return null;
@@ -77,4 +77,6 @@ export default ({
     return (
         <video {...videoProps} ref={videoRef} src={currentSrc} />
     );
-}
+};
+
+export default DynamicVideo;

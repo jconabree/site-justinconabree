@@ -58,7 +58,7 @@ export default function Anaglyph(props: AnaglyphProps) {
         observer.observe(currentElement);
 
         return observer;
-    }, []);
+    }, [disableScrollTopCheck, wide]);
 
     useEffect(() => {
         if (ready) {
