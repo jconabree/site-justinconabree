@@ -22,9 +22,17 @@
 
 .logo {
     composes: -sm_flex-grow from global;
-    composes: -sm_text-center from global;
+    composes: -sm_text-left from global;
     composes: px-4 from global;
     composes: z-1 from global;
+}
+
+.logoText {
+
+}
+
+.menuOpen .logoText {
+    @apply text-black;
 }
 
 .actions {
@@ -38,4 +46,8 @@
     composes: pl-4 from global;
     composes: xl_pl-0 from global;
     composes: sm_block from global;
+}
+
+.menuOpen .contact {
+    @apply z-1;
 }

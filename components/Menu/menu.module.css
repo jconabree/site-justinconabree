@@ -2,13 +2,17 @@
     composes: p-4 from global;
     composes: leading-0 from global;
     composes: text-0 from global;
-    composes: relative from global;
+    composes: absolute from global;
+    composes: top-1/2 from global;
+    composes: right-6 xl_right-12 from global;
+    composes: right-12 from global;
+    composes: -translate-y-1/2 from global;
     composes: z-1 from global;
 }
 
 .menuButtonClose {
     composes: menuButton;
-    composes: lg_mr-4 from global;
+    @apply right-8 xl_right-16;
 }
 
 .menuButtonIcon {
@@ -29,7 +33,8 @@
 }
 
 :global(.header-scrolled) .burgerLine,
-:global(header:has(+ .content-page)) .burgerLine {
+:global(header:has(+ .content-page)) .burgerLine,
+.menuButtonClose .burgerLine {
     @apply border-black;
 }
 
@@ -81,17 +86,19 @@
     composes: bg-white from global;
     composes: transition-all from global;
     composes: duration-200 from global;
+    composes: pr-4 pt-12 xl_pt-20 from global;
 }
 
 .menu {
     composes: baseMenu;
-    composes: pointer-events-none from global;
     composes: opacity-0 from global;
+    composes: pointer-events-none from global;
 }
 
 .menuOpen {
     composes: baseMenu;
     @apply opacity-100;
+    @apply pointer-events-auto;
 }
 
 .navList {
@@ -102,14 +109,41 @@
     composes: lg_text-5xl from global;
     composes: xl_text-6xl from global;
     composes: font-bold from global;
-    composes: pr-16 from global;
+    composes: pr-8 xl_pr-16 from global;
     composes: font-header from global;
+    composes: max-h-screen from global;
+    composes: overflow-y-auto from global;
+    max-height: calc(100vh - theme(spacing.20));
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+}
+
+.navList > li {
+    line-height: 1.3;
+}
+
+.navList::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
+
+@screen md {
+    .navList {
+        font-size: min(calc(80*1vh / var(--number-of-items) * .65), 20vw);
+    }
+}
+
+@screen xl {
+    .navList {
+        max-height: calc(100vh - theme(spacing.32));
+    }
 }
 
 .link {
-    composes: anchor from global;
+    composes: anchor-secondary from global;
+    @apply underline-offset-neg1;
 }
 
 .activeLink {
-    composes: emphasis-secondary-wide from global;
+    composes: emphasis-wide from global;
+    composes: hover_ah-hidden from global;
 }

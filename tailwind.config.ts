@@ -12,7 +12,8 @@ const config: Config = {
     extend: {
       colors: {
         sun: {
-          DEFAULT: '#dfc18a'
+          yellow: '#dfc18a',
+          DEFAULT: '#e7c6b4'
         }
       },
       screens: {
@@ -67,6 +68,7 @@ const config: Config = {
       },
       textUnderlineOffset: {
         3: '3px',
+        neg1: '-1px'
       },
       height: {
         'half': '50vh',

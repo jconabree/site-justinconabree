@@ -1,19 +1,21 @@
 "use client";
 
 import { usePathname } from 'next/navigation';
-import { useCallback, useEffect, useState } from 'react';
+import { CSSProperties, useCallback, useEffect, useState } from 'react';
 
 import classes from './menu.module.css';
 import Link from './link';
 
-interface MenuProps {
+type MenuProps = {
     links: {
         url: string;
         text: string;
-    }[]
-}
+    }[];
+    onChange?: (state: boolean) => void;
+};
+
 export default function Menu(props: MenuProps) {
-    const { links } = props;
+    const { links, onChange } = props;
     const [isOpen, setIsOpen] = useState(false);
 
     const pathname = usePathname();
@@ -23,32 +25,37 @@ export default function Menu(props: MenuProps) {
     }, []);
 
     useEffect(() => {
-        if (isOpen) {
-            document.body.style.height = '100%';
-            document.body.style.overflow = 'hidden';
-
-            return;
-        }
-
-        document.body.style.removeProperty('height');
-        document.body.style.removeProperty('overflow');
-    }, [isOpen]);
-
-    useEffect(() => {
         setIsOpen(false);
     }, [pathname]);
 
+    useEffect(() => {
+        if (typeof onChange === 'function') {
+            onChange(isOpen);
+        }
+
+        if (isOpen) {
+            document.body.classList.add('modal-open');
+        } else {
+            document.body.classList.remove('modal-open');
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isOpen]);
+
     return (
-        <>
-            <button className={isOpen ? classes.menuButtonClose : classes.menuButton} onClick={toggleMenu}>
+        <div>
+            <button
+                className={isOpen ? classes.menuButtonClose : classes.menuButton}
+                onClick={toggleMenu}
+                aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            >
                 <div className={classes.menuButtonIcon}>
                     <span className={classes.burgerTop} />
                     <span className={classes.burgerMiddle} />
                     <span className={classes.burgerBottom} />
                 </div>
             </button>
-            <nav className={isOpen ? classes.menuOpen : classes.menu}>
-                <ul className={classes.navList}>
+            <nav className={isOpen ? classes.menuOpen : classes.menu} aria-hidden={isOpen}>
+                <ul className={classes.navList} style={{ '--number-of-items': links.length } as CSSProperties}>
                     {links.map((link) => {
                         const { url, text } = link;
 
@@ -66,6 +73,6 @@ export default function Menu(props: MenuProps) {
                     })}
                 </ul>
             </nav>
-        </>
-    )
+        </div>
+    );
 }

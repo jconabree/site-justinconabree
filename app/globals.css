@@ -11,12 +11,6 @@ body {
   background: white;
 }
 
-body.modalOpen {
-  height: 100%;
-  overflow: hidden;
-  width: 100%;
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -49,10 +43,10 @@ body.modalOpen {
   }
 
   .ah-wide {
-    --tw-anaglyph-text-ofx1: 0;
-    --tw-anaglyph-text-ofx2: 0;
+    --tw-anaglyph-text-ofx1: -4px;
+    --tw-anaglyph-text-ofx2: 4px;
     --tw-anaglyph-text-blur: 0;
-    --tw-anaglyph-shadow-blur: 0;
+    --tw-anaglyph-shadow-blur: 3px;
   }
 
   .ah-hidden {
@@ -70,6 +64,7 @@ body.modalOpen {
   }
 
   .textAnaglyph {
+    @apply transition-all;
     @apply text-clip;
     @apply tracking-widest;
     @apply text-shadow-ah;
@@ -83,6 +78,7 @@ body.modalOpen {
   .emphasis {
     @apply textAnaglyph;
     @apply tracking-wide;
+    @apply ah-normal;
   }
 
   .emphasis-wide {
@@ -92,6 +88,7 @@ body.modalOpen {
 
   .emphasis-secondary {
     @apply emphasis;
+    @apply ah-normal;
     @apply ah-secondary;
   }
 
@@ -191,6 +188,12 @@ body.modalOpen {
   .anchor {
     @apply interactiveAnaglyph;
     @apply anchor-clear;
+  }
+
+  .anchor-secondary {
+    @apply anchor;
+    @apply no-underline;
+    @apply hover_underline;
   }
 
   .buttonAnaglyph {
@@ -329,6 +332,12 @@ body.modalOpen {
     background-size: var(--bgSize) var(--bgSize);
     background-position: 0 0, var(--bgPosition) var(--bgPosition);
   }
+}
+
+html:has(body.modal-open), body.modal-open {
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
 }
 
 .grecaptcha-badge { visibility: hidden; }

@@ -1,7 +1,8 @@
+import "./globals.css";
+
 import type { Metadata } from "next";
 import { Inter, Ubuntu, Montserrat } from "next/font/google";
 import localFont from "next/font/local";
-import "./globals.css";
 
 import CookieConsentOverlay from '@/components/CookieConsentOverlay';
 import CookieConsentProvider from '@/providers/CookieConsentProvider';
