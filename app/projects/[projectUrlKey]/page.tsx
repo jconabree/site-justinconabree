@@ -5,14 +5,14 @@ import ProjectDetails from '@/components/ProjectDetails';
 import Link from 'next/link';
 
 interface ProjectDetailPageProps {
-    params: {
+    params: Promise<{
         projectUrlKey: string;
-    }
+    }>
 }
 
-export default async function ProjectDetailPage(props : ProjectDetailPageProps) {
+export default async function ProjectDetailPage(props: ProjectDetailPageProps) {
     const { params } = props;
-    const { projectUrlKey } = params;
+    const { projectUrlKey } = await params;
 
     const { data } = await contentful.query({
         query: getPortfolioDetailsQuery,
@@ -41,7 +41,7 @@ export default async function ProjectDetailPage(props : ProjectDetailPageProps) 
 
 export async function generateMetadata(props: ProjectDetailPageProps) {
     const { params } = props;
-    const { projectUrlKey } = params;
+    const { projectUrlKey } = await params;
 
     const { data } = await contentful.query({
         query: getPortfolioDetailsQuery,

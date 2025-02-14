@@ -1,6 +1,6 @@
 'use client';
 
-import { forwardRef } from 'react';
+import React, { forwardRef } from 'react';
 import Marquee from '@/components/Marquee';
 import AdobeLogo from '@/components/Logos/Adobe';
 import HMLogo from '@/components/Logos/HM';
@@ -13,7 +13,7 @@ import ObservedContent from '@/components/ObservedContent';
 import classes from './companies.module.css'
 
 
-export default async function Companies() {
+export default function Companies() {
     return (
         <ObservedContent
             onIntersect={(entries) => {
@@ -24,7 +24,7 @@ export default async function Companies() {
                     );
                 });
             }}
-            component={forwardRef<HTMLDivElement>((props, ref) => {
+            component={({ ref }: { ref: React.RefObject<HTMLDivElement> }) => {
                 return (
                     <div ref={ref} className={classes.root}>
                         <Marquee autoFill speed={100} gradient>
@@ -49,7 +49,7 @@ export default async function Companies() {
                         </Marquee>
                     </div>
                 );
-            })}
+            }}
         />
     )
 }

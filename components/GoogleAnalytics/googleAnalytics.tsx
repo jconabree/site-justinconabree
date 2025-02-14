@@ -15,7 +15,7 @@ declare global {
 const GoogleAnalytics = (props: GoogleAnalyticsProps) => {
     const { analyticsId } = props;
 
-    const initialized = useRef<boolean>();
+    const initialized = useRef<boolean>(false);
 
     const { consent } = useCookieConsentContext();
 

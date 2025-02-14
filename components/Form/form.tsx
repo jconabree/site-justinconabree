@@ -1,7 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
-import { useFormState } from 'react-dom';
+import { useMemo, useActionState } from 'react';
 
 interface FormProps {
     submitAction: (initialState: any, formData: FormData) => Promise<{ [key: string]: string; } | { [key: string]: string; }>,
@@ -18,7 +17,7 @@ interface FormProps {
 export default function Form(props: FormProps) {
     const { children, submitAction, initialState, inputStates, ...formProps } = props;
 
-    const [state, formAction] = useFormState(submitAction, initialState);
+    const [state, formAction] = useActionState(submitAction, initialState);
 
     const isDirty = useMemo(() => {
         return Object.values(inputStates).includes(true);

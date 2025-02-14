@@ -18,7 +18,7 @@ interface ObservedContentInternalProps extends ObservedContentProps {
 export default function ObservedContent(props: ObservedContentInternalProps) {
     const { component: Component, onIntersect, margin, ...rest } = props;
     const element = useRef(null);
-    const currentObserver = useRef<IntersectionObserver>();
+    const currentObserver = useRef<IntersectionObserver>(null);
     const { ready } = useWaitForReady();
 
     const bindObserver = useCallback((rootMargin: string) => {
