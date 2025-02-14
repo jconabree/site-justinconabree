@@ -21,11 +21,16 @@
     composes: absolute from global;
     composes: right-0 from global;
     composes: block from global;
-    composes: border-black from global;
+    composes: border-white from global;
     composes: border-b from global;
     composes: transition-all from global;
     composes: duration-200 from global;
     composes: origin-center from global;
+}
+
+:global(.header-scrolled) .burgerLine,
+:global(header:has(+ .content-page)) .burgerLine {
+    @apply border-black;
 }
 
 .burgerTop {

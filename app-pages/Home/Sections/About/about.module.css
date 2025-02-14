@@ -1,3 +1,42 @@
 .attributeItem {
     composes: pill from global;
 }
+
+.printingWrapper {
+    @apply relative;
+    @apply overflow-hidden;
+    @apply inline-block;
+    @apply align-bottom;
+}
+
+.printingMask {
+    @apply block;
+    @apply absolute;
+    @apply h-full w-full;
+    @apply bottom-1 left-0;
+    @apply z-1;
+    @apply bg-white;
+    animation: printMask 6s steps(6, end) infinite;
+}
+
+.printingMask::after {
+    content: '';
+    @apply block;
+    @apply absolute;
+    @apply w-full h-1;
+    @apply -bottom-1 left-0;
+    @apply bg-white;
+    animation: printHead 1s steps(20, end) infinite;
+}
+
+@keyframes printMask {
+    to {
+        transform: translateY(-120%);
+    }
+}
+
+@keyframes printHead {
+    to {
+        transform: translateX(100%);
+    }
+}

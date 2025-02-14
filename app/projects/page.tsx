@@ -16,7 +16,7 @@ export default async function Projects() {
     const items = data?.portfolioItemCollection?.items;
 
     return (
-        <main className="flex min-h-screen flex-col p-24">
+        <main className="flex min-h-screen flex-col p-24 content-page">
             <div className="title-h1 w-full mb-8">Projects</div>
             <div className="mb-16 w-full">Browse projects I&apos;ve worked on</div>
             <ProjectList items={items} navigateOnClick />

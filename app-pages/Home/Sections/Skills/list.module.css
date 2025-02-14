@@ -49,7 +49,7 @@
 }
 
 .showArrow {
-    animation: 1100ms ease-in-out moveArrow infinite alternate;
+    animation: 800ms ease-in-out moveArrow infinite alternate;
 }
 
 @keyframes loadingBubbleWhite {

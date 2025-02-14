@@ -27,7 +27,7 @@ export default async function ProjectDetailPage(props : ProjectDetailPageProps) 
     }
 
     return (
-        <main className="flex min-h-screen flex-col p-24">
+        <main className="flex min-h-screen flex-col p-24 content-page">
             <div className="py-6">
                 <Link className="anchor text-sm" href="/projects">Back to Projects</Link>
             </div>

@@ -2,6 +2,11 @@
     composes: w-full from global;
     composes: pb-4 from global;
     composes: pt-16 from global;
+}
+
+.mainRow {
+    composes: w-full from global;
+    composes: py-4 from global;
     composes: flex from global;
     composes: -sm_flex-wrap from global;
     composes: justify-between from global;
@@ -32,4 +37,11 @@
 .footerLogo {
     composes: text-base from global;
     composes: font-semibold from global;
+}
+
+.recaptchaLegal {
+    composes: w-full from global;
+    composes: text-xs from global;
+    composes: text-center from global;
+    composes: px-4 from global;
 }

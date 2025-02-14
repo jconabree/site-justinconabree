@@ -89,8 +89,8 @@ export default function List(props: ListProps) {
             
             <div className="w-full relative min-h-screen">
                 {!activeArea && (
-                    <div className="flex text-2xl items-end justify-start pl-80 pt-16 gap-4">
-                        Select a filter <CornerRightUpIcon width={80} height={80} className={`inline ${classes.showArrow}`} />
+                    <div className="flex text-2xl gap-4 absolute left-1/2 top-0 -translate-x-full">
+                        Select a filter <CornerRightUpIcon width={32} height={32} className={`inline ${classes.showArrow}`} />
                     </div>
                 )}
                 {loadingAnimation && (

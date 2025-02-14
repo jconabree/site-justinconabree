@@ -17,6 +17,7 @@
 .headerScrolled {
     composes: header;
     composes: bg-white from global;
+    composes: header-scrolled from global;
 }
 
 .logo {

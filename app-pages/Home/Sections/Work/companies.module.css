@@ -1,0 +1,4 @@
+.root {
+    composes: w-full from global;
+    filter: grayscale(var(--grayscale-ratio, 0))
+}

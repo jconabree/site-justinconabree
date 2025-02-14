@@ -1,13 +1,7 @@
 import contentful from '@/api/contentful';
 
 import Anaglyph from '@/components/Anaglyph';
-import Marquee from '@/components/Marquee';
-import AdobeLogo from '@/components/Logos/Adobe';
-import HMLogo from '@/components/Logos/HM';
-import NestleLogo from '@/components/Logos/Nestle';
-import SailLogo from '@/components/Logos/Sail';
-import StructubeLogo from '@/components/Logos/Structube';
-import StokesLogo from '@/components/Logos/Stokes';
+import Companies from './companies';
 
 import { getAssetByFileNameQuery } from '@/graphql/assets.gql';
 
@@ -46,26 +40,7 @@ export default async function Work() {
             </div>
             <div className="pt-36 pb-16 w-full">
                 <div className="w-full text-center px-10 font-header text-2xl font-black pb-8">Major Brands I've Worked With</div>
-                <Marquee autoFill speed={100} gradient>
-                    <span className="flex items-center px-16">
-                        <NestleLogo className="h-auto" width={200} height={204.6} />
-                    </span>
-                    <span className="flex items-center px-16">
-                        <AdobeLogo className="h-auto" width={350} height={111.66} />
-                    </span>
-                    <span className="flex items-center px-16">
-                        <HMLogo height={100} />
-                    </span>
-                    <span className="flex items-center px-16">
-                        <SailLogo height={100} />
-                    </span>
-                    <span className="flex items-center px-16">
-                        <StructubeLogo width={350} />
-                    </span>
-                    <span className="flex items-center px-16">
-                        <StokesLogo className="h-auto" width={300} height={89.5} />
-                    </span>
-                </Marquee>
+                <Companies />
             </div>
             <div className="flex flex-wrap w-full xl_max-w-2/3 mx-auto py-16 px-10">
             <div className="w-full text-center px-10 font-header text-2xl font-black">Links</div>

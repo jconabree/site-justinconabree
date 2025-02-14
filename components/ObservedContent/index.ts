@@ -1,0 +1,1 @@
+export { default, type ObservedContentProps } from './observedContent';

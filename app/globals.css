@@ -265,6 +265,7 @@ body.modalOpen {
 
   .pill {
     @apply button-primary;
+    @apply rounded-md;
     @apply px-8;
     @apply py-0.5;
     @apply border-black;
@@ -329,3 +330,5 @@ body.modalOpen {
     background-position: 0 0, var(--bgPosition) var(--bgPosition);
   }
 }
+
+.grecaptcha-badge { visibility: hidden; }
