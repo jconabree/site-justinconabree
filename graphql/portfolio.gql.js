@@ -51,6 +51,9 @@ export const getAllItemUrls = gql`
             items {
                 id
                 urlKey
+                sys {
+                    publishedAt
+                }
             }
         }
     }

@@ -49,6 +49,7 @@ const config: Config = {
         '3.5xl': '3.5rem',
         '4xl': '4rem',
         '4.5xl': '5rem',
+        '4.75xl': '7rem',
         '5xl': '8rem',
         '6xl': '9rem',
         '7xl': '12rem',

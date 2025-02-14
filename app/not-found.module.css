@@ -1,0 +1,10 @@
+.main {
+    composes: flex from global;
+    composes: flex-col from global;
+    composes: justify-center from global;
+    composes: items-center from global;
+    composes: p-20 from global;
+    composes: min-h-screen from global;
+    composes: content-page from global;
+  }
+  

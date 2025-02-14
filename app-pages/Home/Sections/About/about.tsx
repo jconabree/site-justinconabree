@@ -41,10 +41,10 @@ export default async function About() {
                     </div>
                 </div>
                 <div className="w-full">
-                    <Anaglyph wide component="div" className="text-2xl sm_text-3xl lg_text-4.5xl mb-6 lg_mb-12 text-center xl_text-right font-header font-bold emphasis-secondary-wide leading-none">
-                        Passionate about making cool stuff
+                    <Anaglyph wide component="div" className="text-2xl sm_text-3xl lg_text-4.5xl 4xl_text-4.75xl mb-6 lg_mb-12 text-center xl_text-right font-header font-bold emphasis-secondary-wide leading-none">
+                        Passionate about making cool $#!?
                     </Anaglyph>
-                    <div className="text-lg text-center xl_text-right mt-6">
+                    <div className="text-lg text-center xl_text-right mt-6 xl_max-w-3xl xl_justify-self-end">
                         <p className="mb-3">"Maker" at heart, I enjoy building things. The conceptualising, problem solving, implementation, (more problem solving) and rush when it's complete.</p>
                         <p>With coding I get to do that every day for work and other personal projects, but I also enjoy <span className={classes.printingWrapper}>3D printing<span className={classes.printingMask}></span></span> and woodworking.</p>
                     </div>
