@@ -18,8 +18,7 @@ export default async function About() {
     return (
         <div className="h-full w-full flex flex-wrap items-center justify-center pt-36 pb-24">
             <div className="flex flex-wrap gap-4 max-w-7xl px-10 items-center justify-center">
-                <div className={classes.attributeItem}>Full-stack Developer</div>
-                <div className={classes.attributeItem}>Problem Solver</div>
+                <div className={classes.attributeItem}>Problem Solving</div>
                 <div className={classes.attributeItem}>Highly Adaptive</div>
                 <div className={classes.attributeItem}>Constantly Learning</div>
                 <div className={classes.attributeItem}>Product Innovation</div>

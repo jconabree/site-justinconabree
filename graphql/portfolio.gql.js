@@ -16,6 +16,8 @@ const PortfolioItemFragment = gql`
                 url
                 width
                 height
+                contentType
+                title
             }
         }
     }
@@ -24,7 +26,8 @@ const PortfolioItemFragment = gql`
 export const getFeaturedPortfolioQuery = gql`
     query GetFeaturedPortfolioItems {
         portfolioItemCollection (
-            where: { isFeatured: true }
+            where: { isFeatured: true },
+            order: [orderNumber_ASC]
         ) {
             items {
                 ...PortfolioItemFragment

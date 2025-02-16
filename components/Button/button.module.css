@@ -3,7 +3,6 @@
     composes: py-3 from global;
     composes: px-6 from global;
     composes: font-bold from global;
-    composes: transition-colors from global;
 }
 
 .primary {
@@ -31,4 +30,8 @@
     composes: text-red-600 from global;
     composes: hover_bg-red-600 from global;
     composes: hover_text-white from global;
+}
+
+.content {
+    composes: button-content from global;
 }

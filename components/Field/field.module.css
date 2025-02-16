@@ -18,12 +18,12 @@
 
 .field:has(textarea) label {
     @apply top-8;
-    @apply left-4;
 }
 
 .field input {
     @apply bg-transparent;
     @apply border-b;
+    @apply border-black;
     @apply text-base;
     @apply w-full;
 
@@ -39,9 +39,10 @@
 
 .field textarea {
     @apply bg-transparent;
-    @apply border;
+    @apply border-b;
+    @apply border-black;
     @apply text-base;
-    @apply p-4;
+    @apply py-4;
     @apply w-full;
 
     @apply focus_outline-0;

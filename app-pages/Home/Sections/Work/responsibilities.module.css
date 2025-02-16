@@ -1,0 +1,70 @@
+.itemActive {
+    text-shadow: 1px 0 0 currentColor;
+}
+
+.toggleButton {
+    composes: mr-2 from global;
+}
+
+.toggleIcon {
+    composes: relative block w-3 h-3 transition-transform from global;
+    composes: after_absolute after_top-1/2 after_left-0 after_h-0.5 after_w-full after_-translate-y-1/2 after_bg-black from global;
+    composes: before_absolute before_top-0 before_left-1/2 before_h-full before_w-0.5 before_-translate-x-1/2 before_bg-black from global;
+}
+
+.toggleIconOpen {
+    composes: toggleIcon;
+}
+
+.toggleIconClose {
+    composes: toggleIcon;
+    composes: rotate-45 from global;
+}
+
+.detailsPanel {
+    composes: absolute w-full lg_w-halfFullPx h-full left-0 top-0 bg-black lg_rounded-br-responsibilities from global;
+    composes: -translate-x-full transition-transform from global;
+}
+
+.detailsPanelOpen {
+    composes: detailsPanel;
+    @apply translate-x-0;
+    @apply z-1;
+}
+
+.curve {
+    composes: hidden lg_block from global;
+    composes: absolute top-0 right-0 translate-x-full h-1/2 w-60 bg-black after_absolute after_top-0 after_left-0 after_h-full after_w-full after_bg-gray-100 after_rounded-tl-responsibilities pointer-events-none from global;
+}
+
+.close {
+    composes: absolute top-6 right-6 lg_-right-6 z-1 text-white from global;
+    composes: opacity-0 transition-all from global;
+}
+
+.detailsPanelOpen .close {
+    @apply opacity-100;
+}
+
+.detailsContentWrapper {
+    composes: w-full h-full flex items-center justify-center px-8 py-16 relative from global;
+}
+
+.navigation {
+    composes: flex lg_hidden from global;
+    composes: justify-between items-center text-white from global;
+    composes: absolute bottom-0 left-0 w-full h-16 px-8 from global;
+}
+
+.detailsContent {
+    composes: text-white hidden max-w-2xl from global;
+}
+
+.detailsContentActive {
+    composes: detailsContent;
+    @apply block;
+}
+
+.detailsContent p {
+    @apply mb-2;
+}

@@ -1,0 +1,3 @@
+.submitButton {
+    composes: justify-self-end from global;
+}

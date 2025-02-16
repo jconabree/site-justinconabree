@@ -1,9 +1,14 @@
 class Recaptcha {
+    _lastResponse: null | { [key: string]: any } | {
+        success: false,
+        'error-codes': ['call-failed']
+    };
+
     constructor() {
         this._lastResponse = null;
     }
 
-    async validateToken(token) {
+    async validateToken(token: string) {
         const response = await fetch(
             `https://www.google.com/recaptcha/api/siteverify?secret=${process.env.RECAPTCHA_SECRET_KEY}&response=${token}`,
             {
@@ -17,11 +22,11 @@ class Recaptcha {
 
         return {
             success: false,
-            'error-code': ['call-failed']
-        }
+            'error-codes': ['call-failed']
+        };
     }
 
-    async isValid(token) {
+    async isValid(token: string) {
         const validateReponse = await this.validateToken(token);
 
         this._lastResponse = validateReponse;
@@ -30,7 +35,7 @@ class Recaptcha {
     }
 
     getLastErrorCodes() {
-        return this._lastResponse?.['error-codes']
+        return this._lastResponse?.['error-codes'];
     }
 }
 

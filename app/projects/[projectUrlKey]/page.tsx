@@ -31,7 +31,7 @@ export default async function ProjectDetailPage(props: ProjectDetailPageProps) {
             <div className="py-6">
                 <Link className="anchor text-sm" href="/projects">Back to Projects</Link>
             </div>
-            <div className="title-h1">{details.title}</div>
+            <h1>{details.title}</h1>
             <div className="w-full py-24">
                 <ProjectDetails details={details} />
             </div>

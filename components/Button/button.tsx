@@ -5,7 +5,7 @@ import { KeyboardEventHandler, MouseEventHandler, useCallback } from 'react';
 import classes from './button.module.css';
 
 interface ButtonProps {
-    priority?: 'primary'|'secondary'|'tertiary'|'danger';
+    priority?: 'primary'|'secondary'|'tertiary'|'danger'|'unset';
     children: React.ReactNode;
     onPress?: (() => void)|MouseEventHandler<HTMLButtonElement>|KeyboardEventHandler<HTMLButtonElement>;
     onClick?: (() => void)|MouseEventHandler<HTMLButtonElement>|KeyboardEventHandler<HTMLButtonElement>;
@@ -39,7 +39,7 @@ const Button = (props: ButtonProps) => {
     }, [handleClick]);
 
     const classList = [
-        classes[priority],
+        classes[priority] ?? null,
         additionalClasses ?? null
     ].filter(Boolean).join(' ');
 
@@ -50,7 +50,8 @@ const Button = (props: ButtonProps) => {
             onKeyDown={handleKeyDown}
             {...rest}
         >
-            {children}
+            {priority !== 'unset' && (<span className={classes.content}>{children}</span>)}
+            {priority === 'unset' && children}
         </button>
     )
 };

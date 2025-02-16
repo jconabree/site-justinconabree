@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback, useEffect } from 'react';
+import React, { useCallback, useEffect, useRef } from 'react';
 import { useFormStatus } from 'react-dom';
 
 interface InputProps {
@@ -17,6 +17,7 @@ export default function FormInput(props: InputProps) {
     const { type, setFormInputDirty, onChange, disabled, placeholder, ...inputProps } = props;
     const { name } = inputProps;
     const { pending } = useFormStatus();
+    const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
     const handleChange = useCallback((event: React.FormEvent<HTMLInputElement|HTMLTextAreaElement>) => {
         setFormInputDirty(name, true);
@@ -24,6 +25,14 @@ export default function FormInput(props: InputProps) {
         if (typeof onChange === 'function') {
             onChange(event);
         }
+
+        const textareaElement = textAreaRef.current || (inputProps.ref as React.RefObject<HTMLTextAreaElement>)?.current;
+        
+        if (textareaElement) {
+            textareaElement.style.height = '16px';
+            textareaElement.style.height = textareaElement.scrollHeight + 1 + 'px';
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [onChange, name, setFormInputDirty])
 
     useEffect(() => {
@@ -40,6 +49,7 @@ export default function FormInput(props: InputProps) {
                     disabled={pending||disabled}
                     onChange={handleChange}
                     placeholder={placeholder ? placeholder : ' '}
+                    ref={textAreaRef}
                     {...inputProps}
                 />
             );

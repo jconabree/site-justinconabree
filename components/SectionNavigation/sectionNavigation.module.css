@@ -1,6 +1,6 @@
 .root {
     composes: hidden from global;
-    composes: md_block from global;
+    composes: lg_block from global;
     composes: fixed from global;
     composes: top-1/2 from global;
     composes: -translate-y-1/2 from global;

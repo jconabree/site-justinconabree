@@ -20,7 +20,7 @@ const Footer = () => {
                     <Logo className={classes.footerLogo} />
                 </div>
                 <div className={classes.links}>
-                    <a href="linkedin" target='_blank'>LinkedIn</a>
+                    <a href="https://www.linkedin.com/in/justinconabree/" target='_blank'>LinkedIn</a>
                     <Link href="/contact">Contact</Link>
                 </div>
             </div>

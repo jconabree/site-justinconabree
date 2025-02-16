@@ -2,6 +2,7 @@ import { BLOCKS, Block, Inline, Document } from '@contentful/rich-text-types';
 import { documentToReactComponents, Options } from '@contentful/rich-text-react-renderer';
 
 import { getRenderer } from './Renderers';
+import classes from './richContent.module.css';
 
 interface RichContentProps {
     content: {
@@ -17,11 +18,12 @@ interface RichContentProps {
                 }[]
             }
         }
-    }
+    },
+    [key: string]: unknown
 }
 
 export default function RichContent(props: RichContentProps) {
-    const { content } = props;
+    const { content, ...rest } = props;
     const { json: jsonContent, links } = content;
 
     const options: Options = {
@@ -38,9 +40,18 @@ export default function RichContent(props: RichContentProps) {
                 }
                 
                 return null;
-            }
+            },
+            [BLOCKS.HEADING_1]: (_, children) => {
+                return (
+                    <div className="title-h1">{children}</div>
+                );
+            },
         }
     }
 
-    return documentToReactComponents(jsonContent, options);
+    return (
+        <div className={classes.richContent} {...rest}>
+            {documentToReactComponents(jsonContent, options)}
+        </div>
+    );
 }

@@ -79,28 +79,41 @@ export default function Images(props: ImagesProps) {
                     centerPadding="25%"
                     adaptiveHeight
                     arrows
-                    beforeChange={(current, next) => { setSmallIndex(next) }}
+                    beforeChange={(_, next) => { setSmallIndex(next) }}
                     nextArrow={<NextArrow />}
                     prevArrow={<PrevArrow />}
                 >
-                    {images.map((image, index) => {
-                        const alt = `${title} image ${index + 1}`;
+                    {images.map((image) => {
+                        const alt = `${title} - ${image.title}`;
 
                         return (
                             <div key={image.url} className="relative">
-                                <Image
-                                    src={image.url}
-                                    width={image.width}
-                                    height={image.height}
-                                    alt={alt}
-                                    className="max-h-full"
-                                />
-                                <button
-                                    className="absolute top-4 right-4 bg-white rounded-full p-4 border-black border-2"
-                                    onClick={() => { setFullOpen(true); }}
-                                >
-                                    <MaximizeIcon />
-                                </button>
+                                {image.contentType.includes('video') ? (
+                                    <video
+                                        src={image.url}
+                                        width={image.width}
+                                        height={image.height}
+                                        title={image.title}
+                                        controls
+                                        preload="metadata"
+                                    />
+                                ) : (
+                                    <>
+                                        <Image
+                                            src={image.url}
+                                            width={image.width}
+                                            height={image.height}
+                                            alt={alt}
+                                            className="max-h-full"
+                                        />
+                                        <button
+                                            className="absolute top-4 right-4 bg-white rounded-full p-4 border-black border-2"
+                                            onClick={() => { setFullOpen(true); }}
+                                        >
+                                            <MaximizeIcon />
+                                        </button>
+                                    </>
+                                )}
                             </div>
                         );
                     })}
@@ -131,7 +144,19 @@ export default function Images(props: ImagesProps) {
 
                             return (
                                 <div className={classes.fullSizeSlide} key={image.url}>
-                                    <div className={classes.fullSizeImage} style={{ backgroundImage: `url(${image.url})` }} />
+                                    {image.contentType.includes('video') ? (
+                                        <video
+                                            src={image.url}
+                                            width={image.width}
+                                            height={image.height}
+                                            title={image.title}
+                                            controls
+                                            preload="metadata"
+                                            className={classes.fullSizeVideo}
+                                        />
+                                    ) : (
+                                        <div className={classes.fullSizeImage} style={{ backgroundImage: `url(${image.url})` }} />
+                                    )}
                                 </div>
                             );
                         })}

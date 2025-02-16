@@ -11,6 +11,10 @@
     composes: bg-contain from global;
 }
 
+.fullSizeVideo {
+    composes: w-full h-full from global;
+}
+
 .slickArrow {
     composes: p-2 from global;
     composes: absolute from global;

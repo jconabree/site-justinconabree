@@ -242,18 +242,29 @@ body {
   .button-base {
     @apply relative;
     @apply border-2;
+
+    @apply overflow-hidden transition-all duration-500;
+    @apply before_absolute before_bottom-0 before_left-1/2 before_-translate-x-1/2 before_translate-y-full before_w-8 before_h-8 before_rounded-full before_transition-all before_duration-500;
+    @apply hover_before_translate-y-0 hover_before_w-full hover_before_h-full;
+  }
+
+  .button-content {
+    @apply z-1;
+    @apply relative;
   }
 
   .button-primary {
     @apply button-base;
     @apply rounded-full;
     @apply border-black;
+    @apply before_bg-black hover_text-white;
   }
 
   .button-secondary {
     @apply button-base;
     @apply rounded-full;
     @apply border-white;
+    @apply before_bg-white hover_text-black;
   }
 
   .button-tertiary {
@@ -264,6 +275,7 @@ body {
   .button-tertiary::before,
   .button-tertiary::after {
     @apply ah-secondary;
+    @apply hover_ah-normal;
   }
 
   .pill {
@@ -334,10 +346,9 @@ body {
   }
 }
 
-html:has(body.modal-open), body.modal-open {
+body.modal-open {
   height: 100%;
   overflow: hidden;
-  width: 100%;
 }
 
 .grecaptcha-badge { visibility: hidden; }

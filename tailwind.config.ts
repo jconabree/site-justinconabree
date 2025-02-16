@@ -47,16 +47,16 @@ const config: Config = {
         xl: '2rem',
         '2xl': '2.25rem',
         '3xl': '3rem',
-        '3.5xl': '3.5rem',
-        '4xl': '4rem',
-        '4.5xl': '5rem',
-        '4.75xl': '7rem',
-        '5xl': '8rem',
-        '6xl': '9rem',
-        '7xl': '12rem',
-        '8xl': '14rem',
-        '9xl': '18rem',
-        'dmax': '11lvw'
+        '3.5xl': ['3.5rem', '1'],
+        '4xl': ['4rem', '1'],
+        '4.5xl': ['5rem', '1'],
+        '4.75xl': ['7rem', '1'],
+        '5xl': ['8rem', '1'],
+        '6xl': ['9rem', '1'],
+        '7xl': ['12rem', '1'],
+        '8xl': ['14rem', '1'],
+        '9xl': ['18rem', '1'],
+        'dmax': ['11lvw', '1']
       },
       letterSpacing: {
         wide: '0.17em',
@@ -73,10 +73,12 @@ const config: Config = {
       height: {
         'half': '50vh',
         'twoThirds': '66.66667vh',
-        'oneThird': '33.33337vh'
+        'oneThird': '33.33337vh',
+        'infinite': '9999px',
       },
       width: {
         'half': '50vw',
+        'halfFullPx': 'round(up, 50vw, 1px)',
         'twoThirds': '66.66667vw'
       },
       maxWidth: {
@@ -89,6 +91,7 @@ const config: Config = {
       },
       zIndex: {
         '1': '1',
+        '2': '2',
         rightNav: '30',
         header: '500',
         max: '1000'
@@ -102,8 +105,13 @@ const config: Config = {
       },
       borderRadius: {
         '1/3': '33.3333%',
-        '20': '5rem'
-      }
+        '20': '5rem',
+        'responsibilities': '12.375rem',
+      },
+      rotate: {
+        '33': '33.33333deg',
+        '66': '66.66667deg',
+      },
     },
   },
   separator: '_',

@@ -1,9 +1,9 @@
 'use server';
 
-import { sendMail } from '@/api/email';
+import { sendContactForm } from '@/api/email';
 import recaptcha from '@/api/recaptcha';
 
-export default async function submitForm(initialState: any, formData: FormData): Promise<{ [key: string]: string; }> {
+export default async function submitContactForm(initialState: any, formData: FormData): Promise<{ [key: string]: string; }> {
     const fromEmail = formData.get('senderEmail') as string;
     const fromName = formData.get('senderName') as string;
     const bodyText = formData.get('message') as string;
@@ -27,15 +27,15 @@ export default async function submitForm(initialState: any, formData: FormData):
     }
 
     const recaptchaToken = formData.get('recaptchaToken');
+    const isRecaptchaValid = recaptchaToken ? await recaptcha.isValid(recaptchaToken as string) : false;
 
-    const isRecaptchaValid = await recaptcha.isValid(recaptchaToken);
     if (!isRecaptchaValid) {
         return {
             error: 'We were unable to validate ReCAPTCHA. Please try again or reach out on socials.'
         };
     }
 
-    const success = await sendMail(
+    const success = await sendContactForm(
         fromEmail,
         fromName,
         'Justinconabree.com Contact Form',
@@ -45,10 +45,10 @@ export default async function submitForm(initialState: any, formData: FormData):
     if (!success) {
         return {
             error: 'Something went wrong! Please try again or reach out on socials.'
-        }
+        };
     }
 
     return {
-        message: 'Your message has been sent! I\'ll respond as soon as possible. Take care! :)'
-    }
+        message: `Your message has been sent! I'll respond as soon as possible. Take care! :)`
+    };
 }

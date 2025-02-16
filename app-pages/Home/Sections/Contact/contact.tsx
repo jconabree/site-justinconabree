@@ -7,61 +7,66 @@ import Field from '@/components/Field';
 import Form from '@/components/Form';
 import FormInput from '@/components/FormInput';
 import SubmitButton from '@/components/FormSubmitButton';
+import classes from './contact.module.css';
 
 const initialState = {
   message: '',
 }
- 
+
 export default function Contact() {
     const [inputStates, setInputStates] = useState({});
 
     return (
         <div className="h-full w-full flex flex-wrap items-center justify-center py-24 min-h-screen">
-            <div className="w-full grid gap-x-8 px-10 grid-cols-5">
-                <div className="order-2 xl_order-1 col-span-5 xl_col-span-3">
-                    <Form
-                        submitAction={submitContactForm}
-                        initialState={initialState}
-                        inputStates={inputStates}
-                        className="w-full"
-                        id="contact-form"
-                    >
-                        <Field inputId="contact-email" label="Email Address">
-                            <FormInput
-                                type="email"
-                                name="senderEmail"
-                                setFormInputDirty={setInputStates}
-                                id="contact-email"
-                                required
-                            />
-                        </Field>
-                        <Field inputId="contact-name" label="Name">
-                            <FormInput
-                                type="text"
-                                name="senderName"
-                                setFormInputDirty={setInputStates}
-                                id="contact-name"
-                                required
-                            />
-                        </Field>
-                        <Field inputId="contact-message" label="Message">
-                            <FormInput
-                                type="textarea"
-                                name="message"
-                                setFormInputDirty={setInputStates}
-                                id="contact-message"
-                                required
-                                rows={6}
-                            />
-                        </Field>
-                        <SubmitButton recaptchaFormId="contact-form">Send</SubmitButton>
-                    </Form>
+                <div className="w-full p-10 xl_p-24 flex items-center justify-center flex-col">
+                    <Anaglyph component="div" className="title-hero mb-12">Say Hi!</Anaglyph>
+                    <p className="mb-16">Send me a message using the form below!</p>
+                    <div className="w-full max-w-5xl">
+                        <Form
+                            submitAction={submitContactForm}
+                            initialState={initialState}
+                            inputStates={inputStates}
+                            className="w-full"
+                            id="contact-form"
+                        >
+                            <Field inputId="contact-email" label="Email Address">
+                                <FormInput
+                                    type="email"
+                                    name="senderEmail"
+                                    setFormInputDirty={setInputStates}
+                                    id="contact-email"
+                                    required
+                                />
+                            </Field>
+                            <Field inputId="contact-name" label="Name">
+                                <FormInput
+                                    type="text"
+                                    name="senderName"
+                                    setFormInputDirty={setInputStates}
+                                    id="contact-name"
+                                    required
+                                />
+                            </Field>
+                            <Field inputId="contact-message" label="Message">
+                                <FormInput
+                                    type="textarea"
+                                    name="message"
+                                    setFormInputDirty={setInputStates}
+                                    id="contact-message"
+                                    required
+                                    rows={1}
+                                />
+                            </Field>
+                            <SubmitButton
+                                recaptchaFormId="contact-form"
+                                additionalClasses={classes.submitButton}
+                            >
+                                Send
+                            </SubmitButton>
+                        </Form>
+                    </div>
                 </div>
-                <div className="order-1 xl_order-2 col-span-5 xl_col-span-2 flex items-center justify-center flex-col">
-                    <Anaglyph component="div" className="title-h1">Contact</Anaglyph>
-                    <div>Socials</div>
-                </div>
-            </div>
+                
         </div>
     )
 }

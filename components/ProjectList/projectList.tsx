@@ -30,6 +30,8 @@ export interface IPortfolioItem {
             url: string;
             width: number;
             height: number;
+            contentType: string;
+            title: string;
         }[]
     }
 }
@@ -88,12 +90,23 @@ export default function ProjectList(props: ProjectListProps) {
                                     {portfolioItem.imagesCollection?.items.map((imageItem, index) => {
                                         return (
                                             <div className="w-36 h-36 bg-gray-100 flex items-center justify-center" key={imageItem.url}>
-                                                <Image
-                                                    src={imageItem.url}
-                                                    width={imageItem.width}
-                                                    height={imageItem.height}
-                                                    alt={`${portfolioItem.title} image ${index + 1}`}
-                                                />
+                                                {imageItem.contentType.includes('video') ? (
+                                                    <video
+                                                        src={imageItem.url}
+                                                        width={imageItem.width}
+                                                        height={imageItem.height}
+                                                        title={imageItem.title}
+                                                        preload="metadata"
+                                                    />
+                                                ) : (
+                                                    <Image
+                                                        src={imageItem.url}
+                                                        width={imageItem.width}
+                                                        height={imageItem.height}
+                                                        alt={imageItem.title}
+                                                    />
+                                                )}
+                                            
                                             </div>
                                         )
                                     })}
