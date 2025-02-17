@@ -1,1 +1,1 @@
-export { default } from './richContent';
+export { default, type IRichContent } from './richContent';

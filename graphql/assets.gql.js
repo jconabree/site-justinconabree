@@ -29,3 +29,26 @@ export const getAssetByTitleQuery = gql`
         }
     }
 `;
+
+export const getAssetsByLinkIds = gql`
+query AssetCollectionByIds($linkIds: [String!]!) {
+    assetCollection(
+        where: {
+            sys: {
+                id_in: $linkIds
+            }
+        }
+    ) {
+        items {
+            sys {
+                id
+            }
+            url
+            width
+            height
+            title
+            contentType
+        }
+    }
+}
+`

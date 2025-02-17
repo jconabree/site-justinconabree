@@ -1,0 +1,31 @@
+.thumbnail {
+    composes: w-36 h-36 bg-gray-100 flex items-center justify-center from global;
+}
+
+.moreIndicator {
+    @apply hidden pl-4 items-center;
+}
+
+.thumbnail:nth-child(2) ~ .thumbnail {
+    @apply -sm_hidden;
+}
+
+.thumbnail:nth-child(2) ~ .thumbnail + .moreIndicator {
+    @apply -sm_flex;
+}
+
+.thumbnail:nth-child(4) ~ .thumbnail {
+    @apply -md_hidden;
+}
+
+.thumbnail:nth-child(4) ~ .thumbnail + .moreIndicator {
+    @apply -md_flex;
+}
+
+.thumbnail:nth-child(5) ~ .thumbnail {
+    @apply -lg_hidden;
+}
+
+.thumbnail:nth-child(5) ~ .thumbnail + .moreIndicator {
+    @apply -lg_flex;
+}

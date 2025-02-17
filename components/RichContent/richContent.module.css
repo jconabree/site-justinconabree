@@ -16,6 +16,6 @@
     @apply mt-16;
 }
 
-/* .richContent a {
-    @apply anchor;
-} */
+.richContent .assetVideo {
+    @apply my-12 mx-auto;
+}

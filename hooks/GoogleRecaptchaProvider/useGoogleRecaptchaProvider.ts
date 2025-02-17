@@ -7,8 +7,9 @@ interface GoogleRecaptchaProviderProps {
 }
 
 export interface IGoogleRecaptchaContext {
-    scriptUrl: string;
-    getRecaptchaData: (formId: string) => Promise<string>
+    scriptUrl: string|null;
+    getRecaptchaData: (formId: string) => Promise<string>;
+    loadReCaptcha: () => void;
 }
 
 declare global {
@@ -22,6 +23,7 @@ export default (props: GoogleRecaptchaProviderProps): IGoogleRecaptchaContext =>
     const { recaptchaKey } = props;
 
     const [isLoaded, setIsLoaded] = useState<boolean>(false);
+    const [scriptUrl, setScriptUrl] = useState<string|null>(null);
     const [queue, setQueue] = useState<(() => void)[]>([]);
 
     useEffect(() => {
@@ -38,7 +40,9 @@ export default (props: GoogleRecaptchaProviderProps): IGoogleRecaptchaContext =>
         }
     }, [isLoaded]);
 
-    const scriptUrl = `https://www.google.com/recaptcha/api.js?render=${recaptchaKey}&onload=recaptchaLoadCallback`;
+    const loadReCaptcha = useCallback(() => {
+        setScriptUrl(`https://www.google.com/recaptcha/api.js?render=${recaptchaKey}&onload=recaptchaLoadCallback`);
+    }, []);
 
     const getRecaptchaData = useCallback(async (formId: string) => {
         return new Promise<string>(async (resolve) => {
@@ -66,14 +70,16 @@ export default (props: GoogleRecaptchaProviderProps): IGoogleRecaptchaContext =>
                         resolveToken
                     ];
                 });
+                loadReCaptcha();
             }
     
             resolveToken();
         })
-    }, [isLoaded]);
+    }, [isLoaded, loadReCaptcha]);
 
     return {
         scriptUrl,
+        loadReCaptcha,
         getRecaptchaData
     };
 };

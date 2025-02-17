@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import contentful from '@/api/contentful';
 import { getAllItemUrls, getPortfolioDetailsQuery } from '@/graphql/portfolio.gql';
+import Anaglyph from '@/components/Anaglyph';
 import ProjectDetails from '@/components/ProjectDetails';
 import Link from 'next/link';
 
@@ -31,7 +32,13 @@ export default async function ProjectDetailPage(props: ProjectDetailPageProps) {
             <div className="py-6">
                 <Link className="anchor text-sm" href="/projects">Back to Projects</Link>
             </div>
-            <h1>{details.title}</h1>
+            <Anaglyph
+                component="h1"
+                className="title-h1 w-full mb-8"
+                disableScrollTopCheck
+            >
+                {details.title}
+            </Anaglyph>
             <div className="w-full py-24">
                 <ProjectDetails details={details} page />
             </div>

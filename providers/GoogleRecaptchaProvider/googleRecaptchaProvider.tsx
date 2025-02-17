@@ -21,7 +21,7 @@ const GoogleRecaptchaProvider = (props: GoogleRecaptchaProviderProps) => {
     return (
         <GoogleRecaptchaContext.Provider value={contextValues}>
             {children}
-            <Script src={scriptUrl} />
+            {scriptUrl !== null && (<Script src={scriptUrl} />)}
         </GoogleRecaptchaContext.Provider>
     );
 };

@@ -25,7 +25,7 @@ export default function Form(props: FormProps) {
 
     if (state.message) {
         return (
-            <div className="text-lg">
+            <div className="text-lg text-center">
                 {state.message}
             </div>
         );

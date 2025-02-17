@@ -111,10 +111,10 @@ export default function Images(props: ImagesProps) {
                                             priority={isPage && index < 3}
                                         />
                                         <button
-                                            className="absolute top-4 right-4 bg-white rounded-full p-4 border-black border-2"
+                                            className="absolute top-1 right-1 md_top-4 md_right-4 bg-white rounded-full p-1.5 md_p-4 border-black border-2"
                                             onClick={() => { setFullOpen(true); }}
                                         >
-                                            <MaximizeIcon />
+                                            <MaximizeIcon className="w-3 h-3 md_w-6 md_h-6" />
                                         </button>
                                     </>
                                 )}

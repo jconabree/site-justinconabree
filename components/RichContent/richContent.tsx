@@ -3,27 +3,50 @@ import { documentToReactComponents, Options } from '@contentful/rich-text-react-
 
 import { getRenderer } from './Renderers';
 import classes from './richContent.module.css';
+import { getImageSize } from '@/util/images';
+import Image from 'next/image';
+
+interface IAssetLink {
+    sys: {
+        id: string;
+    }
+    url: string;
+    title: string;
+    width: number;
+    height: number;
+    contentType: string;
+    __typename: string;
+}
+
+export interface IRichContent {
+    json: Document
+    links: null|{
+        assets?: {
+            block: (IAssetLink & {
+                [key: string]: unknown;
+            })[]
+        },
+        entries?: {
+            block: {
+                sys: {
+                    id: string;
+                }
+                __typename: string;
+                [key: string]: unknown;
+            }[]
+        }
+    }
+}
 
 interface RichContentProps {
-    content: {
-        json: Document
-        links?: {
-            entries: {
-                block: {
-                    sys: {
-                        id: string;
-                    }
-                    __typename: string;
-                    [key: string]: unknown;
-                }[]
-            }
-        }
-    },
+    content: IRichContent;
+    priority?: boolean;
+    maxAssetSize?: number;
     [key: string]: unknown
 }
 
 export default function RichContent(props: RichContentProps) {
-    const { content, ...rest } = props;
+    const { content, priority, maxAssetSize = 800, ...rest } = props;
     const { json: jsonContent, links } = content;
 
     const options: Options = {
@@ -31,7 +54,7 @@ export default function RichContent(props: RichContentProps) {
             [BLOCKS.EMBEDDED_ENTRY]: (node: Block | Inline) => {
                 const linkId = node.data.target.sys.id;
 
-                const link = links?.entries.block.find((embededLink) => {
+                const link = links?.entries?.block.find((embededLink) => {
                     return embededLink.sys.id === linkId;
                 });
 
@@ -84,6 +107,44 @@ export default function RichContent(props: RichContentProps) {
                         {children}
                     </ul>
                 )
+            },
+            [BLOCKS.EMBEDDED_ASSET]: (node: Block | Inline) => {
+                const linkId = node.data.target.sys.id;
+
+                const link = links?.assets?.block.find((embededLink) => {
+                    return embededLink.sys.id === linkId;
+                });
+
+                if (!link) {
+                    return null;
+                }
+
+                if (link.contentType.includes('video')) {
+                    return (
+                        <video
+                            src={link.url}
+                            width={maxAssetSize}
+                            height={maxAssetSize}
+                            title={link.title}
+                            controls
+                            muted
+                            className={classes.assetVideo}
+                        />
+                    )
+                }
+
+                const { width, height } = getImageSize(link.width, link.height, maxAssetSize);
+
+                return (
+                    <Image
+                        src={link.url}
+                        width={width}
+                        height={height}
+                        alt={link.title}
+                        priority={priority}
+                        className={classes.assetImage}
+                    />
+                );
             }
         }
     }

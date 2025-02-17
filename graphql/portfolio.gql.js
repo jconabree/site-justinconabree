@@ -21,7 +21,7 @@ const PortfolioItemFragment = gql`
             }
         }
     }
-`
+`;
 
 export const getFeaturedPortfolioQuery = gql`
     query GetFeaturedPortfolioItems {

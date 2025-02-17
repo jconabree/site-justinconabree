@@ -5,9 +5,11 @@ import { useRouter } from 'next/navigation'
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 
-import { Document } from '@contentful/rich-text-types';
-
+import XIcon from '@/icons/X';
 import { getImageSize } from '@/util/images';
+import { IRichContent } from '@/components/RichContent';
+
+import classes from './projectList.module.css';
 
 
 const ProjectDetails = dynamic(() => import('@/components/ProjectDetails'), {
@@ -22,9 +24,7 @@ export interface IPortfolioItem {
     isFeatured: boolean;
     highlightedTech: string[];
     tech: string[];
-    content: {
-        json: Document;
-    };
+    content: IRichContent;
     imagesCollection: {
         items: {
             url: string;
@@ -71,15 +71,15 @@ export default function ProjectList(props: ProjectListProps) {
 
     return (
         <div>
-            <div className="py-8 w-full text-left text-sm">Personal (P) &bull; Work (W)</div>
+            <div className="py-4 lg_pb-8 w-full text-left text-sm">Personal (P) &bull; Work (W)</div>
             {items?.map((portfolioItem: IPortfolioItem, projectIndex) => {
                 const contentClass = activeItems.includes(portfolioItem.id) ? 'max-h-[9999px]' : 'max-h-0';
                 return (
                     <div className="pb-6" key={portfolioItem.id}>
                         <button className="w-full" onClick={getClickHandler(portfolioItem)}>
-                            <div className="w-full flex justify-between">
-                                <div>{portfolioItem.title} <span className="text-sm">({portfolioItem.workType[0].toUpperCase()})</span></div>
-                                <div className="text-sm">
+                            <div className="w-full flex justify-between flex-wrap">
+                                <div className="-sm_grow -sm_shrink-0 -sm_w-full text-left">{portfolioItem.title} <span className="text-sm">({portfolioItem.workType[0].toUpperCase()})</span></div>
+                                <div className="text-sm -sm_grow -sm_shrink-0 -sm_w-full -sm_text-xs -sm_pt-1 -sm_pb-0.5 text-left">
                                     {portfolioItem.highlightedTech.map((tech) => {
                                         return `(${tech})`
                                     }).join(', ')}
@@ -87,34 +87,38 @@ export default function ProjectList(props: ProjectListProps) {
                             </div>
                             <div className="w-full border-t border-black" />
                             <div className="pt-2 min-h-36">
-                                <div className="flex gap-4">
-                                    {portfolioItem.imagesCollection?.items.map((imageItem) => {
-                                        const { width, height } = getImageSize(imageItem.width, imageItem.height, (36 / 4 * 16));
+                                {portfolioItem.imagesCollection?.items?.length > 0 && (
+                                    <div className="flex gap-4 relative">
+                                        {portfolioItem.imagesCollection.items.slice(0, 7).map((imageItem) => {
+                                            const { width, height } = getImageSize(imageItem.width, imageItem.height, (36 / 4 * 16));
 
-                                        return (
-                                            <div className="w-36 h-36 bg-gray-100 flex items-center justify-center" key={imageItem.url}>
-                                                {imageItem.contentType.includes('video') ? (
-                                                    <video
-                                                        src={imageItem.url}
-                                                        width={imageItem.width}
-                                                        height={imageItem.height}
-                                                        title={imageItem.title}
-                                                        preload="metadata"
-                                                    />
-                                                ) : (
-                                                    <Image
-                                                        src={imageItem.url}
-                                                        width={width}
-                                                        height={height}
-                                                        alt={imageItem.title}
-                                                        priority={Boolean(priority) && projectIndex < 5}
-                                                    />
-                                                )}
-                                            
-                                            </div>
-                                        )
-                                    })}
-                                </div>
+                                            return (
+                                                <div className={classes.thumbnail} key={imageItem.url}>
+                                                    {imageItem.contentType.includes('video') ? (
+                                                        <video
+                                                            src={imageItem.url}
+                                                            width={imageItem.width}
+                                                            height={imageItem.height}
+                                                            title={imageItem.title}
+                                                            preload="metadata"
+                                                        />
+                                                    ) : (
+                                                        <Image
+                                                            src={imageItem.url}
+                                                            width={width}
+                                                            height={height}
+                                                            alt={imageItem.title}
+                                                            priority={Boolean(priority) && projectIndex < 5}
+                                                        />
+                                                    )}
+                                                </div>
+                                            );
+                                        })}
+                                        <div className={classes.moreIndicator}>
+                                            <XIcon role="presentation" className="rotate-45" width={16} height={16} />
+                                        </div>
+                                    </div>
+                                )}
                             </div>
                         </button>
                         {!navigateOnClick && (

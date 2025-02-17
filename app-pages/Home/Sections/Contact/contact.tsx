@@ -7,6 +7,7 @@ import Field from '@/components/Field';
 import Form from '@/components/Form';
 import FormInput from '@/components/FormInput';
 import SubmitButton from '@/components/FormSubmitButton';
+import { useGoogleRecaptchaContext } from '@/providers/GoogleRecaptchaProvider';
 import classes from './contact.module.css';
 
 const initialState = {
@@ -15,6 +16,7 @@ const initialState = {
 
 export default function Contact() {
     const [inputStates, setInputStates] = useState({});
+    const { loadReCaptcha } = useGoogleRecaptchaContext();
 
     return (
         <div className="h-full w-full flex flex-wrap items-center justify-center py-24 min-h-screen">
@@ -36,6 +38,8 @@ export default function Contact() {
                                     setFormInputDirty={setInputStates}
                                     id="contact-email"
                                     required
+                                    onFocus={loadReCaptcha}
+                                    onClick={loadReCaptcha}
                                 />
                             </Field>
                             <Field inputId="contact-name" label="Name">
@@ -45,6 +49,8 @@ export default function Contact() {
                                     setFormInputDirty={setInputStates}
                                     id="contact-name"
                                     required
+                                    onFocus={loadReCaptcha}
+                                    onClick={loadReCaptcha}
                                 />
                             </Field>
                             <Field inputId="contact-message" label="Message">
@@ -55,6 +61,8 @@ export default function Contact() {
                                     id="contact-message"
                                     required
                                     rows={1}
+                                    onFocus={loadReCaptcha}
+                                    onClick={loadReCaptcha}
                                 />
                             </Field>
                             <SubmitButton
