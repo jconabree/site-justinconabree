@@ -11,6 +11,7 @@ import Modal from '@/components/Modal';
 import MaximizeIcon from '@/icons/Maximize';
 import ChevronRightIcon from '@/icons/ChevronRight';
 import ChevronLeftIcon from '@/icons/ChevronLeft';
+import { getImageSize } from '@/util/images';
 
 import classes from './images.module.css';
 
@@ -85,9 +86,10 @@ export default function Images(props: ImagesProps) {
                 >
                     {images.map((image) => {
                         const alt = `${title} - ${image.title}`;
+                        const { width, height } = getImageSize(image.width, image.height, 500);
 
                         return (
-                            <div key={image.url} className="relative">
+                            <div key={image.url} className="relative !flex justify-center items-center">
                                 {image.contentType.includes('video') ? (
                                     <video
                                         src={image.url}
@@ -101,8 +103,8 @@ export default function Images(props: ImagesProps) {
                                     <>
                                         <Image
                                             src={image.url}
-                                            width={image.width}
-                                            height={image.height}
+                                            width={width}
+                                            height={height}
                                             alt={alt}
                                             className="max-h-full"
                                         />
@@ -140,7 +142,7 @@ export default function Images(props: ImagesProps) {
                         prevArrow={<PrevArrow />}
                     >
                         {images.map((image, index) => {
-                            const alt = `${title} image ${index + 1}`;
+                            const alt = `${title} - full size`;
 
                             return (
                                 <div className={classes.fullSizeSlide} key={image.url}>
@@ -155,7 +157,7 @@ export default function Images(props: ImagesProps) {
                                             className={classes.fullSizeVideo}
                                         />
                                     ) : (
-                                        <div className={classes.fullSizeImage} style={{ backgroundImage: `url(${image.url})` }} />
+                                        <div className={classes.fullSizeImage} style={{ backgroundImage: `url(${image.url})` }} aria-label={alt} role="img" />
                                     )}
                                 </div>
                             );

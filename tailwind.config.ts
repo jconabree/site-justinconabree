@@ -78,7 +78,7 @@ const config: Config = {
       },
       width: {
         'half': '50vw',
-        'halfFullPx': 'round(up, 50vw, 1px)',
+        'halfFullPx': 'round(up, 50vw, 2px)',
         'twoThirds': '66.66667vw'
       },
       maxWidth: {

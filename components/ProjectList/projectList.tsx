@@ -7,7 +7,7 @@ import Image from 'next/image';
 
 import { Document } from '@contentful/rich-text-types';
 
-import Modal from '@/components/Modal';
+import { getImageSize } from '@/util/images';
 
 
 const ProjectDetails = dynamic(() => import('@/components/ProjectDetails'), {
@@ -87,7 +87,9 @@ export default function ProjectList(props: ProjectListProps) {
                             <div className="w-full border-t border-black" />
                             <div className="pt-2 min-h-36">
                                 <div className="flex gap-4">
-                                    {portfolioItem.imagesCollection?.items.map((imageItem, index) => {
+                                    {portfolioItem.imagesCollection?.items.map((imageItem) => {
+                                        const { width, height } = getImageSize(imageItem.width, imageItem.height, (36 / 4 * 16));
+
                                         return (
                                             <div className="w-36 h-36 bg-gray-100 flex items-center justify-center" key={imageItem.url}>
                                                 {imageItem.contentType.includes('video') ? (
@@ -101,8 +103,8 @@ export default function ProjectList(props: ProjectListProps) {
                                                 ) : (
                                                     <Image
                                                         src={imageItem.url}
-                                                        width={imageItem.width}
-                                                        height={imageItem.height}
+                                                        width={width}
+                                                        height={height}
                                                         alt={imageItem.title}
                                                     />
                                                 )}
