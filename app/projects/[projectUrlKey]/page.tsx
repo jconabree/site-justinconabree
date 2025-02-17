@@ -33,7 +33,7 @@ export default async function ProjectDetailPage(props: ProjectDetailPageProps) {
             </div>
             <h1>{details.title}</h1>
             <div className="w-full py-24">
-                <ProjectDetails details={details} />
+                <ProjectDetails details={details} page />
             </div>
         </main>
     )

@@ -3,16 +3,17 @@ import { IPortfolioItem } from '@/components/ProjectList/projectList';
 import Images from './images';
 
 interface ProjectDetailsProps {
-    details: IPortfolioItem
+    details: IPortfolioItem;
+    page?: boolean;
 }
 
 export default function ProjectDetails(props: ProjectDetailsProps) {
-    const { details } = props;
+    const { details, page } = props;
 
     return (
         <>
             {details.imagesCollection?.items?.length > 0 && (
-                <Images images={details.imagesCollection.items} title={details.title} />
+                <Images images={details.imagesCollection.items} title={details.title} isPage={page} />
             )}
             <div className="grid grid-cols-3 gap-3 lg_gap-12">
                 <div className="col-span-3 md_col-span-2 order-2 md_order-1">

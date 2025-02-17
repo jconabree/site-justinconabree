@@ -18,6 +18,7 @@ import classes from './images.module.css';
 interface ImagesProps {
     images: IPortfolioItem['imagesCollection']['items']
     title: string;
+    isPage?: boolean;
 }
 
 const PrevArrow = (props: CustomArrowProps) => {
@@ -47,7 +48,7 @@ const NextArrow = (props: CustomArrowProps) => {
 }
 
 export default function Images(props: ImagesProps) {
-	const { images, title } = props;
+	const { images, title, isPage } = props;
     const [smallCarousel, setSmallCarousel] = useState<Slick|null>(null);
     const [smallIndex, setSmallIndex] = useState<number>(0);
     const [fullCarousel, setFullCarousel] = useState<Slick|null>(null);
@@ -84,7 +85,7 @@ export default function Images(props: ImagesProps) {
                     nextArrow={<NextArrow />}
                     prevArrow={<PrevArrow />}
                 >
-                    {images.map((image) => {
+                    {images.map((image, index) => {
                         const alt = `${title} - ${image.title}`;
                         const { width, height } = getImageSize(image.width, image.height, 500);
 
@@ -107,6 +108,7 @@ export default function Images(props: ImagesProps) {
                                             height={height}
                                             alt={alt}
                                             className="max-h-full"
+                                            priority={isPage && index < 3}
                                         />
                                         <button
                                             className="absolute top-4 right-4 bg-white rounded-full p-4 border-black border-2"

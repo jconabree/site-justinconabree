@@ -39,10 +39,11 @@ export interface IPortfolioItem {
 interface ProjectListProps {
     items?: IPortfolioItem[],
     navigateOnClick?: boolean;
+    priority?: boolean;
 }
 
 export default function ProjectList(props: ProjectListProps) {
-    const { items, navigateOnClick } = props;
+    const { items, navigateOnClick, priority } = props;
     const router = useRouter()
 
     const [activeItems, setActiveItems] = useState<string[]>([]);
@@ -71,7 +72,7 @@ export default function ProjectList(props: ProjectListProps) {
     return (
         <div>
             <div className="py-8 w-full text-left text-sm">Personal (P) &bull; Work (W)</div>
-            {items?.map((portfolioItem: IPortfolioItem) => {
+            {items?.map((portfolioItem: IPortfolioItem, projectIndex) => {
                 const contentClass = activeItems.includes(portfolioItem.id) ? 'max-h-[9999px]' : 'max-h-0';
                 return (
                     <div className="pb-6" key={portfolioItem.id}>
@@ -106,6 +107,7 @@ export default function ProjectList(props: ProjectListProps) {
                                                         width={width}
                                                         height={height}
                                                         alt={imageItem.title}
+                                                        priority={Boolean(priority) && projectIndex < 5}
                                                     />
                                                 )}
                                             
