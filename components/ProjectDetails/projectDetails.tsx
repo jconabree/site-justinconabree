@@ -11,7 +11,7 @@ export default function ProjectDetails(props: ProjectDetailsProps) {
 
     return (
         <>
-            {details.imagesCollection?.items?.length && (
+            {details.imagesCollection?.items?.length > 0 && (
                 <Images images={details.imagesCollection.items} title={details.title} />
             )}
             <div className="grid grid-cols-3 gap-3 lg_gap-12">

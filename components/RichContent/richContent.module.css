@@ -1,3 +1,21 @@
-.richContent :global(.title-h1) {
+.richContent :global(.title-h1),
+.richContent :global(.title-h2),
+.richContent :global(.title-h3),
+.richContent :global(.title-h4),
+.richContent :global(.title-h5) {
     @apply mb-6;
 }
+
+.richContent p {
+    @apply mb-4;
+}
+
+.richContent p + div[class^="title"],
+.richContent ul + div[class^="title"],
+.richContent ol + div[class^="title"] {
+    @apply mt-16;
+}
+
+/* .richContent a {
+    @apply anchor;
+} */

@@ -2,6 +2,7 @@
     composes: w-full from global;
     composes: pb-4 from global;
     composes: pt-16 from global;
+    composes: px-8 from global;
 }
 
 .mainRow {
@@ -22,11 +23,12 @@
 
 .links {
     composes: flex from global;
-    composes: gap-x-3 from global;
+    composes: gap-x-4 from global;
     composes: -sm_w-full from global;
     composes: -sm_justify-center from global;
     composes: -sm_pb-4 from global;
     composes: xl_pr-24 from global;
+    composes: text-sm from global;
 }
 
 .footerLogoWrapper {
@@ -37,6 +39,7 @@
 .footerLogo {
     composes: text-base from global;
     composes: font-semibold from global;
+    composes: font-header from global;
 }
 
 .recaptchaLegal {

@@ -72,7 +72,10 @@ export default function Responsibilities() {
     const [activeDetail, setActiveDetail] = useState<ResponsibilityKey|null>(null);
 
     const getToggleClick = useCallback((detailId: ResponsibilityKey) => {
-        return () => {
+        return (event: React.MouseEvent<HTMLButtonElement|HTMLLIElement>) => {
+            event.preventDefault();
+            event.stopPropagation();
+
             setActiveDetail((current) => 
                 current === detailId ? null : detailId
             );
@@ -118,9 +121,10 @@ export default function Responsibilities() {
                 <ul>
                     {responsibilities.map(({ key, title }) => {
                         const isActive = activeDetail === key;
+                        const clickHandler = getToggleClick(key);
 
                         return (
-                            <li key={key} className={isActive ? classes.itemActive : classes.item}>
+                            <li key={key} className={isActive ? classes.itemActive : classes.item} onClick={clickHandler}>
                                 <Button
                                     onPress={getToggleClick(key)}
                                     priority="unset"

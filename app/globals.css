@@ -178,7 +178,7 @@ body {
   }
 
   .anchor-clear {
-    @apply tracking-widest;
+    @apply tracking-wider;
     @apply underline;
     @apply underline-offset-3;
     @apply hover_no-underline;
@@ -186,7 +186,6 @@ body {
   }
 
   .anchor {
-    @apply interactiveAnaglyph;
     @apply anchor-clear;
   }
 
@@ -343,6 +342,27 @@ body {
     background-image: radial-gradient(circle at center, black var(--stop1), transparent var(--stop2)), radial-gradient(circle at center, black var(--stop1), transparent var(--stop2));
     background-size: var(--bgSize) var(--bgSize);
     background-position: 0 0, var(--bgPosition) var(--bgPosition);
+  }
+
+  ul.list, ol.list {
+    @apply mb-4;
+    @apply ml-8;
+  }
+
+  ul.list {
+    @apply list-disc;
+  }
+
+  ol.list {
+    @apply list-decimal;
+  }
+
+  ul.list li {
+    @apply mb-2;
+  }
+
+  .list > li > p {
+    @apply mb-0;
   }
 }
 

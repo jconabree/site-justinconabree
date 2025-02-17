@@ -1,4 +1,4 @@
-import { BLOCKS, Block, Inline, Document } from '@contentful/rich-text-types';
+import { BLOCKS, Block, Inline, Document, INLINES } from '@contentful/rich-text-types';
 import { documentToReactComponents, Options } from '@contentful/rich-text-react-renderer';
 
 import { getRenderer } from './Renderers';
@@ -46,6 +46,45 @@ export default function RichContent(props: RichContentProps) {
                     <div className="title-h1">{children}</div>
                 );
             },
+            [BLOCKS.HEADING_2]: (_, children) => {
+                return (
+                    <div className="title-h2">{children}</div>
+                );
+            },
+            [BLOCKS.HEADING_3]: (_, children) => {
+                return (
+                    <div className="title-h3">{children}</div>
+                );
+            },
+            [BLOCKS.HEADING_4]: (_, children) => {
+                return (
+                    <div className="title-h4">{children}</div>
+                );
+            },
+            [BLOCKS.HEADING_5]: (_, children) => {
+                return (
+                    <div className="title-h5">{children}</div>
+                );
+            },
+            [INLINES.HYPERLINK]: (node, children) => {
+                return (
+                    <a className="anchor" href={node.data?.uri}>{children}</a>
+                );
+            },
+            [BLOCKS.UL_LIST]: (_, children) => {
+                return (
+                    <ul className="list">
+                        {children}
+                    </ul>
+                )
+            },
+            [BLOCKS.OL_LIST]: (_, children) => {
+                return (
+                    <ul className="list">
+                        {children}
+                    </ul>
+                )
+            }
         }
     }
 

@@ -1,4 +1,10 @@
+.item {
+    composes: pb-2 from global;
+    composes: hover_cursor-pointer from global;
+}
+
 .itemActive {
+    composes: item;
     text-shadow: 1px 0 0 currentColor;
 }
 

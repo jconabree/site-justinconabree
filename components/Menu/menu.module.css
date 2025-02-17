@@ -140,6 +140,7 @@
 
 .link {
     composes: anchor-secondary from global;
+    @apply tracking-widest;
     @apply underline-offset-neg1;
 }
 

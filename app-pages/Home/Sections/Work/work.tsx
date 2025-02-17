@@ -23,7 +23,7 @@ export default async function Work() {
                 <div className="px-10 flex flex-col justify-center items-start md_items-end lg_z-1">
                     <div>
                         <Anaglyph component="div" className="title-h2 titleAnaglyph">Currently:</Anaglyph>
-                        <div className="font-semibold text-lg text-center pr-1">Senior Practice Expertise Developer (Adobe) @ Valtech</div>
+                        <div className="font-semibold text-lg text-left 2xl_text-center pr-1">Senior Practice Expertise Developer (Adobe) @ Valtech</div>
                     </div>
                 </div>
                 <Responsibilities />

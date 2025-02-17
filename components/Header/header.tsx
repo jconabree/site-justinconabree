@@ -50,7 +50,9 @@ const Header = () => {
     return (
         <header className={`${scrollClass} ${menuOpenClass}`}>
             <div className={classes.contact}>
-                <Link className="button-primary block py-2 px-6 font-bold transition-colors bg-white" href="/contact">Contact</Link>
+                <Link className="button-primary block py-2 px-6 font-bold bg-white" href="/contact">
+                    <span className="button-content">Contact</span>
+                </Link>
             </div>
             <div className={classes.logo}>
                 <Link href="/">
