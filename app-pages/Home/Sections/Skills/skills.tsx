@@ -11,7 +11,7 @@ export default async function Skills() {
 
     const skills = data?.techSkillAreaCollection?.items;
     return (
-        <div className="h-full w-full relative min-h-screen pt-48 rounded-tr-20 xl_rounded-tr-1/3 bg-black text-white">
+        <div className="h-full w-full relative min-h-screen pt-48 rounded-tr-60 xl_rounded-tr-1/3 bg-black text-white">
             <div className="px-10">
                 <Anaglyph component="div" className="title-h1 leading-none">Languages && Technology</Anaglyph>
                 <p className="py-10">Languages, frameworks and technology that I've worked with</p>

@@ -17,9 +17,9 @@ export default function Hero() {
                         src: '/media/totality_mobile.mp4',
                         query: 'all and (max-width: 1023px)'
                     }]}
-                    className="object-cover object-right absolute w-full h-full left-0 top-0 rounded-bl-20 lg_rounded-bl-1/3 overflow-hidden bg-black"
+                    className="object-cover object-right absolute w-full h-full left-0 top-0 rounded-bl-60 lg_rounded-bl-1/3 overflow-hidden bg-black"
                 />
-                <div className="absolute top-[85vh] md_top-screen -translate-y-1/2 md_-translate-y-full left-0 px-10 w-full pb-10">
+                <div className="absolute top-[77vh] md_top-screen -translate-y-1/2 md_-translate-y-full left-0 px-10 w-full pb-10">
                     <Anaglyph
                         component="h1"
                         className="title-hero text-white text-dmax"

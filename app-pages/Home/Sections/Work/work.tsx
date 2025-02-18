@@ -33,7 +33,7 @@ export default async function Work() {
                 <Companies />
             </div>
             <div className="w-full max-w-3xl mx-auto py-16 px-10 grid grid-cols-1 md_grid-cols-2 gap-8">
-                <div className="w-full text-center px-10 font-header text-3xl font-black col-span-2">Links</div>
+                <div className="w-full text-center px-10 font-header text-xl sm_text-2xl xl_text-3xl font-black md_col-span-2">Links</div>
                 <div className="w-full text-center">
                     <div className="relative max-w-max mx-auto">
                         <a

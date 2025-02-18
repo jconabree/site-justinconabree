@@ -106,6 +106,7 @@ const config: Config = {
       borderRadius: {
         '1/3': '33.3333%',
         '20': '5rem',
+        '60': '15rem',
         'responsibilities': '12.375rem',
       },
       rotate: {

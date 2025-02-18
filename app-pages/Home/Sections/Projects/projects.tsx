@@ -39,7 +39,7 @@ export default async function Projects() {
     return (
         <div className="w-full p-10 xl_p-24">
             <div className="max-w-full flex flex-wrap items-baseline">
-                <Anaglyph component="span" className="title-h1 mr-16">Projects</Anaglyph>
+                <Anaglyph component="span" className="title-h1 mr-6 md_mr-16">Projects</Anaglyph>
                 <Link href="/projects" className="anchor-clear">See All</Link>
             </div>
             <div className="py-4">

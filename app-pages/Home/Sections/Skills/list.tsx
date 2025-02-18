@@ -56,17 +56,19 @@ export default function List(props: ListProps) {
             <div className="py-6 px-10 -lg_sticky -lg_z-50 top-14 md_top-20 lg_top-auto">
                 <div className="w-full relative flex flex-wrap justify-center align-center gap-x-8 gap-y-3">
                     {skills.map((area) => {
+                        const isActive = activeArea === area.title;
+
                         return (
                             <Button
                                 priority="secondary"
                                 key={area.title}
-                                additionalClasses={activeArea === area.title ? 'bg-white text-black' : ''}
+                                additionalClasses={isActive ? 'bg-white text-black' : 'bg-black'}
                                 onPress={() => {
                                     setLoadingAnimation(true);
                                     setDelayRender(true);
                                     setActiveArea(area.title);
                                 }}
-                                disabled={loadingAnimation || activeArea === area.title}
+                                disabled={loadingAnimation || isActive}
                             >
                                 {area.title}
                             </Button>
@@ -74,7 +76,7 @@ export default function List(props: ListProps) {
                     })}
                     <Button
                         priority="secondary"
-                        additionalClasses={activeArea === 'all' ? 'bg-white text-black' : ''}
+                        additionalClasses={activeArea === 'all' ? 'bg-white text-black' : 'bg-black'}
                         onPress={() => {
                             setLoadingAnimation(true);
                             setDelayRender(true);
@@ -89,7 +91,7 @@ export default function List(props: ListProps) {
             
             <div className="w-full relative min-h-screen">
                 {!activeArea && (
-                    <div className="flex text-2xl gap-4 absolute left-1/2 top-0 -translate-x-full">
+                    <div className="flex w-max text-[1.5rem] leading-[1] items-baseline pt-4 gap-4 absolute left-1/2 top-0 -translate-x-1/2 md_-translate-x-full">
                         Select a filter <CornerRightUpIcon width={32} height={32} className={`inline ${classes.showArrow}`} />
                     </div>
                 )}
