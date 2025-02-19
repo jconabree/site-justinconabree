@@ -18,23 +18,7 @@ export default async function About() {
     const imageSize = profilePicture ? getImageSize(profilePicture.width, profilePicture.height, 1100) : null;
 
     return (
-        <div className="h-full w-full flex flex-wrap items-center justify-center pt-36 pb-24">
-            <div className="flex flex-wrap gap-4 max-w-7xl px-10 items-center justify-center">
-                <div className={classes.attributeItem}>Problem Solving</div>
-                <div className={classes.attributeItem}>Highly Adaptive</div>
-                <div className={classes.attributeItem}>Constantly Learning</div>
-                <div className={classes.attributeItem}>Product Innovation</div>
-                <div className={classes.attributeItem}>Proactive</div>
-                <div className={classes.attributeItem}>Coding Standards</div>
-                <div className={classes.attributeItem}>Process Implementation</div>
-                <div className={classes.attributeItem}>Performance Analysis</div>
-                <div className={classes.attributeItem}>Code Optimization</div>
-                <div className={classes.attributeItem}>Team Player</div>
-                <div className={classes.attributeItem}>Leader and Coach</div>
-                <div className={classes.attributeItem}>Agile Project Management</div>
-                <div className={classes.attributeItem}>Cross Functional Team Management</div>
-                <div className={classes.attributeItem}>Stakeholder Communications</div>
-            </div>
+        <div className="h-full w-full flex flex-wrap items-center justify-center pb-36 pt-24">
             <div className="grid grid-cols-1 xl_grid-cols-2 gap-x-4 gap-y-12 justify-center items-center w-full px-10 2xl_px-24 py-20">
                 <div className="w-full">
                     <div className="max-w-screen-md mx-auto rounded-3xl overflow-hidden">
@@ -56,9 +40,22 @@ export default async function About() {
                     </Anaglyph>
                     <div className="text-lg text-center xl_text-right mt-6 xl_max-w-3xl xl_justify-self-end">
                         <p className="mb-3">A "maker" at heart, I enjoy building things. The conceptualising, problem solving, implementation, (more problem solving) and satisfaction when it's complete.</p>
-                        <p>With coding I get to do that every day for work and other personal projects, but I also enjoy <span className={classes.printingWrapper}>3D printing<span className={classes.printingMask}></span></span> and woodworking.</p>
+                        <p>With code I get to do this every day for work and other personal projects, but I also enjoy <span className={classes.printingWrapper}>3D printing<span className={classes.printingMask}></span></span> and woodworking.</p>
                     </div>
                 </div>
+            </div>
+            <div className="flex flex-wrap gap-4 max-w-7xl pt-16 px-10 items-center justify-center">
+                <div className={classes.attributeItem}>Problem-Solving</div>
+                <div className={classes.attributeItem}>Adaptability</div>
+                <div className={classes.attributeItem}>Continuous Learning</div>
+                <div className={classes.attributeItem}>Innovative Thinking</div>
+                <div className={classes.attributeItem}>Proactive Mindset</div>
+                <div className={classes.attributeItem}>Leadership & Coaching</div>
+                <div className={classes.attributeItem}>Collaboration & Teamwork</div>
+                <div className={classes.attributeItem}>Effective Communication</div>
+                <div className={classes.attributeItem}>Agile Project Management</div>
+                <div className={classes.attributeItem}>Cross-Functional Team Leadership</div>
+                <div className={classes.attributeItem}>Stakeholder Engagement</div>
             </div>
         </div>
     );

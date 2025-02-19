@@ -244,7 +244,12 @@ body {
 
     @apply overflow-hidden transition-all duration-500;
     @apply before_absolute before_bottom-0 before_left-1/2 before_-translate-x-1/2 before_translate-y-full before_w-8 before_h-8 before_rounded-full before_transition-all before_duration-500;
-    @apply hover_before_translate-y-0 hover_before_w-full hover_before_h-full;
+    @apply hover_before_translate-y-0;
+  }
+
+  .button-base:hover::before {
+    width: round(up, 100%, 2px);
+    height: round(up, 100%, 2px);
   }
 
   .button-content {
