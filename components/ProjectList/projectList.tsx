@@ -73,7 +73,9 @@ export default function ProjectList(props: ProjectListProps) {
         <div>
             <div className="py-4 lg_pb-8 w-full text-left text-sm">Personal (P) &bull; Work (W)</div>
             {items?.map((portfolioItem: IPortfolioItem, projectIndex) => {
-                const contentClass = activeItems.includes(portfolioItem.id) ? 'max-h-[9999px]' : 'max-h-0';
+                const isActive = activeItems.includes(portfolioItem.id);
+                const contentClass = isActive ? 'max-h-[9999px]' : 'max-h-0';
+
                 return (
                     <div className="pb-6" key={portfolioItem.id}>
                         <button className="w-full" onClick={getClickHandler(portfolioItem)}>
@@ -121,7 +123,7 @@ export default function ProjectList(props: ProjectListProps) {
                                 )}
                             </div>
                         </button>
-                        {!navigateOnClick && (
+                        {!navigateOnClick && isActive && (
                             <div className={`${contentClass} overflow-y-hidden transition-all duration-500`}>
                                 <div className="py-10">
                                     <ProjectDetails details={portfolioItem} />
