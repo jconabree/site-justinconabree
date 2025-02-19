@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { useCookieConsentContext } from '@/providers/CookieConsentProvider';
 
@@ -16,6 +16,7 @@ const GoogleAnalytics = (props: GoogleAnalyticsProps) => {
     const { analyticsId } = props;
 
     const initialized = useRef<boolean>(false);
+    const [scriptSrc, setScriptSrc] = useState<string|null>(null);
 
     const { consent } = useCookieConsentContext();
 
@@ -57,14 +58,25 @@ const GoogleAnalytics = (props: GoogleAnalyticsProps) => {
         });
     }, [consent]);
 
+    useEffect(() => {
+        setTimeout(() => {
+            setScriptSrc(`https://www.googletagmanager.com/gtag/js?id=${analyticsId}`);
+        }, 3000);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
 
     if (!analyticsId) {
         return null;
     }
 
+    if (!scriptSrc) {
+        return null;
+    }
+
     return (
         <>
-            <script async src={`https://www.googletagmanager.com/gtag/js?id=${analyticsId}`}></script>
+            <script async defer src={scriptSrc}></script>
         </>
     )
 }

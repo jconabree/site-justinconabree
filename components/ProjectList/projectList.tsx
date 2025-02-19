@@ -76,6 +76,10 @@ export default function ProjectList(props: ProjectListProps) {
                 const isActive = activeItems.includes(portfolioItem.id);
                 const contentClass = isActive ? 'max-h-[9999px]' : 'max-h-0';
 
+                const mainImages = portfolioItem.imagesCollection?.items
+                    ?.filter((image) => !image.contentType?.includes('video'))
+                    ?.slice(0, 7);
+
                 return (
                     <div className="pb-6" key={portfolioItem.id}>
                         <button className="w-full" onClick={getClickHandler(portfolioItem)}>
@@ -89,30 +93,20 @@ export default function ProjectList(props: ProjectListProps) {
                             </div>
                             <div className="w-full border-t border-black" />
                             <div className="pt-2 min-h-36">
-                                {portfolioItem.imagesCollection?.items?.length > 0 && (
+                                {mainImages?.length > 0 && (
                                     <div className="flex gap-4 relative">
-                                        {portfolioItem.imagesCollection.items.slice(0, 7).map((imageItem) => {
+                                        {mainImages.map((imageItem) => {
                                             const { width, height } = getImageSize(imageItem.width, imageItem.height, (36 / 4 * 16));
 
                                             return (
                                                 <div className={classes.thumbnail} key={imageItem.url}>
-                                                    {imageItem.contentType.includes('video') ? (
-                                                        <video
-                                                            src={imageItem.url}
-                                                            width={imageItem.width}
-                                                            height={imageItem.height}
-                                                            title={imageItem.title}
-                                                            preload="metadata"
-                                                        />
-                                                    ) : (
-                                                        <Image
-                                                            src={imageItem.url}
-                                                            width={width}
-                                                            height={height}
-                                                            alt={imageItem.title}
-                                                            priority={Boolean(priority) && projectIndex < 5}
-                                                        />
-                                                    )}
+                                                    <Image
+                                                        src={imageItem.url}
+                                                        width={width}
+                                                        height={height}
+                                                        alt={imageItem.title}
+                                                        priority={Boolean(priority) && projectIndex < 5}
+                                                    />
                                                 </div>
                                             );
                                         })}
