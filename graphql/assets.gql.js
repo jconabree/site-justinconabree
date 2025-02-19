@@ -1,5 +1,15 @@
 import { gql } from '@apollo/client';
 
+const AssetFragment = gql`
+    fragment AssetDetailsFragment on Asset {
+        fileName
+        url
+        width
+        height
+        title
+        contentType
+    }
+`
 export const getAssetByFileNameQuery = gql`
     query AssetCollection($filename: String!) {
         assetCollection(
@@ -8,11 +18,11 @@ export const getAssetByFileNameQuery = gql`
             }
         ) {
             items {
-                fileName
-                url
+                ...AssetDetailsFragment
             }
         }
     }
+    ${AssetFragment}
 `;
 
 export const getAssetByTitleQuery = gql`
@@ -23,32 +33,29 @@ export const getAssetByTitleQuery = gql`
             }
         ) {
             items {
-                fileName
-                url
+                ...AssetDetailsFragment
             }
         }
     }
+    ${AssetFragment}
 `;
 
 export const getAssetsByLinkIds = gql`
-query AssetCollectionByIds($linkIds: [String!]!) {
-    assetCollection(
-        where: {
-            sys: {
-                id_in: $linkIds
+    query AssetCollectionByIds($linkIds: [String!]!) {
+        assetCollection(
+            where: {
+                sys: {
+                    id_in: $linkIds
+                }
             }
-        }
-    ) {
-        items {
-            sys {
-                id
+        ) {
+            items {
+                sys {
+                    id
+                }
+                ...AssetDetailsFragment
             }
-            url
-            width
-            height
-            title
-            contentType
         }
     }
-}
-`
+    ${AssetFragment}
+`;

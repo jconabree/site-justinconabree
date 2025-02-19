@@ -3,6 +3,7 @@ import Image from 'next/image';
 import contentful from '@/api/contentful';
 import Anaglyph from '@/components/Anaglyph';
 import { getAssetByTitleQuery } from '@/graphql/assets.gql';
+import { getImageSize } from '@/util/images';
     
 import classes from './about.module.css';
 
@@ -13,7 +14,8 @@ export default async function About() {
             title: 'Me'
         }
     });
-    const profilePicture = data.assetCollection?.items?.[0]?.url;
+    const profilePicture = data.assetCollection?.items?.[0];
+    const imageSize = profilePicture ? getImageSize(profilePicture.width, profilePicture.height, 1100) : null;
 
     return (
         <div className="h-full w-full flex flex-wrap items-center justify-center pt-36 pb-24">
@@ -36,7 +38,16 @@ export default async function About() {
             <div className="grid grid-cols-1 xl_grid-cols-2 gap-x-4 gap-y-12 justify-center items-center w-full px-10 2xl_px-24 py-20">
                 <div className="w-full">
                     <div className="max-w-screen-md mx-auto rounded-3xl overflow-hidden">
-                        <Image src={profilePicture} width={869} height={1405} className="w-full" alt="A portrait of me (Justin Conabree)" />
+                        {profilePicture && (
+                            <Image
+                                src={profilePicture.url}
+                                width={imageSize!.width}
+                                height={imageSize!.height}
+                                sizes="(max-width: 1279px) 90vw, 30vw"
+                                className="w-full"
+                                alt="A portrait of me (Justin Conabree)"
+                            />
+                        )}
                     </div>
                 </div>
                 <div className="w-full">
