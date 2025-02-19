@@ -1,22 +1,26 @@
 .footer {
+    composes: grid from global;
     composes: w-full from global;
     composes: pb-4 from global;
     composes: pt-16 from global;
-    composes: px-8 from global;
+    composes: px-4 from global;
+    composes: sm_px-12 from global;
 }
 
 .mainRow {
+    composes: grid from global;
+    composes: grid-cols-1 from global;
+    composes: gap-y-2 from global;
+    composes: lg_grid-cols-3 from global;
     composes: w-full from global;
     composes: py-4 from global;
-    composes: flex from global;
-    composes: -sm_flex-wrap from global;
-    composes: justify-between from global;
     composes: items-center from global;
 }
 
 .copyright {
     composes: text-sm from global;
-    composes: xl_pl-10 from global;
+    composes: text-center from global;
+    composes: lg_text-left from global;
     composes: -sm_w-full from global;
     composes: -sm_text-center from global;
 }
@@ -24,17 +28,16 @@
 .links {
     composes: flex from global;
     composes: gap-x-4 from global;
+    composes: text-center from global;
+    composes: justify-center from global;
+    composes: lg_justify-end from global;
     composes: -sm_w-full from global;
-    composes: -sm_justify-center from global;
-    composes: -sm_pb-4 from global;
-    composes: xl_pr-24 from global;
     composes: text-sm from global;
 }
 
 .footerLogoWrapper {
-    composes: -sm_w-full from global;
-    composes: -sm_text-center from global;
-    composes: -sm_py-4 from global;
+    composes: w-full from global;
+    composes: text-center from global;
 }
 .footerLogo {
     composes: text-base from global;
@@ -43,6 +46,7 @@
 }
 
 .recaptchaLegal {
+    composes: -sm_order-2 from global;
     composes: w-full from global;
     composes: text-xs from global;
     composes: text-center from global;

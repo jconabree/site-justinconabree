@@ -2,9 +2,14 @@ import { gql } from '@apollo/client';
 
 const PortfolioItemFragment = gql`
     fragment PortfolioItemFragment on PortfolioItem {
+        sys {
+            publishedAt
+            firstPublishedAt
+        }
         id
         title
         urlKey
+        shortDescription
         workType
         highlightedTech
         tech

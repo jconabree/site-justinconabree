@@ -105,31 +105,20 @@
     composes: mt-32 from global;
     composes: w-full from global;
     composes: text-right from global;
-    composes: text-3xl from global;
-    composes: lg_text-5xl from global;
-    composes: xl_text-6xl from global;
+    composes: leading-[1.3] md_leading-[1.1] from global;
     composes: font-bold from global;
     composes: pr-8 xl_pr-16 from global;
     composes: font-header from global;
     composes: max-h-screen from global;
     composes: overflow-y-auto from global;
+    font-size: 11lvw;
     max-height: calc(100vh - theme(spacing.20));
     -ms-overflow-style: none;  /* Internet Explorer 10+ */
     scrollbar-width: none;  /* Firefox */
 }
 
-.navList > li {
-    line-height: 1.3;
-}
-
 .navList::-webkit-scrollbar { 
     display: none;  /* Safari and Chrome */
-}
-
-@screen md {
-    .navList {
-        font-size: min(calc(80*1vh / var(--number-of-items) * .65), 20vw);
-    }
 }
 
 @screen xl {

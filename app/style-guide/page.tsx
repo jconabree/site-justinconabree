@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import Button from '@/components/Button';
 
 export default function StyleGuide() {
@@ -76,3 +77,16 @@ export default function StyleGuide() {
         </main>
     )
 }
+
+export const metadata: Metadata = {
+	title: "Style Guide | Justin Conabree",
+	description: "Style guide to test some of the components of this website.",
+    publisher: 'Justin Conabree',
+    openGraph: {
+        type: 'website',
+    },
+    robots: {
+        index: false,
+        follow: false,
+    }
+};
