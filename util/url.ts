@@ -1,9 +1,15 @@
 export const getBaseUrl = (): string => {
-    return (
+    const base = (
         process.env.VERCEL_PROJECT_PRODUCTION_URL ??
         process.env.VERCEL_BRANCH_URL ??
         process.env.VERCEL_URL
-    )?.replace(/\/$/, '') ?? '';
+    )?.replace(/\/$/, '') ?? null;
+
+    if (!base) {
+        return '';
+    }
+
+    return base.includes('http') ? base : `https://${base}`;
 };
 
 export const buildUrl = (path: string): string => {
