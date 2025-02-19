@@ -87,7 +87,7 @@ export default function Images(props: ImagesProps) {
                 >
                     {images.map((image, index) => {
                         const alt = `${title} - ${image.title}`;
-                        const { width, height } = getImageSize(image.width, image.height, 500);
+                        const { width, height } = getImageSize(image.width, image.height, 1300);
 
                         return (
                             <div key={image.url} className="relative !flex justify-center items-center">
@@ -106,6 +106,7 @@ export default function Images(props: ImagesProps) {
                                             src={image.url}
                                             width={width}
                                             height={height}
+                                            sizes="60vw"
                                             alt={alt}
                                             className="max-h-full"
                                             priority={isPage && index < 3}
