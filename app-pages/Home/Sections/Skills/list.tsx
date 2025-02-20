@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState } from 'react';
 import Button from '@/components/Button';
 import CornerRightUpIcon from '@/icons/CornerRightUp';
 import classes from './list.module.css';
+import { area } from 'framer-motion/client';
 
 interface TechSkill {
     title: string;
@@ -30,18 +31,21 @@ export default function List(props: ListProps) {
         }, 1650);
     }, [activeArea]);
 
-    const activeSkills = useMemo<string[]|null>(() => {
+    const activeSkills = useMemo<{skill: string; area: string}[]|null>(() => {
         if (!activeArea) {
             return null;
         }
 
         if (activeArea === 'all') {
-            return skills.reduce((skillList: string[], area: TechSkill) => {
-                const lowercaseSkills = skillList.map((skill) => skill.toLowerCase());
+            return skills.reduce((skillList: {skill: string; area: string}[], area: TechSkill) => {
+                const lowercaseSkills = skillList.map(({ skill }) => skill.toLowerCase());
 
                 area.skills.forEach((skill) => {
-                    if (!lowercaseSkills.includes(skill.toLowerCase())) {
-                        skillList.push(skill);
+                    const lowercaseSkill = skill.toLowerCase();
+
+                    if (!lowercaseSkills.includes(lowercaseSkill)) {
+                        skillList.push({ skill, area: area.title });
+                        lowercaseSkills.push(lowercaseSkill);
                     }
                 });
 
@@ -49,7 +53,10 @@ export default function List(props: ListProps) {
             }, []);
         }
 
-        return skills.find((area) => area.title === activeArea)!.skills;
+        return skills.find((area) => area.title === activeArea)!.skills.map((skill) => ({
+            skill,
+            area: activeArea
+        }));
     }, [activeArea])
 
     return (
@@ -90,7 +97,7 @@ export default function List(props: ListProps) {
                 </div>
             </div>
             
-            <div className="w-full relative min-h-screen">
+            <div className="w-full relative min-h-half xl_min-h-twoThirds">
                 {!activeArea && (
                     <div className="flex w-max text-[1.5rem] leading-[1] items-baseline pt-4 gap-4 absolute left-1/2 top-0 -translate-x-1/2 md_-translate-x-full">
                         Select a filter <CornerRightUpIcon width={32} height={32} className={`inline ${classes.showArrow}`} />
@@ -100,10 +107,12 @@ export default function List(props: ListProps) {
                     <div className={classes.loadingOverlay} />
                 )}
                 {!delayRender && activeArea && activeSkills && (
-                    <div className={`grid grid-cols-1 md_grid-cols-${Math.min(2, activeSkills.length)} lg_grid-cols-${Math.min(4, activeSkills.length)} gap-x-6 gap-y-4 pt-10 pb-4 px-10 3xl_max-w-2/3 mx-auto`}>
+                    <div className={`grid grid-cols-1 md_grid-cols-2 lg_grid-cols-3 gap-x-6 gap-y-4 pt-10 pb-16 px-10 3xl_max-w-2/3 mx-auto`}>
                         {activeSkills.map((skill) => {
+                            const type = activeArea === 'all' ? skill.area : null;
+
                             return (
-                                <div key={skill} className="border-b py-2">{skill}</div>
+                                <div key={skill.skill} className="border-b py-2 flex justify-between">{skill.skill}{type && (<span className="text-xs">({type})</span>)}</div>
                             )
                         })}
                     </div>

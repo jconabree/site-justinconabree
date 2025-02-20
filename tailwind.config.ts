@@ -76,6 +76,10 @@ const config: Config = {
         'oneThird': '33.33337vh',
         'infinite': '9999px',
       },
+      minHeight: {
+        'half': '50vh',
+        'twoThirds': '66.66667vh'
+      },
       width: {
         'half': '50vw',
         'halfFullPx': 'round(up, 50vw, 2px)',
