@@ -9,7 +9,8 @@ const AssetFragment = gql`
         title
         contentType
     }
-`
+`;
+
 export const getAssetByFileNameQuery = gql`
     query AssetCollection($filename: String!) {
         assetCollection(

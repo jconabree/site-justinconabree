@@ -7,8 +7,6 @@ export const getSkillAreasQuery = gql`
         ) {
             items {
                 title
-                type
-                activeCortex
                 skills
             }
         }
