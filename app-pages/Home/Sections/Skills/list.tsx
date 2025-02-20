@@ -7,7 +7,6 @@ import classes from './list.module.css';
 
 interface TechSkill {
     title: string;
-    type: 'backend'|'frontend'|'devops'|'misc';
     activeCortex: 'left'|'right'|'both';
     skills: string[];
 }
@@ -38,8 +37,10 @@ export default function List(props: ListProps) {
 
         if (activeArea === 'all') {
             return skills.reduce((skillList: string[], area: TechSkill) => {
+                const lowercaseSkills = skillList.map((skill) => skill.toLowerCase());
+
                 area.skills.forEach((skill) => {
-                    if (!skillList.includes(skill)) {
+                    if (!lowercaseSkills.includes(skill.toLowerCase())) {
                         skillList.push(skill);
                     }
                 });
