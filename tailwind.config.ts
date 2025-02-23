@@ -102,7 +102,8 @@ const config: Config = {
       },
       spacing: {
         full: '100%',
-        screen: '100vh'
+        screen: '100vh',
+        '18': '4.5rem'
       },
       aspectRatio: {
         '4/3': '4 / 3'

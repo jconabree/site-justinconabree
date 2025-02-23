@@ -19,7 +19,7 @@ export default async function Work() {
 
     return (
         <div className="h-full w-full">
-            <div className="bg-gray-100 w-full py-24 grid grid-cols-1 md_grid-cols-2 gap-x-8 gap-y-12 items-center justify-center relative">
+            <div className="bg-gray-100 w-full py-24 grid grid-cols-1 md_grid-cols-2 gap-x-8 gap-y-12 items-center justify-center relative overflow-hidden">
                 <div className="px-10 flex flex-col justify-center items-start md_items-end lg_z-1">
                     <div>
                         <Anaglyph component="div" className="title-h2 titleAnaglyph">Currently:</Anaglyph>

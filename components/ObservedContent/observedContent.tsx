@@ -7,12 +7,13 @@ export interface ObservedContentProps {
     component: React.ElementType,
     margin?: string|{
         query: string;
-        margin: string;
+        margin?: string;
+        onIntersect?: IntersectionObserverCallback;
     }[]
 }
 
 interface ObservedContentInternalProps extends ObservedContentProps {
-    onIntersect: (entries: IntersectionObserverEntry[]) => void;
+    onIntersect: IntersectionObserverCallback;
 }
 
 export default function ObservedContent(props: ObservedContentInternalProps) {
@@ -21,8 +22,8 @@ export default function ObservedContent(props: ObservedContentInternalProps) {
     const currentObserver = useRef<IntersectionObserver>(null);
     const { ready } = useWaitForReady();
 
-    const bindObserver = useCallback((rootMargin: string) => {
-        const observer = new IntersectionObserver(onIntersect, {
+    const bindObserver = useCallback((rootMargin: string, intersectFunction: IntersectionObserverCallback) => {
+        const observer = new IntersectionObserver(intersectFunction, {
             rootMargin,
             threshold: Array.from({ length: 9 }).map((_, index) => index === 0 ? 0 : 1/8 * index)
         });
@@ -31,38 +32,45 @@ export default function ObservedContent(props: ObservedContentInternalProps) {
         observer.observe(currentElement);
 
         return observer;
-    }, [onIntersect]);
+    }, []);
 
     useEffect(() => {
         if (ready) {
-            const rootMargin = margin ?? '-20% 0px -15% 0px';
+            const baseMargin = '-20% 0px -15% 0px';
+            const rootMargin = margin ?? baseMargin;
 
             if (typeof rootMargin === 'string') {
-                const observer = bindObserver(rootMargin);
+                const observer = bindObserver(rootMargin, onIntersect);
 
                 return () => {
                     observer.disconnect();
                 }
             }
 
-            const handleMediaMatch = (marginValue: string) => {
+            const handleMediaMatch = (marginValue: string, marginIntersectFunction: IntersectionObserverCallback) => {
                 if (currentObserver.current instanceof IntersectionObserver) {
                     currentObserver.current.disconnect();
                 }
 
-                currentObserver.current = bindObserver(marginValue);
+                currentObserver.current = bindObserver(marginValue, marginIntersectFunction);
             }
 
             rootMargin?.map((marginEntry) => {
                 const media = window.matchMedia(marginEntry.query);
 
                 if (media.matches) {
-                    handleMediaMatch(marginEntry.margin);
+                    handleMediaMatch(
+                        marginEntry.margin ?? baseMargin,
+                        marginEntry.onIntersect ?? onIntersect
+                    ); 
                 }
                 
                 media.addEventListener('change', (match) => {
                     if (match.matches) {
-                        handleMediaMatch(marginEntry.margin);
+                        handleMediaMatch(
+                            marginEntry.margin ?? baseMargin,
+                            marginEntry.onIntersect ?? onIntersect
+                        );
                     }
                 });
             });
@@ -73,7 +81,7 @@ export default function ObservedContent(props: ObservedContentInternalProps) {
                 }
             };
         }
-    }, [ready, bindObserver, margin]);
+    }, [ready, bindObserver, onIntersect, margin]);
 
     return (
         <Component {...rest} ref={element} />

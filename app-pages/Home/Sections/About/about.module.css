@@ -1,5 +1,6 @@
 .attributeItem {
     composes: pill from global;
+    composes: -sm_w-full from global;
 }
 
 .printingWrapper {

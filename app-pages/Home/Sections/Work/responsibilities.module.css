@@ -39,8 +39,15 @@
 }
 
 .curve {
+    composes: responsibility-curve from global;
     composes: hidden lg_block from global;
-    composes: absolute top-0 right-0 translate-x-full h-1/2 w-60 bg-black after_absolute after_top-0 after_left-0 after_h-full after_w-full after_bg-gray-100 after_rounded-tl-responsibilities pointer-events-none from global;
+    composes: after_transition-all after_duration-100 pointer-events-none from global;
+    composes: absolute top-0 right-0 translate-x-full h-1/2 w-60 bg-black after_absolute after_top-0 after_left-0 after_h-full after_w-full after_bg-gray-100 after_rounded-tl-responsibilities from global;
+}
+
+.curve:global(.anim-out) {
+    /* @apply w-0; */
+    @apply after_rounded-tl-none;
 }
 
 .close {
