@@ -27,7 +27,7 @@ export default async function submitContactForm(initialState: any, formData: For
     }
 
     const recaptchaToken = formData.get('recaptchaToken');
-    const isRecaptchaValid = recaptchaToken ? await recaptcha.isValid(recaptchaToken as string) : false;
+    const isRecaptchaValid = recaptchaToken ? await recaptcha.isValid(recaptchaToken as string, 'contactform', 0.6) : false;
 
     if (!isRecaptchaValid) {
         return {

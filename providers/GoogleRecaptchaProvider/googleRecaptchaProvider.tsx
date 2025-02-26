@@ -15,13 +15,18 @@ interface GoogleRecaptchaProviderProps  {
 const GoogleRecaptchaProvider = (props: GoogleRecaptchaProviderProps) => {
     const { children, recaptchaKey } = props;
 
-    const contextValues = useGoogleRecaptchaProvider({ recaptchaKey });
+    const { handleScriptLoadError, ...contextValues } = useGoogleRecaptchaProvider({ recaptchaKey });
     const { scriptUrl } = contextValues;
 
     return (
         <GoogleRecaptchaContext.Provider value={contextValues}>
             {children}
-            {scriptUrl !== null && (<Script src={scriptUrl} />)}
+            {scriptUrl !== null && (
+                <Script
+                    src={scriptUrl}
+                    onError={handleScriptLoadError}
+                />
+            )}
         </GoogleRecaptchaContext.Provider>
     );
 };

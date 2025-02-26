@@ -26,12 +26,12 @@ class Recaptcha {
         };
     }
 
-    async isValid(token: string) {
+    async isValid(token: string, actionId: string, threshold = 0.5) {
         const validateReponse = await this.validateToken(token);
 
         this._lastResponse = validateReponse;
 
-        return validateReponse.success;
+        return validateReponse.success && validateReponse.action === actionId && validateReponse.score >= threshold;
     }
 
     getLastErrorCodes() {

@@ -8,8 +8,12 @@ interface GoogleRecaptchaProviderProps {
 
 export interface IGoogleRecaptchaContext {
     scriptUrl: string|null;
-    getRecaptchaData: (formId: string) => Promise<string>;
+    getRecaptchaData: (formId: string) => Promise<string|undefined>;
     loadReCaptcha: () => void;
+}
+
+interface GoogleRecaptchaProviderValues {
+    handleScriptLoadError: (error: Error) => void;
 }
 
 declare global {
@@ -19,10 +23,11 @@ declare global {
     }
 }
 
-export default (props: GoogleRecaptchaProviderProps): IGoogleRecaptchaContext => {
+export default (props: GoogleRecaptchaProviderProps): IGoogleRecaptchaContext & GoogleRecaptchaProviderValues => {
     const { recaptchaKey } = props;
 
     const [isLoaded, setIsLoaded] = useState<boolean>(false);
+    const [isErrored, setIsErrored] = useState<boolean>(false);
     const [scriptUrl, setScriptUrl] = useState<string|null>(null);
     const [queue, setQueue] = useState<(() => void)[]>([]);
 
@@ -33,21 +38,26 @@ export default (props: GoogleRecaptchaProviderProps): IGoogleRecaptchaContext =>
     }, []);
 
     useEffect(() => {
-        if (isLoaded) {
+        if (!isErrored && isLoaded && queue?.length) {
             queue.forEach((onLoad) => {
                 onLoad();
             });
+            setQueue([]);
         }
-    }, [isLoaded]);
+    }, [isLoaded, isErrored, queue]);
 
     const loadReCaptcha = useCallback(() => {
         setScriptUrl(`https://www.google.com/recaptcha/api.js?render=${recaptchaKey}&onload=recaptchaLoadCallback`);
     }, []);
 
     const getRecaptchaData = useCallback(async (formId: string) => {
-        return new Promise<string>(async (resolve) => {
-            const generateToken = async (): Promise<string> => {
-                const token = await globalThis.grecaptcha.execute(
+        return new Promise<string|undefined>(async (resolve) => {
+            if (isErrored) {
+                resolve(undefined);
+            }
+
+            const generateToken = async (): Promise<string|undefined> => {
+                const token = await globalThis.grecaptcha?.execute(
                     recaptchaKey,
                     {
                         action: formId
@@ -71,15 +81,23 @@ export default (props: GoogleRecaptchaProviderProps): IGoogleRecaptchaContext =>
                     ];
                 });
                 loadReCaptcha();
+
+                return;
             }
     
             resolveToken();
         })
-    }, [isLoaded, loadReCaptcha]);
+    }, [isLoaded, isErrored, loadReCaptcha]);
+
+    const handleScriptLoadError = useCallback(() => {
+        setIsErrored(true);
+        setIsLoaded(true);
+    }, [])
 
     return {
         scriptUrl,
         loadReCaptcha,
-        getRecaptchaData
+        getRecaptchaData,
+        handleScriptLoadError
     };
 };

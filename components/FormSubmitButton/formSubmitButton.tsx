@@ -33,7 +33,7 @@ export default function FormSubmitButton(props: InputProps) {
             const recaptchaToken = await getRecaptchaData(
                 recaptchaFormId.replaceAll(/[^A-Za-z\/_]/g, '')
             );
-            recaptchaRef.current!.value = recaptchaToken;
+            recaptchaRef.current!.value = recaptchaToken || '';
             setRecaptchaLoading(false);
 
             submitButtonRef.current!.click();
@@ -43,7 +43,7 @@ export default function FormSubmitButton(props: InputProps) {
             type: 'button',
             onPress: handleSubmit
         }
-    }, [recaptchaFormId, getRecaptchaData])
+    }, [recaptchaFormId, getRecaptchaData]);
 
     return (
         <>
