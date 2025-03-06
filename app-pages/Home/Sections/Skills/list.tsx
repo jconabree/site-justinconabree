@@ -72,6 +72,8 @@ export default function List(props: ListProps) {
                     top: y,
                     // behavior: 'smooth'
                 });
+
+                listRef.current.closest('.skills-container')?.classList.add('filters-applied')
             }
             document.querySelector('.responsibility-curve')?.classList.add('anim-out');
             setLoadingAnimation(true);
