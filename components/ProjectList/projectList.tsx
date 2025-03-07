@@ -25,15 +25,24 @@ export interface IPortfolioItem {
     highlightedTech: string[];
     tech: string[];
     content: IRichContent;
-    imagesCollection: {
+    richMediaCollection: {
         items: {
-            url: string;
-            width: number;
-            height: number;
-            contentType: string;
-            title: string;
+            asset: {
+                url: string;
+                width: number;
+                height: number;
+                contentType: string;
+                title: string;
+            };
+            poster: {
+                url: string;
+                width: number;
+                height: number;
+                contentType: string;
+                title: string;
+            }
         }[]
-    }
+    };
 }
 
 interface ProjectListProps {
@@ -76,8 +85,8 @@ export default function ProjectList(props: ProjectListProps) {
                 const isActive = activeItems.includes(portfolioItem.id);
                 const contentClass = isActive ? 'max-h-[9999px]' : 'max-h-0';
 
-                const mainImages = portfolioItem.imagesCollection?.items
-                    ?.filter((image) => !image.contentType?.includes('video'))
+                const mainImages = portfolioItem.richMediaCollection?.items
+                    ?.map(({ asset, poster }) => asset.contentType?.includes('video') ? poster : asset)
                     ?.slice(0, 7);
 
                 return (

@@ -13,8 +13,8 @@ export default function ProjectDetails(props: ProjectDetailsProps) {
 
     return (
         <>
-            {details.imagesCollection?.items?.length > 0 && (
-                <Images images={details.imagesCollection.items} title={details.title} isPage={page} />
+            {details.richMediaCollection?.items?.length > 0 && (
+                <Images assets={details.richMediaCollection.items} title={details.title} isPage={page} />
             )}
             <div className="grid grid-cols-3 gap-12">
                 <div className="col-span-3 md_col-span-2 order-2 md_order-1">

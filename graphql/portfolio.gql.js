@@ -1,32 +1,41 @@
 import { gql } from '@apollo/client';
 
-const PortfolioItemFragment = gql`
-    fragment PortfolioItemFragment on PortfolioItem {
-        sys {
-            publishedAt
-            firstPublishedAt
-        }
-        id
-        title
-        urlKey
-        shortDescription
-        workType
-        highlightedTech
-        tech
-        content {
-            json
-        }
-        imagesCollection {
-            items {
-                url
-                width
-                height
-                contentType
-                title
+const getPortfolioItemFragment = (maxImages = 5) => {
+    return gql`
+        fragment PortfolioItemFragment on PortfolioItem {
+            sys {
+                publishedAt
+                firstPublishedAt
+            }
+            id
+            title
+            urlKey
+            shortDescription
+            workType
+            highlightedTech
+            tech
+            content {
+                json
+            }
+            richMediaCollection(limit: ${maxImages}) {
+                items {
+                    asset {
+                        url
+                        width
+                        height
+                        contentType
+                        title
+                    }
+                    poster {
+                        url
+                        width
+                        height
+                    }
+                }
             }
         }
-    }
-`;
+    `;
+}
 
 export const getFeaturedPortfolioQuery = gql`
     query GetFeaturedPortfolioItems {
@@ -39,7 +48,7 @@ export const getFeaturedPortfolioQuery = gql`
             }
         }
     }
-    ${PortfolioItemFragment}
+    ${getPortfolioItemFragment()}
 `;
 
 export const getPortfolioItemsQuery = gql`
@@ -50,7 +59,7 @@ export const getPortfolioItemsQuery = gql`
             }
         }
     }
-    ${PortfolioItemFragment}
+    ${getPortfolioItemFragment()}
 `;
 
 export const getAllItemUrls = gql`
@@ -79,5 +88,5 @@ export const getPortfolioDetailsQuery = gql`
             }
         }
     }
-    ${PortfolioItemFragment}
+    ${getPortfolioItemFragment()}
 `;

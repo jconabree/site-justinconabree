@@ -16,7 +16,7 @@ import { getImageSize } from '@/util/images';
 import classes from './images.module.css';
 
 interface ImagesProps {
-    images: IPortfolioItem['imagesCollection']['items']
+    assets: IPortfolioItem['richMediaCollection']['items']
     title: string;
     isPage?: boolean;
 }
@@ -48,7 +48,7 @@ const NextArrow = (props: CustomArrowProps) => {
 }
 
 export default function Images(props: ImagesProps) {
-	const { images, title, isPage } = props;
+	const { assets, title, isPage } = props;
     const [smallCarousel, setSmallCarousel] = useState<Slick|null>(null);
     const [smallIndex, setSmallIndex] = useState<number>(0);
     const [fullCarousel, setFullCarousel] = useState<Slick|null>(null);
@@ -85,7 +85,9 @@ export default function Images(props: ImagesProps) {
                     nextArrow={<NextArrow />}
                     prevArrow={<PrevArrow />}
                 >
-                    {images.map((image, index) => {
+                    {assets.map(({ asset, poster }, index) => {
+                        const image = asset;
+    
                         const alt = `${title} - ${image.title}`;
                         const { width, height } = getImageSize(image.width, image.height, 1300);
 
@@ -98,7 +100,8 @@ export default function Images(props: ImagesProps) {
                                         height={image.height}
                                         title={image.title}
                                         controls
-                                        preload="metadata"
+                                        poster={poster.url}
+                                        preload="none"
                                     />
                                 ) : (
                                     <>
@@ -144,7 +147,8 @@ export default function Images(props: ImagesProps) {
                         nextArrow={<NextArrow />}
                         prevArrow={<PrevArrow />}
                     >
-                        {images.map((image, index) => {
+                        {assets.map(({ asset }, index) => {
+                            const image = asset;
                             const alt = `${title} - full size`;
 
                             return (
@@ -156,7 +160,6 @@ export default function Images(props: ImagesProps) {
                                             height={image.height}
                                             title={image.title}
                                             controls
-                                            preload="metadata"
                                             className={classes.fullSizeVideo}
                                         />
                                     ) : (
