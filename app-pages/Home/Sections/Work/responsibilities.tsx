@@ -139,6 +139,7 @@ export default function Responsibilities() {
                                     onPress={getToggleClick(key)}
                                     priority="unset"
                                     additionalClasses={classes.toggleButton}
+                                    aria-label={`Open responsibility drawer for ${title}`}
                                 >
                                     <span className={isActive ? classes.toggleIconClose : classes.toggleIconOpen} />
                                 </Button>
@@ -150,7 +151,12 @@ export default function Responsibilities() {
             </div>
             <div className={activeDetail ? classes.detailsPanelOpen : classes.detailsPanel}>
                 <div className={classes.curve} />
-                <Button priority="unset" additionalClasses={classes.close} onPress={handleClose}>
+                <Button
+                    priority="unset"
+                    additionalClasses={classes.close}
+                    onPress={handleClose}
+                    aria-label="Close responsibility drawer"
+                >
                     <ArrowLeft width={32} height={32} />
                 </Button>
                 <div className={classes.detailsContentWrapper}>
@@ -165,10 +171,20 @@ export default function Responsibilities() {
                         )
                     })}
                     <div className={classes.navigation}>
-                        <Button priority="unset" additionalClasses={classes.navigationAction} onPress={handlePrev}>
+                        <Button
+                            priority="unset"
+                            additionalClasses={classes.navigationAction}
+                            onPress={handlePrev}
+                            aria-label="Previous slide"
+                        >
                             <ChevronLeft width={28} height={28} />
                         </Button>
-                        <Button priority="unset" additionalClasses={classes.navigationAction} onPress={handleNext}>
+                        <Button
+                            priority="unset"
+                            additionalClasses={classes.navigationAction}
+                            onPress={handleNext}
+                            aria-label="Next slide"
+                        >
                             <ChevronRight width={28} height={28} />
                         </Button>
                     </div>
