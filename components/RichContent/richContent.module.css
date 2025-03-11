@@ -16,6 +16,7 @@
     @apply mt-16;
 }
 
-.richContent .assetVideo {
+.richContent .assetVideo,
+.richContent .assetImage {
     @apply my-12 mx-auto;
 }

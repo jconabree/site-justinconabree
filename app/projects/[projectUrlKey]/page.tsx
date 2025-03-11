@@ -3,6 +3,7 @@ import contentful from '@/api/contentful';
 import { getAllItemUrls, getPortfolioDetailsQuery } from '@/graphql/portfolio.gql';
 import Anaglyph from '@/components/Anaglyph';
 import ProjectDetails from '@/components/ProjectDetails';
+import { getAssetLinksFromContent } from "@/util/richContent";
 import Link from 'next/link';
 import { Metadata } from 'next';
 
@@ -23,10 +24,23 @@ export default async function ProjectDetailPage(props: ProjectDetailPageProps) {
         }
     });
 
-    const details = data?.portfolioItemCollection?.items?.[0];
+    let details = data?.portfolioItemCollection?.items?.[0];
     if (!details) {
         notFound();
     }
+
+    if (details.content) {
+        const links = await getAssetLinksFromContent(details.content.json);
+    
+        details = {
+            ...details,
+            content: {
+                ...details.content,
+                links
+            }
+        };
+    }
+    
 
     return (
         <main className="flex min-h-screen flex-col py-12 lg_py-24 px-8 md_px-12 lg_px-24 content-page">
