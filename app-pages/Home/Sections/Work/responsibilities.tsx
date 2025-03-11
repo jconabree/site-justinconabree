@@ -7,7 +7,7 @@ import ChevronLeft from '@/icons/ChevronLeft';
 import ChevronRight from '@/icons/ChevronRight';
 import classes from './responsibilities.module.css';
 
-type ResponsibilityKey = 'mastery'|'accelerators'|'bestpractices'|'training'|'resource';
+type ResponsibilityKey = string; // 'mastery'|'accelerators'|'bestpractices'|'training'|'resource'|'poc';
 type ResponsibilityItem = {
     key: ResponsibilityKey;
     title: string;
@@ -63,6 +63,16 @@ const responsibilities: ResponsibilityItem[] = [
             <div>
                 <p>Sometimes our production teams are either missing a resource, or are the guinea pigs for a new technology. When this happens, especially the latter, I join their team temporarily to lend my expertise.</p>
                 <p>When it's a new technology, I later use my experience with the team to then share with other teams that during their onboarding, making sure that we share the knowledge across the different projects.</p>
+            </div>
+        )
+    },
+    {
+        key: 'poc',
+        title: 'Building proof-of-concepts for internal teams',
+        content: (
+            <div>
+                <p>As I frequently work with technology and systems that aren't widely used yet, I often have to create proof of concepts for internal teams.</p>
+                <p>Sometimes it's to determine limitations of the technology to see if it will be a good fit. Other times it could be for pre-sales, whipping up a visually-similar site in a couple of days for pitching a platform migration to an existing client.</p>
             </div>
         )
     },

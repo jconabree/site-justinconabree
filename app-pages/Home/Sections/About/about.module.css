@@ -17,20 +17,26 @@
     @apply bottom-1 left-0;
     @apply z-1;
     @apply bg-white;
-    animation: printMask 6s steps(6, end) infinite;
+    animation: printMask 11s steps(11, end) infinite;
 }
 
 .printingMask::after {
     content: '';
+    height: 10%;
+    bottom: -10%;
     @apply block;
     @apply absolute;
-    @apply w-full h-1;
-    @apply -bottom-1 left-0;
+    @apply w-full;
+    @apply left-0;
     @apply bg-white;
+    @apply border-l-8 border-solid border-black;
     animation: printHead 1s steps(20, end) infinite;
 }
 
 @keyframes printMask {
+    from {
+        transform: translateY(-10%);
+    }
     to {
         transform: translateY(-120%);
     }

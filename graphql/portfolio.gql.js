@@ -30,6 +30,7 @@ const getPortfolioItemFragment = (maxImages = 5) => {
                         url
                         width
                         height
+                        title
                     }
                 }
             }
@@ -53,7 +54,9 @@ export const getFeaturedPortfolioQuery = gql`
 
 export const getPortfolioItemsQuery = gql`
     query GetPortfolioItems {
-        portfolioItemCollection {
+        portfolioItemCollection(
+            order: [orderNumber_ASC]
+        ) {
             items {
                 ...PortfolioItemFragment
             }
@@ -77,7 +80,7 @@ export const getAllItemUrls = gql`
 `;
 
 export const getPortfolioDetailsQuery = gql`
-    query GetPortfolioItems($urlKey: String!) {
+    query GetPortfolioDetails($urlKey: String!) {
         portfolioItemCollection(
             where: {
                 urlKey: $urlKey

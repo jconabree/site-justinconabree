@@ -100,6 +100,7 @@ export default function Images(props: ImagesProps) {
                                         height={image.height}
                                         title={image.title}
                                         controls
+                                        muted
                                         poster={poster.url}
                                         preload="none"
                                     />
@@ -160,6 +161,7 @@ export default function Images(props: ImagesProps) {
                                             height={image.height}
                                             title={image.title}
                                             controls
+                                            muted
                                             className={classes.fullSizeVideo}
                                         />
                                     ) : (
