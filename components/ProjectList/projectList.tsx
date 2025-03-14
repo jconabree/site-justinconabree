@@ -1,9 +1,9 @@
 "use client";
 
-import { useCallback, useState } from 'react';
-import { useRouter } from 'next/navigation'
+import React, { HTMLAttributes, MouseEvent, useCallback, useMemo, useState } from 'react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
+import Link, { LinkProps } from 'next/link';
 
 import XIcon from '@/icons/X';
 import { getImageSize } from '@/util/images';
@@ -53,30 +53,37 @@ interface ProjectListProps {
 
 export default function ProjectList(props: ProjectListProps) {
     const { items, navigateOnClick, priority } = props;
-    const router = useRouter()
 
     const [activeItems, setActiveItems] = useState<string[]>([]);
 
-    const getClickHandler = useCallback((item: IPortfolioItem) => {
+    const getLinkProps: ((item: IPortfolioItem) => HTMLAttributes<HTMLButtonElement>|LinkProps) = useCallback((item: IPortfolioItem) => {
         if (navigateOnClick) {
-            return () => {
-                router.push(`/projects/${item.urlKey}`);
+            return {
+                href: `/projects/${item.urlKey}`
+            } as LinkProps;
+        }
+
+        return {
+            onClick: (event: MouseEvent<HTMLButtonElement>) => {
+                event.preventDefault();
+
+                setActiveItems((currentItems) => {
+                    if (currentItems.includes(item.id)) {
+                        return currentItems.filter((currItem) => currItem !== item.id);
+                    }
+
+                    return [
+                        ...currentItems,
+                        item.id
+                    ]
+                });
             }
         }
+    }, [navigateOnClick]);
 
-        return () => {
-            setActiveItems((currentItems) => {
-                if (currentItems.includes(item.id)) {
-                    return currentItems.filter((currItem) => currItem !== item.id);
-                }
-
-                return [
-                    ...currentItems,
-                    item.id
-                ]
-            });
-        }
-    }, [navigateOnClick, router]);
+    const LinkComponent = useMemo(() => {
+        return navigateOnClick ? Link : 'button';
+    }, [navigateOnClick]);
 
     return (
         <div>
@@ -91,7 +98,9 @@ export default function ProjectList(props: ProjectListProps) {
 
                 return (
                     <div className="pb-6" key={portfolioItem.id}>
-                        <button className="w-full" onClick={getClickHandler(portfolioItem)}>
+                        {/*
+                        // @ts-ignore */}
+                        <LinkComponent className="w-full" {...getLinkProps(portfolioItem)}>
                             <div className="w-full flex justify-between flex-wrap">
                                 <div className="-sm_grow -sm_shrink-0 -sm_w-full text-left">{portfolioItem.title} <span className="text-sm">({portfolioItem.workType[0].toUpperCase()})</span></div>
                                 <div className="text-sm -sm_grow -sm_shrink-0 -sm_w-full -sm_text-xs -sm_pt-1 -sm_pb-0.5 text-left">
@@ -125,7 +134,7 @@ export default function ProjectList(props: ProjectListProps) {
                                     </div>
                                 )}
                             </div>
-                        </button>
+                        </LinkComponent>
                         {!navigateOnClick && isActive && (
                             <div className={`${contentClass} overflow-y-hidden transition-all duration-500`}>
                                 <div className="py-10">
