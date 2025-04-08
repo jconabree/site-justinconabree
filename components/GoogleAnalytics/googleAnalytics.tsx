@@ -42,7 +42,7 @@ const GoogleAnalytics = (props: GoogleAnalyticsProps) => {
     }, [analyticsId]);
 
     useEffect(() => {
-        if (consent === null) {
+        if (consent === null || !analyticsId) {
             return;
         }
 
@@ -56,6 +56,7 @@ const GoogleAnalytics = (props: GoogleAnalyticsProps) => {
             security_storage: 'granted',
             wait_for_update: 500
         });
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [consent]);
 
     useEffect(() => {
