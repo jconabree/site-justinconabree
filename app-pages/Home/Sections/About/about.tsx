@@ -39,7 +39,7 @@ export default async function About() {
                         Passionate about making cool $#!T
                     </Anaglyph>
                     <div className="text-lg text-center xl_text-right mt-6 xl_max-w-3xl xl_justify-self-end">
-                        <p className="mb-3">A "maker" at heart, I enjoy building things. The conceptualising, problem solving, implementation, (more problem solving) and satisfaction when it's complete.</p>
+                        <p className="mb-3">As a "maker" at heart, I love building things. The ideation, problem solving, implementation, (more problem solving) and satisfaction when it comes together.</p>
                         <p>With code I get to do this every day for work and other personal projects, but I also enjoy <span className={classes.printingWrapper}>3D printing<span className={classes.printingMask}></span></span> and woodworking.</p>
                     </div>
                 </div>
