@@ -1,0 +1,8 @@
+.text {
+    composes: cursor-pointer from global;
+}
+
+.textBlurred {
+    composes: text;
+    composes: blur-md bg-black text-white from global;
+}

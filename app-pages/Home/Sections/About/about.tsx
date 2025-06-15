@@ -2,6 +2,7 @@ import Image from 'next/image';
 
 import contentful from '@/api/contentful';
 import Anaglyph from '@/components/Anaglyph';
+import HiddenText from '@/components/HiddenText';
 import { getAssetByTitleQuery } from '@/graphql/assets.gql';
 import { getImageSize } from '@/util/images';
     
@@ -36,7 +37,7 @@ export default async function About() {
                 </div>
                 <div className="w-full">
                     <Anaglyph wide component="div" className="text-2xl sm_text-3xl lg_text-4.5xl 4xl_text-4.75xl mb-6 lg_mb-12 text-center xl_text-right font-header font-bold emphasis-secondary-wide leading-none">
-                        Passionate about making cool $#!T
+                        Passionate about making cool S<HiddenText>tuff</HiddenText>
                     </Anaglyph>
                     <div className="text-lg text-center xl_text-right mt-6 xl_max-w-3xl xl_justify-self-end">
                         <p className="mb-3">As a "maker" at heart, I love building things. The ideation, problem solving, implementation, (more problem solving) and satisfaction when it comes together.</p>
