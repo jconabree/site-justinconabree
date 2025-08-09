@@ -26,3 +26,9 @@ Feel more than free to use this repo as a starting point for your own (non-comme
 Overall the project is decent, but there are many, many things I would change about the code and site if I had unlimited time and energy.
 
 From styling that's just _off_, to the `app-pages` folder that contains a mix of sections but also components. If you're evaluating this code or the website, know that I have a long list of optimizations that'll I'll probably never get around to doing ☺️
+
+## Running the project
+This is a standard [Next.js](https://nextjs.org/docs) project. Basic steps to get up and running:
+- Copy `.env.sample` to `.env.local` and set the values
+- Run `npm install`
+- Run `npm run dev`
