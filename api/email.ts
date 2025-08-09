@@ -1,4 +1,5 @@
-import sgMail from '@sendgrid/mail';
+import nodemailer from 'nodemailer';
+import SMTPTransport from 'nodemailer/lib/smtp-transport';
 
 const contactHtml = `<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html data-editor-version="2" class="sg-campaigns" xmlns="http://www.w3.org/1999/xhtml">
@@ -186,6 +187,70 @@ const replaceContactVariables = (variables: { [key: string]: string; }) => {
     }, contactHtml);
 }
 
+const getMailer = () => {
+  const requiredConfig = [
+    'SMTP_PASSWORD',
+    'SMTP_USER',
+    'SMTP_HOST',
+    'SMTP_PORT'
+  ]
+  const missingConfigs = requiredConfig.filter((config) => !Boolean(process.env[config]));
+  if (missingConfigs.length) {
+      throw new Error(`SMTP is not configured. Missing ${missingConfigs.join(', ')}`);
+  }
+
+  const port = Number(process.env.SMTP_PORT);
+  const config: SMTPTransport.Options = {
+    host: process.env.SMTP_HOST!,
+    port,
+    secure: port === 465,
+    auth: {
+      user: process.env.SMTP_USER,
+      pass: process.env.SMTP_PASSWORD
+    }
+  };
+
+  return nodemailer.createTransport(config);
+}
+
+type MessageDetails = {
+    to: {
+        name: string;
+        email: string;
+    };
+    from: {
+        name: string;
+        email: string;
+    };
+    reply_to: {
+        name: string;
+        email: string;
+    };
+    subject: string;
+    text: string;
+    html: string;
+}
+const sendMail = async (message: MessageDetails) => {
+  const mailer = getMailer();
+
+  const { text, html, subject } = message;
+
+  const response = await mailer.sendMail(
+    {
+      from: `${message.from.name} <${message.from.email}>`,
+      to: `${message.to.name} <${message.to.email}>`,
+      replyTo: `${message.reply_to.name} <${message.reply_to.email}>`,
+      subject,
+      text,
+      html
+    }
+  );
+
+  if (!response?.messageId) {
+    throw new Error('Invalid mail response');
+  }
+}
+
 export async function sendContactForm(
     fromEmail: string,
     fromName: string,
@@ -193,12 +258,6 @@ export async function sendContactForm(
     bodyText: string
 ) {
     try {
-        if (!process.env.SENDGRID_API_KEY) {
-            throw new Error('Sendgrid is not configured');
-        }
-
-        sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
         const msg = {
             to: {
                 name: 'Justin conabree',
@@ -206,7 +265,7 @@ export async function sendContactForm(
             },
             from: {
                 name: 'Justinconabree.com Contact',
-                email: 'contact@justinconabree.com'
+                email: process.env.SMTP_FROM ?? 'noreply@mailer.obblelabs.com'
             },
             reply_to: {
                 name: fromName,
@@ -221,7 +280,7 @@ export async function sendContactForm(
             }),
         }
 
-        await sgMail.send(msg);
+        await sendMail(msg);
     } catch (err) {
         console.log("ERROR: ", err);
 
